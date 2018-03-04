@@ -1,0 +1,35 @@
+2018-03-04 17:53:10.367 CET [39687] LOG:  listening on IPv6 address "::1", port 5432
+2018-03-04 17:53:10.367 CET [39687] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2018-03-04 17:53:10.368 CET [39687] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2018-03-04 17:53:10.381 CET [39688] LOG:  database system was shut down at 2018-03-04 17:53:07 CET
+2018-03-04 17:53:10.386 CET [39687] LOG:  database system is ready to accept connections
+2018-03-04 18:00:34.458 CET [40498] ERROR:  database "db/development" already exists
+2018-03-04 18:00:34.458 CET [40498] STATEMENT:  CREATE DATABASE "db/development" ENCODING = 'utf8'
+2018-03-04 18:00:34.471 CET [40499] ERROR:  database "db/test" already exists
+2018-03-04 18:00:34.471 CET [40499] STATEMENT:  CREATE DATABASE "db/test" ENCODING = 'utf8'
+2018-03-04 18:02:31.595 CET [40522] ERROR:  database "db/development" already exists
+2018-03-04 18:02:31.595 CET [40522] STATEMENT:  CREATE DATABASE "db/development" ENCODING = 'utf8'
+2018-03-04 18:02:31.611 CET [40523] ERROR:  database "db/test" already exists
+2018-03-04 18:02:31.611 CET [40523] STATEMENT:  CREATE DATABASE "db/test" ENCODING = 'utf8'
+2018-03-04 18:05:25.451 CET [40741] FATAL:  database "ast" does not exist
+2018-03-04 18:05:28.491 CET [40743] FATAL:  database "ast" does not exist
+2018-03-04 18:05:39.538 CET [40750] FATAL:  database "ast" does not exist
+2018-03-04 18:06:09.585 CET [40764] ERROR:  syntax error at or near "help" at character 21
+2018-03-04 18:06:09.585 CET [40764] STATEMENT:  SHOW data_directory
+	help
+	help
+	SHOW
+	;
+2018-03-04 18:06:32.468 CET [40764] ERROR:  syntax error at or near "'
+	;
+	=
+	;
+	'" at character 22
+2018-03-04 18:06:32.468 CET [40764] STATEMENT:  SHOW data_directoryl
+	'
+	;
+	=
+	;
+	'
+	SHOW data_directory;
+2018-03-04 18:07:10.079 CET [40786] FATAL:  database "formats-development" does not exist
