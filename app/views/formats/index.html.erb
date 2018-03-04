@@ -1,0 +1,20 @@
+<h1>Formats</h1>
+
+<p>
+	<%= link_to 'Create Format', new_format_path %>
+</p>
+
+<table>
+	<tr>
+		<th>Title</th>
+		<th>Multiline</th>
+	</tr>
+
+	<% @formats.each do |format| %>
+		<tr>
+			<td><%= format.title %></td>
+			<td><%= format.multiline %></td>
+			<td><%= link_to 'Details', format_path(format) %></td>
+		</tr>
+	<% end %>
+</table>
