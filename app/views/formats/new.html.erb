@@ -1,45 +1,67 @@
-<h1>New Format</h1>
+<!DOCTYPE html>
+<html>
 
-<%= form_with scope: :format, url: formats_path, local: true do |form| %>
-	<!-- nested attributes for variables -->
-	<%= form.fields_for :variables, @variable do |var| %>
+<head>
+	<meta charset="UTF-8">
+	<title>Index</title>
+</head>
 
-		<p>
-			<%= form.label :title %><br>
-			<%= form.text_field :title %>
-		</p>
+<body>
+	<h1>New Format</h1>
 
-  		<table>
-  			<caption>Variables</caption>
-		  	<tr>
-		    	<th>Number</th>
-		    	<th>Description</th> 
-		    	<th>Max. Length</th>
-		    	<th>Type</th>
-		  	</tr>
-				<td><%= form.text_field :number %></td>
-				<td><%= form.text_field :description %></td>
-				<td><%= form.number_field :length %></td>
-				<td><%= form.text_field :type %></td>
-			</tr>
-		</table>
+	<%= form_with scope: :format, url: formats_path, local: true do |form| %>
+		<!-- nested attributes for variables -->
+		<%= form.fields_for :variables, @variable do |var| %>
 
-		<p>
-			<%= form.label :multiline %>
-			<%= form.check_box :multiline %>
-		</p>
+		 <script type="text/javascript">
+	        function addTableRow()
+	        {
+	            document.getElementById("myTable").insertRow(-1).innerHTML = '<td>1</td><td>2</td>';
+	        }
+        </script>
 
-		<p>
-			<%= form.label :stand %>
-			<%= form.date_field :stand %>
-		</p>
+			<p>
+				<%= form.label :title %><br>
+				<%= form.text_field :title %>
+			</p>
 
-		<p>
-			<%= form.submit "Create" %>
-		</p>
+	  		<table>
+	  			<caption>Variables</caption>
+	  			<tbody>
+				  	<tr>
+				    	<th>Number</th>
+				    	<th>Description</th> 
+				    	<th>Max. Length</th>
+				    	<th>Type</th>
+				  	</tr>
+						<td><%= form.text_field :number %></td>
+						<td><%= form.text_field :description %></td>
+						<td><%= form.number_field :length %></td>
+						<td><%= form.text_field :type %></td>
+					</tr>
+				</tbody>
+			</table>
+			<input type="button" value="Insert new variable" onclick="addTableRow()"/>
+
+			<p>
+				<%= form.label :multiline %>
+				<%= form.check_box :multiline %>
+			</p>
+
+			<p>
+				<%= form.label :stand %>
+				<%= form.date_field :stand %>
+			</p>
+
+			<p>
+				<%= form.submit "Create" %>
+			</p>
+
+		<% end %>
 
 	<% end %>
 
-<% end %>
+	<%= link_to 'Back', "/formats" %>
+</body>
 
-<%= link_to 'Back', "/formats" %>
+</html>
