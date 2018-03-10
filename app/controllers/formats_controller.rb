@@ -11,17 +11,21 @@ class FormatsController < ApplicationController
 	end
 
 	def new
+		@format = Format.new
 	end
 
 	def create
 		@format = Format.new(format_params)
 
-		@format.save
-		redirect_to @format
+		if @format.save
+			redirect_to '/formats'
+		else
+			render 'new'
+		end
 	end
 
 	private
-		def format_params
-			params.require(:format).permit(:title, :multiline)
-		end
+	def format_params
+		params.require(:format).permit(:title, :multiline, variables_attributes: [:number, :description, :length, :type])
+	end
 end
