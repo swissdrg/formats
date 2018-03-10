@@ -3,7 +3,7 @@ class CreateVariables < ActiveRecord::Migration[5.1]
     create_table :variables do |t|
       t.string :number
       t.string :description
-      t.int :length
+      t.integer :length
       t.string :type
       t.references :format
       t.timestamps
