@@ -14,6 +14,11 @@ class FormatsController < ApplicationController
 		@format = Format.new
 	end
 
+	def edit
+		@format = Format.find(params[:id])
+	end
+
+
 	def create
 		@format = Format.new(format_params)
 
@@ -21,6 +26,16 @@ class FormatsController < ApplicationController
 			redirect_to '/formats'
 		else
 			render 'new'
+		end
+	end
+
+	def update
+		@format = Format.find(params[:id])
+
+		if @format.update(format_params)
+			redirect_to '/formats'
+		else
+			render 'edit'
 		end
 	end
 

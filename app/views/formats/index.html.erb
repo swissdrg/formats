@@ -4,13 +4,17 @@
 	<tr>
 		<th>Title</th>
 		<th>Multiline</th>
+    <th>Date of Creation</th>
+    <th>Details</th>
 	</tr>
 
 	<% @formats.each do |format| %>
 		<tr>
 			<td><%= format.title %></td>
 			<td><%= format.multiline %></td>
+      <td><%= format.created_at %></td>
 			<td><%= link_to 'Details', format_path(format) %></td>
+      <td><%= link_to 'Edit', edit_format_path(format) %></td>
 		</tr>
 	<% end %>
 </table>

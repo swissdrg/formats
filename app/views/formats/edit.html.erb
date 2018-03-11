@@ -1,0 +1,42 @@
+<h1>Edit article</h1>
+
+<%= form_with(model: @format) do |form| %>
+
+  <p>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+  </p>
+
+  <table>
+    <caption>Variables</caption>
+    <tr>
+      <th>Number</th>
+      <th>Description</th>
+      <th>Max. Length</th>
+      <th>Type</th>
+    </tr>
+    <td><%= form.text_field :number %></td>
+    <td><%= form.text_field :description %></td>
+    <td><%= form.number_field :length %></td>
+    <td><%= form.text_field :type %></td>
+    </tr>
+  </table>
+
+  <p>
+    <%= form.label :multiline %>
+    <%= form.check_box :multiline %>
+  </p>
+
+  <p>
+    <%= form.label :stand %>
+    <%= form.date_field :stand %>
+  </p>
+
+
+  <p>
+    <%= form.submit %>
+  </p>
+
+<% end %>
+
+<%= link_to 'Back', "/formats" %>
