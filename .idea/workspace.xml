@@ -2,6 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8091a8d8-17b1-4d53-b228-161e66db6415" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/.generators" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/.rakeTasks" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/formats.iml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/app/views/formats/edit.html.erb" />
       <change beforePath="$PROJECT_DIR$/app/controllers/formats_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/formats_controller.rb" />
       <change beforePath="$PROJECT_DIR$/app/controllers/variables_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/variables_controller.rb" />
       <change beforePath="$PROJECT_DIR$/app/views/formats/index.html.erb" afterPath="$PROJECT_DIR$/app/views/formats/index.html.erb" />
@@ -50,8 +59,8 @@
       <file leaf-file-name="edit.html.erb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/formats/edit.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="648">
-              <caret line="36" column="20" lean-forward="false" selection-start-line="36" selection-start-column="20" selection-end-line="36" selection-end-column="20" />
+            <state relative-caret-position="612">
+              <caret line="34" column="0" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -328,12 +337,12 @@
       <option name="presentableId" value="Default" />
       <updated>1520615455444</updated>
       <workItem from="1520615457477" duration="266000" />
-      <workItem from="1520773119447" duration="5002000" />
+      <workItem from="1520773119447" duration="5028000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5268000" />
+    <option name="totallyTimeSpent" value="5294000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="292" y="52" width="1480" height="1000" extended-state="0" />
@@ -588,8 +597,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/formats/edit.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="648">
-          <caret line="36" column="20" lean-forward="false" selection-start-line="36" selection-start-column="20" selection-end-line="36" selection-end-column="20" />
+        <state relative-caret-position="612">
+          <caret line="34" column="0" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
           <folding />
         </state>
       </provider>
