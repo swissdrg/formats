@@ -1,0 +1,23 @@
+<% if @variables.empty? -%>
+  Keine Variablen vorhanden
+<% else -%>
+<table id="variables-table">
+  <caption>Variables</caption>
+  <tr>
+    <th>Number</th>
+    <th>Description</th>
+    <th>Max. Length</th>
+    <th>Type</th>
+  </tr>
+  <tbody>
+  <% @variables.each do |variable| %>
+    <tr>
+    <td><%= variable.number %></td>
+    <td><%= variable.description %></td>
+    <td><%= variable.length %></td>
+    <td><%= variable.type %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<% end -%>

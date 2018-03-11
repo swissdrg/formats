@@ -16,7 +16,7 @@
     <script type="text/javascript">
         function addTableRow()
         {
-            document.getElementById("myTable").insertRow(-1).innerHTML = '<td>1</td><td>2</td>';
+            document.getElementById("variables-table").insertRow(-1).innerHTML = '<td>1</td><td>2</td>';
         }
     </script>
 
@@ -25,7 +25,7 @@
       <%= form.text_field :title %>
     </p>
 
-    <table>
+    <table id="variables-table">
       <caption>Variables</caption>
       <tbody>
       <tr>

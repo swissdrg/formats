@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 	resources :formats
+	resources :variables
 
 	root 'formats#index'
 

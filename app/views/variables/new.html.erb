@@ -1,0 +1,35 @@
+<!--<head>-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!--</head>-->
+
+
+
+<table id="variables-table">
+  <caption>Variables</caption>
+  <tbody>
+  <tr>
+    <th>Number</th>
+    <th>Description</th>
+    <th>Max. Length</th>
+    <th>Type</th>
+  </tr>
+  <tr>
+    <%= simple_form_for [@variable, @format_id], id: "new-variable-form" do |f| %>
+      <td><%= f.input :number, label: false%></td>
+      <td><%= f.input :description, label: false%></td>
+      <td><%= f.input :length, label: false%></td>
+      <td><%= f.input :type, label: false%></td>
+    <% end %>
+  </tr>
+  </tbody>
+</table>
+
+<script>
+    $("input").keypress(function(event) {
+        console.log("Hello");
+        if (event.which == 13) {
+            event.preventDefault();
+            $("form").submit();
+        }
+    });
+</script>
