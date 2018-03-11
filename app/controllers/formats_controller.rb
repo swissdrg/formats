@@ -39,6 +39,13 @@ class FormatsController < ApplicationController
 		end
 	end
 
+	def destroy
+		@format = Format.find(params[:id])
+		@format.destroy
+
+		redirect_to '/formats'
+	end
+
 	private
 	def format_params
 		params.require(:format).permit(:title, :multiline, variables_attributes: [:number, :description, :length, :type])

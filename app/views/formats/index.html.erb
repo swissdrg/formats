@@ -21,6 +21,9 @@
       <td><%= format.multiline %></td>
       <td><%= link_to 'Details', format_path(format) %></td>
       <td><%= link_to 'Edit', edit_format_path(format) %></td>
+      <td><%= link_to 'Delete', format_path(format),
+                      method: :delete,
+                      data: { confirm: 'Are you sure?' } %></td>
     </tr>
   <% end %>
 </table>
