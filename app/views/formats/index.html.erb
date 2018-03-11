@@ -1,24 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Index</title>
+</head>
+
+<body>
 <h1>Formats</h1>
 
-<table>
-	<tr>
-		<th>Title</th>
-		<th>Multiline</th>
-    <th>Date of Creation</th>
-    <th>Details</th>
-	</tr>
+<table id="myTable">
+  <tr>
+    <th>Title</th>
+    <th>Multiline</th>
+  </tr>
 
-	<% @formats.each do |format| %>
-		<tr>
-			<td><%= format.title %></td>
-			<td><%= format.multiline %></td>
-      <td><%= format.created_at %></td>
-			<td><%= link_to 'Details', format_path(format) %></td>
-      <td><%= link_to 'Edit', edit_format_path(format) %></td>
-		</tr>
-	<% end %>
+  <% @formats.each do |format| %>
+    <tr>
+      <td><%= format.title %></td>
+      <td><%= format.multiline %></td>
+      <td><%= link_to 'Details', format_path(format) %></td>
+    </tr>
+  <% end %>
 </table>
 
 <p>
-	<%= link_to 'Create Format', "formats/new" %>
+  <%= link_to 'Create Format', "formats/new" %>
 </p>
+</body>
+
+</html>
