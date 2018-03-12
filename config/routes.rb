@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'variables/new'
+
 	resources :formats
 	resources :variables
 

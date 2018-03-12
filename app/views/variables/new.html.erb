@@ -14,11 +14,12 @@
     <th>Type</th>
   </tr>
   <tr>
-    <%= simple_form_for [@variable, @format_id], id: "new-variable-form" do |f| %>
+    <%= simple_form_for @variable do |f| %>
       <td><%= f.input :number, label: false%></td>
       <td><%= f.input :description, label: false%></td>
       <td><%= f.input :length, label: false%></td>
-      <td><%= f.input :type, label: false%></td>
+      <td><%= f.input :var_type, label: false%></td>
+      <%= hidden_field_tag :format_id, @format_id %>
     <% end %>
   </tr>
   </tbody>
