@@ -33,3 +33,12 @@
 	'
 	SHOW data_directory;
 2018-03-04 18:07:10.079 CET [40786] FATAL:  database "formats-development" does not exist
+2018-03-11 16:45:08.756 CET [68564] FATAL:  lock file "postmaster.pid" already exists
+2018-03-11 16:45:08.756 CET [68564] HINT:  Is another postmaster (PID 28883) running in data directory "/usr/local/var/postgres"?
+2018-03-11 16:45:18.322 CET [68569] FATAL:  lock file "postmaster.pid" already exists
+2018-03-11 16:45:18.322 CET [68569] HINT:  Is another postmaster (PID 28883) running in data directory "/usr/local/var/postgres"?
+2018-03-11 16:45:25.815 CET [68575] LOG:  listening on IPv6 address "::1", port 5432
+2018-03-11 16:45:25.815 CET [68575] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2018-03-11 16:45:25.816 CET [68575] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2018-03-11 16:45:25.847 CET [68576] LOG:  database system was shut down at 2018-03-11 16:45:23 CET
+2018-03-11 16:45:25.855 CET [68575] LOG:  database system is ready to accept connections
