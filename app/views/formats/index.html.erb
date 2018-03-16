@@ -20,16 +20,16 @@
       <td><%= format.title %></td>
       <td><%= format.multiline %></td>
       <td><%= link_to 'Details', format_path(format) %></td>
-      <td><%= link_to 'Edit', edit_format_path(format) %></td>
+      <td><%= link_to 'Edit', edit_format_path(format) if signed_in?%></td>
       <td><%= link_to 'Delete', format_path(format),
                       method: :delete,
-                      data: { confirm: 'Are you sure?' } %></td>
+                      data: { confirm: 'Are you sure?' } if signed_in? %></td>
     </tr>
   <% end %>
 </table>
 
 <p>
-  <%= link_to 'Create Format', "formats/new" %>
+  <%= link_to 'Create Format', "formats/new"if signed_in? %>
 </p>
 </body>
  
