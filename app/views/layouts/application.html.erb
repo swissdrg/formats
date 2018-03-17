@@ -6,9 +6,31 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <style>
+      div.signIn {
+        text-align: center;
+      }
+    </style>
   </head>
 
   <body>
+
+  <header style="background-color:Tomato;">
+  <% if signed_in? %>
+    Signed in as: <%= current_user.email %>
+    <%= button_to 'Sign out', sign_out_path, method: :delete %>
+  <% elsif !(current_page?("/sign_in") || current_page?("/sign_up")) %>
+    <div class="signIn"><%= link_to 'Sign in', sign_in_path %></div>
+  <% end %>
+  </header>
+  <section>
     <%= yield %>
+    <div id="flash">
+      <% flash.each do |key, value| %>
+        <div class="flash <%= key %>"><%= value %></div>
+      <% end %>
+    </div>
+  </section>
+
   </body>
 </html>

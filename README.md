@@ -1,24 +1,30 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Usage
 
-Things you may want to cover:
+### Running the application
 
-* Ruby version
+Run the application by entering `rails server` from the main project directory. Then navigate to `0.0.0.0:3000` in your browser.
 
-* System dependencies
+### Authentication
 
-* Configuration
+Run 'rake db:seed' from the main project directory to create a user.
 
-* Database creation
+### Resetting the database
 
-* Database initialization
+To reset the database, run `rails db:reset`. This will remove all entries and re-generate the database.
 
-* How to run the test suite
+### Dependencies
+Run `bundle install` to fetch and install all required dependencies.
 
-* Services (job queues, cache servers, search engines, etc.)
+## Project Setup
 
-* Deployment instructions
+### Ruby Version
 
-* ...
+For development, Ruby 2.5.0 and Rails 5.1.5 are used.
+Type `ruby -v` and `rails -v` to check which version you're running.
+
+### Database configuration
+
+The project uses PostgreSQL 10.3 as a database.
+Type `postgres --version` to check which version you're running.
