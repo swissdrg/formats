@@ -1,8 +1,8 @@
+<h1>Variables</h1>
 <% if @variables.empty? -%>
-  Keine Variablen vorhanden
+  There are no variables yet. Start entering some by pressing "Edit".
 <% else -%>
 <table id="variables-table">
-  <caption>Variables</caption>
   <tr>
     <th>Number</th>
     <th>Description</th>
@@ -21,3 +21,6 @@
   </tbody>
 </table>
 <% end -%>
+<p>
+  <%= link_to 'Edit', "newform?format_id=#{@format_id}", :"data-turbolinks" => false %>
+</p>

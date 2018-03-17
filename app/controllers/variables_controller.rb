@@ -3,6 +3,7 @@ class VariablesController < ApplicationController
 
   def show
     @variables =  Variable.where(:format_id => params[:format_id])
+    @format_id = params[:format_id].to_i
   end
 
   def new
@@ -38,7 +39,6 @@ class VariablesController < ApplicationController
   end
 
   def update
-    puts "Update"
     @variable = Variable.find(params[:id])
 
     full_params ||= variable_params

@@ -19,7 +19,7 @@
     <tr>
       <td><%= format.title %></td>
       <td><%= format.multiline %></td>
-      <td><%= link_to 'Details', format_path(format) %></td>
+      <td><%= link_to 'Variables', :controller => "variables", :action => "show", :params => {:format_id => format.id} %></td>
       <td><%= link_to 'Edit', edit_format_path(format) %></td>
       <td><%= link_to 'Delete', format_path(format),
                       method: :delete,

@@ -1,9 +1,12 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!--
+  WARNING: When using link_to to navigate to this site, make sure to add
+  :"data-turbolinks" => false
+  to the call. Otherwise the form could fail to submit until the page is reloaded.
+-->
+
+<h1>Variables</h1>
 
 <table id="variables-table">
-  <caption>
-    Variables <br>
-  </caption>
   <tbody>
   <tr>
     <th>Number</th>
@@ -36,17 +39,20 @@
   </tbody>
 </table>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
-    $("input").keypress(function(event) {
-        if (event.which == 13) {
-            event.preventDefault();
+    ready = function () {
+        $("input").keypress(function(event) {
+            if (event.which == 13) {
+                event.preventDefault();
+                var source = event.target || event.srcElement;
+                var form = source.form;
+                form.submit();
+            }
+        });
+    };
 
-            var source = event.target || event.srcElement;
-            var form = source.form;
-            form.submit();
-        }
-    });
-
+    $(document).ready(ready);
     // Could be used to force creating a new variable, e.g. with an "Add" button
     //
     // <a id="addVariable" href="">+ Add</a>

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 	post 'formats' => 'formats#create'
 
   get '/variables/new' => 'variables#new'
+  get '/variables/show' => 'variables#show'
   get '/variables/newform' => 'variables#newform'
 
   # This needs to be at the end of the file in order to not override any custom routes
