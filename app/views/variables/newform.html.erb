@@ -1,7 +1,9 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <table id="variables-table">
-  <caption>Variables</caption>
+  <caption>
+    Variables <br>
+  </caption>
   <tbody>
   <tr>
     <th>Number</th>
@@ -16,13 +18,15 @@
         <td><%= f.input :description, label: false%></td>
         <td><%= f.input :length, label: false%></td>
         <td><%= f.input :var_type, label: false%></td>
+        <td><%= link_to 'x', variable_path(var),
+                        method: :delete%></td>
         <%= hidden_field_tag :format_id, @format_id %>
       <% end %>
     </tr>
   <% end %>
   <tr>
     <%= simple_form_for @variable, html: {id: "new_var_form"} do |f| %>
-      <td><%= f.input :number, label: false%></td>
+      <td><%= f.input :number, label: false, autofocus: true%></td>
       <td><%= f.input :description, label: false%></td>
       <td><%= f.input :length, label: false%></td>
       <td><%= f.input :var_type, label: false%></td>
@@ -31,6 +35,7 @@
   </tr>
   </tbody>
 </table>
+
 <script>
     $("input").keypress(function(event) {
         if (event.which == 13) {
@@ -41,4 +46,15 @@
             form.submit();
         }
     });
+
+    // Could be used to force creating a new variable, e.g. with an "Add" button
+    //
+    // <a id="addVariable" href="">+ Add</a>
+    //
+    // $('#addVariable').click(function(){
+    //     $('#new_var_form').append('<input type="hidden" name="force" value=true />');
+    //     $('#new_var_form').submit();
+    //
+    //     return true
+    // });
 </script>

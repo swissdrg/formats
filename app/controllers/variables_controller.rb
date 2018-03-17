@@ -1,4 +1,5 @@
 class VariablesController < ApplicationController
+  include VariablesHelper
 
   def show
     @variables =  Variable.where(:format_id => params[:format_id])
@@ -18,20 +19,13 @@ class VariablesController < ApplicationController
   end
 
   def create
-    puts "Create"
     full_params ||= variable_params
     full_params[:format_id] = format_params
 
-    variable_is_empty = true
+    should_skip_save = helpers.variable_is_empty(variable_params)
+    # should_skip_save = false if params[:force]
 
-    [:number, :description, :length, :var_type].each do |key|
-      unless full_params[key.to_sym].nil? then
-        variable_is_empty &= (full_params[key.to_sym].to_s.length == 0)
-      end
-    end
-
-
-    unless variable_is_empty then
+    unless should_skip_save then
       @variable = Variable.new(full_params)
       @variable.save
 
@@ -57,9 +51,16 @@ class VariablesController < ApplicationController
     end
   end
 
+  def destroy
+    @variable = Variable.find(params[:id])
+    @variable.destroy
+
+    redirect_back(fallback_location: root_path)
+  end
+
   private
   def variable_params
-    params.require(:variable).permit(:number, :description, :length, :var_type)
+    params.require(:variable).permit(:number, :description, :length, :var_type, :perform_empty_check)
   end
 
   def format_params
