@@ -22,7 +22,8 @@
         <td><%= f.input :length, label: false%></td>
         <td><%= f.input :var_type, label: false%></td>
         <td><%= link_to 'x', variable_path(var),
-                        method: :delete%></td>
+                        method: :delete,
+                        data: { confirm: 'Are you sure?' }%></td>
         <%= hidden_field_tag :format_id, @format_id %>
     </tr>
     <% end %>
