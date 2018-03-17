@@ -23,6 +23,6 @@
 <% end -%>
 <footer>
   <%= link_to "< All Formats", formats_path %>
-  <%= link_to 'Edit', "newform?format_id=#{@format_id}", :"data-turbolinks" => false, style: "padding-left:50px" %>
+  <%= link_to 'Edit', "newform?format_id=#{@format_id}", :"data-turbolinks" => false, style: "padding-left:50px" if signed_in? %>
 
 </footer>
