@@ -5,3 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+# rake db:seed
+puts "seeding..."
+User.create!(email:"admin@gmail.com",password:"123")
+puts "seeding is done"
+puts "email: admin@gmail.com"
+puts "password: 123"
+puts "Remember to do this every time you reset the database!"
+puts "Have nice day!"

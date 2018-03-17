@@ -6,6 +6,10 @@
 
 Run the application by entering `rails server` from the main project directory. Then navigate to `0.0.0.0:3000` in your browser.
 
+### Authentication
+
+Run 'rake db:seed' from the main project directory to create a user.
+
 ### Resetting the database
 
 To reset the database, run `rails db:reset`. This will remove all entries and re-generate the database.
