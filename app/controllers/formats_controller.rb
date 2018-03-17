@@ -12,6 +12,11 @@ class FormatsController < ApplicationController
 
 	def new
 		@format = Format.new
+
+		@variables =  Variable.where(:format_id => params[:format_id])
+		@variable = Variable.new
+
+		@format_id = @format.id.to_i
 	end
 
 	def edit
@@ -26,7 +31,7 @@ class FormatsController < ApplicationController
 			redirect_to '/formats'
 		else
 			render 'new'
-		end
+    end
 	end
 
 	def update

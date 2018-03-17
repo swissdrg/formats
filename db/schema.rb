@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20180313085011) do
     t.string "number"
     t.string "description"
     t.integer "length"
-    t.string "type"
+    t.string "var_type"
     t.bigint "format_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
