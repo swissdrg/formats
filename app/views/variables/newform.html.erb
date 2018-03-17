@@ -17,17 +17,18 @@
     <th>Type</th>
   </tr>
   <% @variables.each do |var| %>
+    <%= simple_form_for var, html: {id: "update_var_form"} do |f| %>
     <tr>
-      <%= simple_form_for var, html: {id: "update_var_form"} do |f| %>
         <td><%= f.input :number, label: false%></td>
         <td><%= f.input :description, label: false%></td>
         <td><%= f.input :length, label: false%></td>
         <td><%= f.input :var_type, label: false%></td>
         <td><%= link_to 'x', variable_path(var),
-                        method: :delete%></td>
+                        method: :delete,
+                        data: { confirm: 'Are you sure?' }%></td>
         <%= hidden_field_tag :format_id, @format_id %>
-      <% end %>
     </tr>
+    <% end %>
   <% end %>
   <tr>
     <%= simple_form_for @variable, html: {id: "new_var_form"} do |f| %>
@@ -40,6 +41,7 @@
   </tr>
   </tbody>
 </table>
+<%= link_to 'Back', "/formats" %>
 
 <footer>
   <!--TODO: Save forms on done-->
@@ -64,10 +66,7 @@
     //
     // <a id="addVariable" href="">+ Add</a>
     //
-    // $('#addVariable').click(function(){
-    //     $('#new_var_form').append('<input type="hidden" name="force" value=true />');
-    //     $('#new_var_form').submit();
-    //
-    //     return true
-    // });
+
+
+
 </script>
