@@ -5,7 +5,9 @@
 -->
 
 <h1>Variables</h1>
-
+<p>
+  Press enter at the end of a row to save and add a new line.
+</p>
 <table id="variables-table">
   <tbody>
   <tr>
@@ -38,6 +40,11 @@
   </tr>
   </tbody>
 </table>
+
+<footer>
+  <!--TODO: Save forms on done-->
+  <%= link_to "< Done", "show?format_id=#{@format_id}", :"data-turbolinks" => false%>
+</footer>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>

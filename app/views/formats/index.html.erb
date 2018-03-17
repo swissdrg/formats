@@ -1,14 +1,13 @@
-<!DOCTYPE html>
-<html>
-
 <head>
   <meta charset="UTF-8">
   <title>Index</title>
 </head>
 
-<body>
 <h1>Formats</h1>
 
+<% if @formats.empty? -%>
+  There are no formats yet. Start creating some by pressing "Create Format".
+<% else -%>
 <table id="myTable">
   <tr>
     <th>Title</th>
@@ -27,10 +26,8 @@
     </tr>
   <% end %>
 </table>
+<% end %>
 
-<p>
+<footer>
   <%= link_to 'Create Format', "formats/new" %>
-</p>
-</body>
-
-</html>
+</footer>

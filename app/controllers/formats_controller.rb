@@ -31,7 +31,7 @@ class FormatsController < ApplicationController
 			redirect_to '/formats'
 		else
 			render 'new'
-		end
+    end
 	end
 
 	def update

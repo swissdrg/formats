@@ -1,49 +1,13 @@
-<!DOCTYPE html>
-<html>
+<h1>Create Format</h1>
 
-<head>
-  <meta charset="UTF-8">
-  <title>Index</title>
-</head>
-
-<body>
-<h1>New Format</h1>
-
-<%= form_with scope: :format, url: formats_path, local: true do |form| %>
-  <!-- nested attributes for variables -->
-  <%= form.fields_for :variables, @variable do |var| %>
-
-    <script type="text/javascript">
-        function addTableRow()
-        {
-            document.getElementById("variables-table").insertRow(-1).innerHTML = '<td>1</td><td>2</td>';
-        }
-    </script>
-
-    <p>
-      <%= form.label :title %><br>
-      <%= form.text_field :title %>
-    </p>
-
-    <p>
-      <%= form.label :multiline %>
-      <%= form.check_box :multiline %>
-    </p>
-
-    <p>
-      <%= form.label :stand %>
-      <%= form.date_field :stand %>
-    </p>
-
-    <p>
-      <%= form.submit "Create" %>
-    </p>
-
-  <% end %>
-
+<%= simple_form_for @format do |f| %>
+  <%= f.input :title %>
+  <%= f.input :multiline, as: :boolean %>
+  <footer>
+  <%= link_to '< Cancel', "/formats", style: "padding-right: 50px" %>
+  <%= f.submit "Create" %>
+  </footer>
 <% end %>
-
-<%= link_to '< Cancel', "/formats" %>
 </body>
 
 </html>
