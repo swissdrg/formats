@@ -3,6 +3,7 @@
   :"data-turbolinks" => false
   to the call. Otherwise the form could fail to submit until the page is reloaded.
 -->
+<%= javascript_include_tag "submit_on_enter" %>
 
 <h1>Variables</h1>
 <p>
@@ -46,19 +47,3 @@
   <!--TODO: Save forms on done-->
   <%= link_to "< Done", "show?format_id=#{@format_id}", :"data-turbolinks" => false%>
 </footer>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script>
-    ready = function () {
-        $("input").keypress(function(event) {
-            if (event.which == 13) {
-                event.preventDefault();
-                var source = event.target || event.srcElement;
-                var form = source.form;
-                form.submit();
-            }
-        });
-    };
-
-    $(document).ready(ready);
-</script>
