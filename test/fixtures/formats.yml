@@ -1,9 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  multiline: 
+  id: 1
+  title: Format One
+  multiline: true
 
 two:
-  name: MyString
-  multiline: 
+  id: 2
+  title: MyString
+  multiline: false
