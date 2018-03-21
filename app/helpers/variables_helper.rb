@@ -10,10 +10,4 @@ module VariablesHelper
     end
     return variable_is_empty
   end
-
-  private
-  def variable_params
-    params.require(:variable).permit(:number, :description, :length, :var_type)
-  end
-
 end
