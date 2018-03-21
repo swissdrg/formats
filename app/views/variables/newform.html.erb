@@ -8,7 +8,7 @@
 <p>
   Press enter at the end of a row to save and add a new line.
 </p>
-<table id="variables-table">
+<table>
   <tbody>
   <tr>
     <th>Number</th>
@@ -17,7 +17,7 @@
     <th>Type</th>
   </tr>
   <% @variables.each do |var| %>
-    <%= simple_form_for var, html: {id: "update_var_form"} do |f| %>
+    <%= simple_form_for var do |f| %>
     <tr>
         <td><%= f.input :number, label: false%></td>
         <td><%= f.input :description, label: false%></td>
