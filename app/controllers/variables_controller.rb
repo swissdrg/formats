@@ -11,8 +11,8 @@ class VariablesController < ApplicationController
     @format_id = params[:format_id].to_i
   end
 
-  # newform allows for simultaneous updating and editing multiple variables
-  def newform
+  # form allows for simultaneous updating and editing multiple variables
+  def form
     @variables =  Variable.where(:format_id => params[:format_id])
     @variable = Variable.new
 
