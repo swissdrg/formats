@@ -1,6 +1,7 @@
 class FormatsController < ApplicationController
 	# default order for actions is:
 	# index, show, new, edit, create, update, destroy
+	before_action :require_login, except: [:index, :show]
 
 	def index
 		@formats = Format.all
