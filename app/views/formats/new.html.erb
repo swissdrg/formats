@@ -1,8 +1,14 @@
 <h1>Create Format</h1>
 
-<%= simple_form_for @format do |f| %>
+<%= simple_form_for @format, html: { multipart: true }  do |f| %>
   <%= f.input :title %>
   <%= f.input :multiline, as: :boolean %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :attachment %>
+  <%= f.file_field :attachment %>
+
   <footer>
     <%= link_to '< Cancel', "/formats", style: "padding-right: 50px" %>
     <%= f.submit "Create" %>

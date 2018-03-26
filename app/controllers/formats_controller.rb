@@ -54,6 +54,6 @@ class FormatsController < ApplicationController
 
 	private
 	def format_params
-		params.require(:format).permit(:title, :multiline, variables_attributes: [:number, :description, :length, :type])
+		params.require(:format).permit(:title, :multiline, :name, :attachment, variables_attributes: [:number, :description, :length, :type])
 	end
 end
