@@ -34,6 +34,9 @@ gem 'breadcrumbs_on_rails'
 
 gem 'jquery-rails'
 
+gem 'bootstrap', '~> 4.0.0'
+gem 'cocoon'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'simple_form'

@@ -16,6 +16,7 @@
     <th>Description</th>
     <th>Max. Length</th>
     <th>Type</th>
+    <th></th>
   </tr>
   <% @variables.each do |var| %>
     <%= simple_form_for var do |f| %>
@@ -37,6 +38,7 @@
       <td><%= f.input :description, label: false%></td>
       <td><%= f.input :length, label: false%></td>
       <td><%= f.input :var_type, label: false%></td>
+      <td></td>
       <%= hidden_field_tag :format_id, @format_id %>
     <% end %>
   </tr>
