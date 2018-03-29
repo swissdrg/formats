@@ -22,7 +22,9 @@
   <div class="app-header">
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
-        <%= link_to "Formats", root_path, class: "navbar-brand" %>
+        <div class="col-sm-2">
+          <%= link_to image_tag("logo_swissdrg.jpg", alt: "logo", class: 'navbar-logo'), root_path %>
+        </div>
 
         <div class="signInInfo justify-content-end" id="navbar-header">
           <% if signed_in? %>
