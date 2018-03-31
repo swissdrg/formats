@@ -3,13 +3,10 @@
 <%= simple_form_for @format do |f| %>
   <%= f.input :title %>
   <%= f.input :multiline, as: :boolean %>
-
-
-  <%= File.basename(@format.attachment.path) %>
-  <%= f.input :attachment%>
-
+  <%= render :partial => 'uploads/edit_up' %>
   <footer>
   <%= link_to '< Cancel', "/formats", style: "padding-right: 50px" %>
+
   <%= f.submit "Update" %>
   </footer>
 <% end %>

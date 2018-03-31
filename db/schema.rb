@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180325194155) do
+ActiveRecord::Schema.define(version: 20180326203029) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,18 +21,15 @@ ActiveRecord::Schema.define(version: 20180325194155) do
     t.date "form_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name"
-    t.string "attachment"
   end
 
   create_table "uploads", force: :cascade do |t|
-    t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "json_up_file_name"
-    t.string "json_up_content_type"
-    t.integer "json_up_file_size"
-    t.datetime "json_up_updated_at"
+    t.string "name"
+    t.string "attachment"
+    t.bigint "format_id"
+    t.index ["format_id"], name: "index_uploads_on_format_id"
   end
 
   create_table "users", force: :cascade do |t|
