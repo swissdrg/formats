@@ -31,6 +31,11 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'breadcrumbs_on_rails'
+# Windows Directory Monitor
+gem 'wdm'
+# gem for safely handling passwords
+gem 'bcrypt', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'
+
 
 gem 'jquery-rails'
 
