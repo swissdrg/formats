@@ -1,22 +1,26 @@
 <%= form_for :session, url: session_path do |form| %>
-  <div class="text-field">
-    <%= form.label :email %>
-    <%= form.text_field :email, type: 'email' %>
+
+  <div class="container">
+      <div class="wrapper">
+        <h1>Please sign in</h1>
+
+        <%= form.text_field :email, placeholder: 'Email', class: "form-control" %>
+
+        <%= form.password_field :password, placeholder: 'Password', class: "form-control" %>
+
+        <div class="checkbox mb-3">
+          <label>
+            <input type="checkbox" value="remember-me", align="center"> Remember me
+          </label>
+        </div>
+
+        <%= form.submit class: "btn btn-dark btn-lg btn-block" %>
+        <% if Clearance.configuration.allow_sign_up? %>
+          <%= link_to t(".sign_up"), sign_up_path %>
+        <% end %>
+
+        <%= link_to t(".forgot_password"), new_password_path %>
+      </div>
   </div>
 
-  <div class="password-field">
-    <%= form.label :password %>
-    <%= form.password_field :password %>
-  </div>
-
-  <div class="submit-field">
-    <%= form.submit %>
-  </div>
-
-  <div class="other-links">
-    <% if Clearance.configuration.allow_sign_up? %>
-      <%= link_to t(".sign_up"), sign_up_path %>
-    <% end %>
-    <%= link_to t(".forgot_password"), new_password_path %>
-  </div>
 <% end %>
