@@ -3,7 +3,6 @@
 <%= simple_form_for @format do |f| %>
   <%= f.input :title %>
   <%= f.input :multiline, as: :boolean %>
-  <%= render :partial => 'uploads/edit_up' %>
   <footer>
   <%= link_to '< Cancel', "/formats", style: "padding-right: 50px" %>
 

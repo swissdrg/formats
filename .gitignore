@@ -4,6 +4,9 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile '~/.gitignore_global'
 
+# Ignore uploaded files
+/public/uploads/*
+
 # Ignore bundler config.
 /.bundle
 
@@ -182,6 +185,5 @@ fabric.properties
 
 # Sonarlint plugin
 .idea/sonarlint
-
 
 # End of https://www.gitignore.io/api/ruby,rails

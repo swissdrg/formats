@@ -8,33 +8,17 @@
 <h1>Variables</h1>
 
 <% if @variables.empty? -%>
-<p>There are no variables yet! If known, fill in the form on the bottom or upload your JSON-file!</p>
+<p>There are no variables yet. You can fill in the form on the bottom or upload your JSON-file directly.</p>
 <% end %>
 
-<p>Upload File</p>
+<p>
+<h3>Upload File</h3>
+  <%= render partial: "uploads/file_up", locals: {:format_id => @format_id} %>
+</p>
 
-  <%= simple_form_for @upload, html: { multipart: true }  do |f| %>
-
-    <%= f.label :attachment %>
-    <%= f.file_field :attachment %>
-    <%= hidden_field_tag :format_id, @format_id %>
-    <%= f.submit 'Upload' %>
-
-    <% if (@upload.attachment.nil?) -%>
-
-    <p>The selected file is</p>
-    <% File.basename(@upload.attachment.file.path) %>
-
-    <% end %>
-
-
-
-  <%end%>
-
-
-
-
-<p>Insert Variables</p>
+<hr>
+<p>
+<h3>Insert Variables</h3>
 <p>
   Press enter at the end of a row to save and add a new line.
 </p>
@@ -71,7 +55,7 @@
   </tr>
   </tbody>
 </table>
-
+</p>
 
 
 <footer>

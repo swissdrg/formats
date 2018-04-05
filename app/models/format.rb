@@ -3,6 +3,4 @@ class Format < ApplicationRecord
 	accepts_nested_attributes_for :variables
 
   has_one :uploads
-
-
 end

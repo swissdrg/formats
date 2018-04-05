@@ -16,7 +16,7 @@ class UploadsController < ApplicationController
   # GET /uploads/new
   def new
 
-    @uploads = Upload.where(:format_id => params[:format_id])
+    @uploads = Upload.where(:format_id => format_params[:format_id])
     @upload = Upload.new
 
     @format_id = params[:format_id].to_i
@@ -29,13 +29,6 @@ class UploadsController < ApplicationController
   # POST /uploads
   # POST /uploads.json
   def create
-
-    @format_id = params[:format_id].to_i
-
-   #if(!Upload.where(:format_id => params[:format_id]).nil?)
-   #   Upload.destroy
-   # end
-
     full_params ||= upload_params
     full_params[:format_id] = format_params
 
@@ -43,7 +36,6 @@ class UploadsController < ApplicationController
     @upload.save
 
     if @upload.save(full_params)
-      flash[:success] = "Saaaaaaaaaaaaaaaaved"
       redirect_to request.referrer
     else
       render 'edit'
@@ -91,21 +83,20 @@ class UploadsController < ApplicationController
   end
 
   private
-
   #used to remove more than one upload per format
-    def remove_multiple_instances
+  def remove_multiple_instances
 
-    end
+  end
 
-    # Use callbacks to share common setup or constraints between actions.
-    def set_upload
-      @upload = Upload.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_upload
+    @upload = Upload.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def upload_params
-      params.require(:upload).permit(:attachment)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def upload_params
+    params.require(:upload).permit(:attachment)
+  end
   def format_params
     params.require(:format_id)
   end
