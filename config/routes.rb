@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'preview/index'
+
 	root 'formats#index'
 
 	get '/formats' => 'formats#index'
@@ -9,6 +11,8 @@ Rails.application.routes.draw do
   get '/variables/new' => 'variables#new'
   get '/variables/show' => 'variables#show'
   get '/variables/form' => 'variables#form'
+
+  get '/preview' => 'preview#index'
 
   # This needs to be at the end of the file in order to not override any custom routes
   resources :formats
