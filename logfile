@@ -42,3 +42,19 @@
 2018-03-11 16:45:25.816 CET [68575] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
 2018-03-11 16:45:25.847 CET [68576] LOG:  database system was shut down at 2018-03-11 16:45:23 CET
 2018-03-11 16:45:25.855 CET [68575] LOG:  database system is ready to accept connections
+2018-04-05 13:56:27.600 CEST [11867] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2018-04-05 13:56:27.600 CEST [11867] LOG:  listening on IPv6 address "::1", port 5432
+2018-04-05 13:56:27.601 CEST [11867] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2018-04-05 13:56:27.630 CEST [11868] LOG:  database system was shut down at 2018-04-04 14:05:21 CEST
+2018-04-05 13:56:27.637 CEST [11867] LOG:  database system is ready to accept connections
+2018-04-05 13:56:59.194 CEST [11924] ERROR:  table "uploads" does not exist
+2018-04-05 13:56:59.194 CEST [11924] STATEMENT:  DROP TABLE "uploads"
+2018-04-05 13:58:57.618 CEST [12036] ERROR:  database "formats-development" is being accessed by other users
+2018-04-05 13:58:57.618 CEST [12036] DETAIL:  There is 1 other session using the database.
+2018-04-05 13:58:57.618 CEST [12036] STATEMENT:  DROP DATABASE IF EXISTS "formats-development"
+2018-04-05 13:59:23.538 CEST [12092] ERROR:  table "uploads" does not exist
+2018-04-05 13:59:23.538 CEST [12092] STATEMENT:  DROP TABLE "uploads"
+2018-04-05 14:00:23.630 CEST [12175] ERROR:  database "formats-development" already exists
+2018-04-05 14:00:23.630 CEST [12175] STATEMENT:  CREATE DATABASE "formats-development" ENCODING = 'utf8'
+2018-04-05 14:00:23.639 CEST [12176] ERROR:  database "formats-test" already exists
+2018-04-05 14:00:23.639 CEST [12176] STATEMENT:  CREATE DATABASE "formats-test" ENCODING = 'utf8'
