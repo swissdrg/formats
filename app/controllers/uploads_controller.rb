@@ -3,7 +3,7 @@ class UploadsController < ApplicationController
   # GET /uploads
   # GET /uploads.json
   def index
-    @uploads = Upload.all
+    @uploads = Upload.where.not(:attachment => nil)
   #   TODO: Verify that all uploads have the necessary content, such as attachment.file.filename (BUG-IO01)
   end
 
@@ -13,10 +13,9 @@ class UploadsController < ApplicationController
     @upload = Upload.find(params[:id])
     @upload_path = @upload.attachment.file.file
     if File.readable?(@upload_path)
-      # render plain: File.read(@upload_path)
       @content = File.read(@upload_path)
     else
-      render plain: "Damn"
+      render plain: "Upload can not be shown"
     end
   end
 
@@ -68,17 +67,6 @@ class UploadsController < ApplicationController
     else
       render 'edit'
     end
-
-
-    #respond_to do |format|
-     # if @upload.update(full_params)
-      #  format.html { redirect_to @upload, notice: 'Upload was successfully updated.' }
-       # format.json { render :show, status: :ok, location: @upload }
-     # else
-      #  format.html { render :edit }
-       # format.json { render json: @upload.errors, status: :unprocessable_entity }
-      #end
-   # end
   end
 
   # DELETE /uploads/1

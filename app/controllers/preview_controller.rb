@@ -1,11 +1,10 @@
 class PreviewController < ApplicationController
 
   def index
+    # Select only formats that have uploads
     @formats = Format.includes(:upload)
                    .references(:upload)
-                   .merge(Upload.where.not(:id => nil))
-
-    puts @formats.length
+                   .merge(Upload.where.not(:id => nil, :attachment => nil))
 
     if preview_parameters[:format_id].present? && preview_parameters[:data_sample].present?
       format = Format.find(preview_parameters[:format_id])
@@ -32,6 +31,11 @@ class PreviewController < ApplicationController
   end
 end
 
-# 34|foobar|1.1|false
-# 99|hi  there|2.2|100
-# -999|Missing|NA|korrektos
+=begin
+Sample data:
+
+34|foobar|1.1|false
+99|hi  there|2.2|100
+-999|Missing|NA|korrektos
+
+=end

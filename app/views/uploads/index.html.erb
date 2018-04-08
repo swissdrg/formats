@@ -15,7 +15,7 @@
   <tbody>
     <% @uploads.each do |upload| %>
       <tr>
-        <td><%= upload.attachment.file %></td>
+        <td><%= upload.attachment.file.filename %></td>
 <!--        TODO: Change back to upload.attachment.file.filename -->
         <td><%= upload.format_id %></td>
         <td><%= link_to 'Show', upload %></td>
