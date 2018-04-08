@@ -5,6 +5,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+# JSON editor
+gem 'jsoneditor-rails'
 # Authentication gem
 gem 'clearance', '~> 1.15.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
