@@ -9,21 +9,27 @@ class UploadsController < ApplicationController
   # GET /uploads/1
   # GET /uploads/1.json
   def show
-    @uploads =  Upload.where(:format_id => params[:format_id])
-    @format_id = params[:format_id].to_i
+    @upload = Upload.find(params[:id])
+    @upload_path = @upload.attachment.file.file
+    if File.readable?(@upload_path)
+      # render plain: File.read(@upload_path)
+      @content = File.read(@upload_path)
+    else
+      render plain: "Damn"
+    end
   end
 
   # GET /uploads/new
   def new
-
     @uploads = Upload.where(:format_id => format_params[:format_id])
-    @upload = Upload.new
+    @upload = upload_params
 
     @format_id = params[:format_id].to_i
   end
 
   # GET /uploads/1/edit
   def edit
+    @upload = Upload.find(params[:id])
   end
 
   # POST /uploads
@@ -35,10 +41,19 @@ class UploadsController < ApplicationController
     @upload = Upload.new(full_params)
     @upload.save
 
-    if @upload.save(full_params)
-      redirect_to request.referrer
+    # if !@upload.save(full_params)
+    #
+    #   redirect_back(fallback_location: root_path)
+    # end
+
+    respond_to do |format|
+    if @upload.update(full_params)
+     format.html { redirect_to @upload, notice: 'Upload was successfully updated.' }
+    format.json { render :show, status: :ok, location: @upload }
     else
-      render 'edit'
+     format.html { render :edit }
+    format.json { render json: @upload.errors, status: :unprocessable_entity }
+    end
     end
   end
 
@@ -73,11 +88,10 @@ class UploadsController < ApplicationController
   # DELETE /uploads/1
   # DELETE /uploads/1.json
   def destroy
-
     @upload = Upload.find(params[:id])
     @upload.destroy
     respond_to do |format|
-      format.html { redirect_to uploads_url, notice: 'Upload was successfully destroyed.' }
+      format.html { redirect_back(fallback_location: root_path) }
       format.json { head :no_content }
     end
   end

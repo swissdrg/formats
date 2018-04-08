@@ -17,7 +17,15 @@ class VariablesController < ApplicationController
   def form
     @variables =  Variable.where(:format_id => params[:format_id])
     @variable = Variable.new
-    @upload = Upload.new
+
+    @upload = Upload.where(:format_id => params[:format_id]).first_or_create
+    # @upload_exists = Upload.where(:format_id => params[:format_id]).exists?
+    # if @upload_exists
+    #   @upload =
+      @upload_name = Upload.where(:format_id => params[:format_id]).first.attachment_identifier
+    puts @upload_name
+    # end
+    # @upload = Upload.new
     @format_id = params[:format_id].to_i
   end
 
