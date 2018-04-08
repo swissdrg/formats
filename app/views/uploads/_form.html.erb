@@ -1,0 +1,12 @@
+
+<%= simple_form_for(@upload) do |f| %>
+  <% if @upload.errors.any? -%>
+    <%= f.error_notification %>
+    <% @upload.errors.full_messages.each do |msg| %>
+        <%= msg if @upload.errors.full_messages.first == msg %> <br />
+    <% end %>
+  <% end %>
+
+<% end %>
+
+<% render partial: "file_up" %>

@@ -1,3 +1,4 @@
+
 class VariablesController < ApplicationController
   include VariablesHelper
 
@@ -8,6 +9,7 @@ class VariablesController < ApplicationController
 
   def new
     @variable = Variable.new
+
     @format_id = params[:format_id].to_i
   end
 
@@ -16,6 +18,14 @@ class VariablesController < ApplicationController
     @variables =  Variable.where(:format_id => params[:format_id])
     @variable = Variable.new
 
+    @upload = Upload.where(:format_id => params[:format_id]).first_or_create
+    # @upload_exists = Upload.where(:format_id => params[:format_id]).exists?
+    # if @upload_exists
+    #   @upload =
+      @upload_name = Upload.where(:format_id => params[:format_id]).first.attachment_identifier
+    puts @upload_name
+    # end
+    # @upload = Upload.new
     @format_id = params[:format_id].to_i
   end
 

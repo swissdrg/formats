@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Uploads</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Format</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @uploads.each do |upload| %>
+      <tr>
+        <td><%= upload.attachment.file.filename%></td>
+        <td><%= upload.format_id %></td>
+        <td><%= link_to 'Show', upload %></td>
+        <td><%= link_to 'Delete', upload, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= link_to 'Formats', 'formats'%>
+<!--<%= link_to 'New Upload', new_upload_path %>-->
