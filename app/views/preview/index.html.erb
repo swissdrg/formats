@@ -9,7 +9,7 @@
 <div>
   <p>
     Please select a Format:
-  <%= select(@format, "format_id", Format.all.collect {|f| [f.title, f.id] }, {prompt: "Select Format"}) %>
+  <%= select(@format, "format_id", @formats.collect {|f| [f.title, f.id] }, {prompt: "Select Format"}) %>
   </p>
   <br>
   <p>
