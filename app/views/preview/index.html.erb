@@ -1,34 +1,4 @@
-<head>
-  <script>
-      // Submits the form if any input registers that the user pressed the "Enter" key (Event 13)
-      $(document).ready(function () {
-          var formatId = null;
-          var dataSample = "";
-          $("#format_id").bind("change", function () {
-              formatId = event.srcElement.value;
-              reloadOutput();
-          });
-
-          $("#data_samples_input").bind("change", function() {
-              dataSample = event.srcElement.value;
-              console.log(dataSample);
-              reloadOutput();
-          })
-
-          var reloadOutput = function() {
-              $.ajax('/preview', {
-                  method: 'GET',
-                  data: {
-                      format_id: formatId,
-                      data_sample: dataSample
-                  },
-                  onSuccess: function (data) {console.log("Yay" + data);},
-                  onFailure: function (data) {console.log("Dammit" + data);}
-              });
-          }
-      });
-  </script>
-</head>
+<%= javascript_include_tag "preview" %>
 
 <h1>Preview</h1>
 
@@ -37,12 +7,18 @@
 <% end %>
 
 <div>
+  <p>
+    Please select a Format:
   <%= select(@format, "format_id", Format.all.collect {|f| [f.title, f.id] }, {prompt: "Select Format"}) %>
-  <%= text_area(@input, "data_samples_input") %>
-</div>
-<div>
-  <%= @output %>
+  </p>
+  <br>
+  <p>
+    Provide your example input in the area below:
+    <br>
+    <%= text_area(@input, "data_samples_input") %>
+  </p>
 </div>
 
-<footer>
-</footer>
+<div id="outputdiv">
+  Preview currently not available. Either you have not provided an input yet or it has an invalid format.
+</div>
