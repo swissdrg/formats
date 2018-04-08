@@ -10,6 +10,11 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jsoneditor
 //= require rails-ujs
 //= require turbolinks
+//= require jquery
+//= require popper
+//= require bootstrap-sprockets
+//= require cocoon
 //= require_tree .

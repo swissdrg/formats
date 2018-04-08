@@ -1,10 +1,13 @@
-<h1>Edit Format</h1>
+<div class="container">
+  <h1>Edit Format</h1>
 
-<%= simple_form_for @format do |f| %>
-  <%= f.input :title %>
-  <%= f.input :multiline, as: :boolean %>
-  <footer>
-  <%= link_to '< Cancel', "/formats", style: "padding-right: 50px" %>
-  <%= f.submit "Update" %>
-  </footer>
-<% end %>
+  <%= simple_form_for @format do |f| %>
+    <%= f.input :title %>
+    <%= f.input :multiline, as: :boolean %>
+    <footer>
+      <%= link_to '< Cancel', "/formats", style: "padding-right: 50px" %>
+
+      <%= f.submit "Update" %>
+    </footer>
+  <% end %>
+</div>

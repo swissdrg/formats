@@ -5,7 +5,9 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-#Authentication gem
+# JSON editor
+gem 'jsoneditor-rails'
+# Authentication gem
 gem 'clearance', '~> 1.15.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.5'
@@ -19,6 +21,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
+gem 'carrierwave', '~> 1.0'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
@@ -28,13 +31,23 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
 gem 'breadcrumbs_on_rails'
+# Use ActiveModel has_secure_password
+# gem for safely handling passwords
+gem 'bcrypt', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'
+
+
+gem 'jquery-rails'
+
+gem 'bootstrap', '~> 4.0.0'
+gem 'cocoon'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'simple_form'
+
+# Use CSV++ for processing format and data inputs
+gem 'csvpp'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -7,13 +7,8 @@ module VariablesHelper
       unless variable_params[key.to_sym].nil? then
         variable_is_empty &= (variable_params[key.to_sym].to_s.length == 0)
       end
+      break if !(variable_is_empty)
     end
     return variable_is_empty
   end
-
-  private
-  def variable_params
-    params.require(:variable).permit(:number, :description, :length, :var_type)
-  end
-
 end

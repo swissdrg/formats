@@ -1,6 +1,7 @@
 class FormatsController < ApplicationController
 	# default order for actions is:
 	# index, show, new, edit, create, update, destroy
+	before_action :require_login, except: [:index, :show]
 
 	def index
 		@formats = Format.all
@@ -13,10 +14,14 @@ class FormatsController < ApplicationController
 	def new
 		@format = Format.new
 
+    @uploads = Upload.where(:format_id => params[:format_id])
+    @upload = Upload.new
+
 		@variables =  Variable.where(:format_id => params[:format_id])
 		@variable = Variable.new
 
 		@format_id = @format.id.to_i
+
 	end
 
 	def edit
@@ -26,9 +31,12 @@ class FormatsController < ApplicationController
 
 	def create
 		@format = Format.new(format_params)
+    @format_id = @format.id.to_i
+
+
 
 		if @format.save
-			redirect_to '/formats'
+			redirect_to :controller => 'variables', :action => 'form', :format_id => @format.id.to_i
 		else
 			render 'new'
     end
@@ -36,6 +44,9 @@ class FormatsController < ApplicationController
 
 	def update
 		@format = Format.find(params[:id])
+    @format_id = @format.id.to_i
+    @uploads = Upload.where(:format_id => params[:format_id])
+    @upload = Upload.new
 
 		if @format.update(format_params)
 			redirect_to '/formats'
@@ -53,6 +64,6 @@ class FormatsController < ApplicationController
 
 	private
 	def format_params
-		params.require(:format).permit(:title, :multiline, variables_attributes: [:number, :description, :length, :type])
+		params.require(:format).permit(:title, :multiline, variables_attributes: [:number, :description, :length, :type], uploads_attirbutes: [:attachment])
 	end
 end
