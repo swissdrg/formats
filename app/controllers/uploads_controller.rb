@@ -4,7 +4,6 @@ class UploadsController < ApplicationController
   # GET /uploads.json
   def index
     @uploads = Upload.where.not(:attachment => nil)
-  #   TODO: Verify that all uploads have the necessary content, such as attachment.file.filename (BUG-IO01)
   end
 
   # GET /uploads/1
@@ -35,7 +34,8 @@ class UploadsController < ApplicationController
   # POST /uploads
   # POST /uploads.json
   def create
-    full_params ||= upload_params
+    #   TODO: During formats creation, some empty uploads are created (BUG-IO01)
+  full_params ||= upload_params
     full_params[:format_id] = format_params
 
     @upload = Upload.new(full_params)

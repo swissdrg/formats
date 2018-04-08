@@ -14,7 +14,7 @@ class PreviewController < ApplicationController
       formatFile = File.read(formatFilePath)
 
       @output = CSVPP.parse_str(:input => dataSample, :format => formatFile, :col_sep => '|')
-
+      @output = JSON.pretty_generate(@output)
       if request.xhr?
         render :json => {
             :preview => @output

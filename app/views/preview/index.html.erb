@@ -6,19 +6,22 @@
   There are no formats yet. Go to Formats to create one.
 <% end %>
 
-<div>
+<div class="container" id="inputdiv">
   <p>
     Please select a Format:
-  <%= select(@format, "format_id", @formats.collect {|f| [f.title, f.id] }, {prompt: "Select Format"}) %>
+  <%= select(@format, "format_id", @formats.collect {|f| [f.title, f.id] }, {prompt: "Select Format"}, {:class => "form-control"}) %>
   </p>
   <br>
   <p>
     Provide your example input in the area below:
     <br>
-    <%= text_area(@input, "data_samples_input") %>
+    <%= text_area(@input, "data_samples_input", {:class => "form-control", :style => "height:200px"}) %>
   </p>
 </div>
+<hr>
 
-<div id="outputdiv">
-  Preview currently not available. Either you have not provided an input yet or it has an invalid format.
+<div class="container">
+  <pre>
+    <div id="outputdiv">Preview currently not available. Please provide all inputs.</div>
+  </pre>
 </div>
