@@ -4,6 +4,7 @@ class UploadsController < ApplicationController
   # GET /uploads.json
   def index
     @uploads = Upload.all
+  #   TODO: Verify that all uploads have the necessary content, such as attachment.file.filename (BUG-IO01)
   end
 
   # GET /uploads/1
@@ -41,18 +42,13 @@ class UploadsController < ApplicationController
     @upload = Upload.new(full_params)
     @upload.save
 
-    # if !@upload.save(full_params)
-    #
-    #   redirect_back(fallback_location: root_path)
-    # end
-
     respond_to do |format|
     if @upload.update(full_params)
      format.html { redirect_to @upload, notice: 'Upload was successfully updated.' }
-    format.json { render :show, status: :ok, location: @upload }
+     format.json { render :show, status: :ok, location: @upload }
     else
      format.html { render :edit }
-    format.json { render json: @upload.errors, status: :unprocessable_entity }
+     format.json { render json: @upload.errors, status: :unprocessable_entity }
     end
     end
   end

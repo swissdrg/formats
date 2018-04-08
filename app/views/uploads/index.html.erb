@@ -15,7 +15,8 @@
   <tbody>
     <% @uploads.each do |upload| %>
       <tr>
-        <td><%= upload.attachment.file.filename%></td>
+        <td><%= upload.attachment.file %></td>
+<!--        TODO: Change back to upload.attachment.file.filename -->
         <td><%= upload.format_id %></td>
         <td><%= link_to 'Show', upload %></td>
         <td><%= link_to 'Delete', upload, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -23,7 +24,4 @@
     <% end %>
   </tbody>
 </table>
-
 <br>
-<%= link_to 'Formats', formats_path%>
-<!--<%= link_to 'New Upload', new_upload_path %>-->

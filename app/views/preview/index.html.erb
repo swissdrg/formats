@@ -1,2 +1,48 @@
-<h1>Preview#index</h1>
-<p>Find me in app/views/preview/index.html.erb</p>
+<head>
+  <script>
+      // Submits the form if any input registers that the user pressed the "Enter" key (Event 13)
+      $(document).ready(function () {
+          var formatId = null;
+          var dataSample = "";
+          $("#format_id").bind("change", function () {
+              formatId = event.srcElement.value;
+              reloadOutput();
+          });
+
+          $("#data_samples_input").bind("change", function() {
+              dataSample = event.srcElement.value;
+              console.log(dataSample);
+              reloadOutput();
+          })
+
+          var reloadOutput = function() {
+              $.ajax('/preview', {
+                  method: 'GET',
+                  data: {
+                      format_id: formatId,
+                      data_sample: dataSample
+                  },
+                  onSuccess: function (data) {console.log("Yay" + data);},
+                  onFailure: function (data) {console.log("Dammit" + data);}
+              });
+          }
+      });
+  </script>
+</head>
+
+<h1>Preview</h1>
+
+<% if @formats.empty? -%>
+  There are no formats yet. Go to Formats to create one.
+<% end %>
+
+<div>
+  <%= select(@format, "format_id", Format.all.collect {|f| [f.title, f.id] }, {prompt: "Select Format"}) %>
+  <%= text_area(@input, "data_samples_input") %>
+</div>
+<div>
+  <%= @output %>
+</div>
+
+<footer>
+</footer>
