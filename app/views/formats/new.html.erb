@@ -1,13 +1,14 @@
-<h1>Create Format</h1>
+<div class="container">
+  <h1>Create Format</h1>
 
-<%= simple_form_for @format do |f| %>
-  <%= f.input :title %>
-  <%= f.input :multiline, as: :boolean %>
+  <%= simple_form_for @format do |f| %>
+    <%= f.input :title %>
+    <%= f.input :multiline, as: :boolean %>
 
-  <footer>
-    <%= link_to '< Cancel', "/formats", style: "padding-right: 50px" %>
-    <%= f.submit "Create", :"data-turbolinks" => false%>
-  </footer>
-<% end %>
+    <footer>
+      <%= link_to '< Cancel', "/formats", style: "padding-right: 50px" %>
+      <%= f.submit "Create", :"data-turbolinks" => false%>
+    </footer>
+  <% end %>
 
-
+</div>

@@ -1,31 +1,30 @@
-<h1>Variables</h1>
-<% if @variables.empty? -%>
-  There are no variables yet. Start entering some by pressing "Edit".
-<% else -%>
-<table>
-  <tr>
-    <th>Number</th>
-    <th>Description</th>
-    <th>Max. Length</th>
-    <th>Type</th>
-  </tr>
-  <tbody>
-  <% @variables.each do |variable| %>
-    <tr>
-    <td><%= variable.number %></td>
-    <td><%= variable.description %></td>
-    <td><%= variable.length %></td>
-    <td><%= variable.var_type %></td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
-<% end -%>
+<div class="container">
+  <h1>Variables</h1>
+  <% if @variables.empty? -%>
+    There are no variables yet. Start entering some by pressing "Edit".
+  <% else -%>
+    <table>
+      <tr>
+        <th>Number</th>
+        <th>Description</th>
+        <th>Max. Length</th>
+        <th>Type</th>
+      </tr>
+      <tbody>
+      <% @variables.each do |variable| %>
+        <tr>
+          <td><%= variable.number %></td>
+          <td><%= variable.description %></td>
+          <td><%= variable.length %></td>
+          <td><%= variable.var_type %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  <% end -%>
 
-
-
-
-<footer>
-  <%= link_to "< All Formats", formats_path %>
-  <%= link_to 'Edit', "form?format_id=#{@format_id}", :"data-turbolinks" => false, style: "padding-left:50px" if signed_in? %>
-</footer>
+  <footer>
+    <%= link_to "< All Formats", formats_path %>
+    <%= link_to 'Edit', "form?format_id=#{@format_id}", :"data-turbolinks" => false, style: "padding-left:50px" if signed_in? %>
+  </footer>
+</div>

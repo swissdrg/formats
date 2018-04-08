@@ -1,34 +1,34 @@
-<h1>Formats</h1>
+<div class="container">
+  <h1>Formats</h1>
 
-<% if @formats.empty? -%>
-  There are no formats yet. Start creating some by pressing "Create Format".
-<% else -%>
-  <table>
-    <tr>
-      <th>Title</th>
-      <th>Multiline</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-
-    <% @formats.each do |format| %>
+  <% if @formats.empty? -%>
+    There are no formats yet. Start creating some by pressing "Create Format".
+  <% else -%>
+    <table>
       <tr>
-        <td><%= format.title %></td>
-        <td><%= format.multiline %></td>
-        <td><%= link_to 'Variables', :controller => "variables", :action => "show", :params => {:format_id => format.id} %></td>
-        <td><%= link_to 'Edit', edit_format_path(format) if signed_in? %></td>
-        <td><%= link_to 'Delete', format_path(format),
-                        method: :delete,
-                        data: { confirm: 'Are you sure?' } if signed_in? %></td>
+        <th>Title</th>
+        <th>Multiline</th>
+        <th></th>
+        <th></th>
+        <th></th>
       </tr>
-    <% end %>
-  </table>
-<% end %>
 
-<footer>
-  <%= link_to 'Create Format', "formats/new" if signed_in? %>
+      <% @formats.each do |format| %>
+        <tr>
+          <td><%= format.title %></td>
+          <td><%= format.multiline %></td>
+          <td><%= link_to 'Variables', :controller => "variables", :action => "show", :params => {:format_id => format.id} %></td>
+          <td><%= link_to 'Edit', edit_format_path(format) if signed_in? %></td>
+          <td><%= link_to 'Delete', format_path(format),
+                          method: :delete,
+                          data: { confirm: 'Are you sure?' } if signed_in? %></td>
+        </tr>
+      <% end %>
+    </table>
+  <% end %>
 
- <%# <%= link_to 'Upload Data', '/uploads/newplaindata' %>
+  <footer>
+    <%= link_to 'Create Format', "formats/new" if signed_in? %>
+  </footer>
 
-</footer>
+</div>

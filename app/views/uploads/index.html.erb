@@ -1,27 +1,27 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <!--<p id="notice"><%#= notice %></p>-->
+  <h1>Uploads</h1>
 
-<h1>Uploads</h1>
-
-<table>
-  <thead>
+  <table>
+    <thead>
     <tr>
       <th>Name</th>
       <th>Format</th>
       <th></th>
       <th></th>
     </tr>
-  </thead>
+    </thead>
 
-  <tbody>
+    <tbody>
     <% @uploads.each do |upload| %>
       <tr>
         <td><%= upload.attachment.file.filename %></td>
-<!--        TODO: Change back to upload.attachment.file.filename -->
         <td><%= upload.format_id %></td>
         <td><%= link_to 'Show', upload %></td>
         <td><%= link_to 'Delete', upload, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
-  </tbody>
-</table>
-<br>
+    </tbody>
+  </table>
+  <br>
+</div>
