@@ -31,7 +31,7 @@
       <th>Type</th>
       <th></th>
     </tr>
-    <% @variables.each do |var| %>
+    <% @variables.sort_by(&:number).each do |var| %>
       <%= simple_form_for var do |f| %>
         <tr>
           <td><%= f.input :number, label: false%></td>

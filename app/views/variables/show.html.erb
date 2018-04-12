@@ -11,7 +11,7 @@
         <th>Type</th>
       </tr>
       <tbody>
-      <% @variables.each do |variable| %>
+      <% @variables.sort_by(&:number).each do |variable| %>
         <tr>
           <td><%= variable.number %></td>
           <td><%= variable.description %></td>

@@ -36,7 +36,6 @@ gem 'breadcrumbs_on_rails'
 # gem for safely handling passwords
 gem 'bcrypt', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'
 
-
 gem 'jquery-rails'
 
 gem 'bootstrap', '~> 4.0.0'
