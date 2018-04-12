@@ -13,7 +13,7 @@
     </thead>
 
     <tbody>
-    <% @uploads.each do |upload| %>
+    <% @uploads.sort_by(&:format_id).each do |upload| %>
       <tr>
         <td><%= upload.attachment.file.filename %></td>
         <td><%= upload.format_id %></td>
