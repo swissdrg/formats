@@ -39,6 +39,7 @@ gem 'bcrypt', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'b
 gem 'jquery-rails'
 
 gem 'bootstrap', '~> 4.0.0'
+
 gem 'cocoon'
 
 # Use Capistrano for deployment
