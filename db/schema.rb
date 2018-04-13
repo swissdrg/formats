@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20180326203029) do
   create_table "formats", force: :cascade do |t|
     t.string "title"
     t.boolean "multiline"
+    t.string "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
