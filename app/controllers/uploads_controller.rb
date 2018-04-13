@@ -35,8 +35,7 @@ class UploadsController < ApplicationController
   # POST /uploads
   # POST /uploads.json
   def create
-    #   TODO: During formats creation, some empty uploads are created (BUG-IO01)
-  full_params ||= upload_params
+    full_params ||= upload_params
     full_params[:format_id] = format_params
 
     @upload = Upload.new(full_params)
@@ -62,11 +61,14 @@ class UploadsController < ApplicationController
     full_params ||= upload_params
     full_params[:format_id] = format_params
 
-    if @upload.update(upload_params)
-      flash[:success] = "Updated successfully"
-       redirect_back(fallback_location: root_path)
-    else
-      render 'edit'
+    respond_to do |format|
+      if @upload.update(full_params)
+        format.html { redirect_to @upload, notice: 'Upload was successfully updated.' }
+        format.json { render :show, status: :ok, location: @upload }
+      else
+        format.html { render :edit }
+        format.json { render json: @upload.errors, status: :unprocessable_entity }
+      end
     end
   end
 

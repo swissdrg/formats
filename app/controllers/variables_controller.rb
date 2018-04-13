@@ -18,14 +18,9 @@ class VariablesController < ApplicationController
     @variables =  Variable.where(:format_id => params[:format_id])
     @variable = Variable.new
 
-    @upload = Upload.where(:format_id => params[:format_id]).first_or_create
-    # @upload_exists = Upload.where(:format_id => params[:format_id]).exists?
-    # if @upload_exists
-    #   @upload =
-      @upload_name = Upload.where(:format_id => params[:format_id]).first.attachment_identifier
-    puts @upload_name
-    # end
-    # @upload = Upload.new
+    @upload = Upload.where(:format_id => params[:format_id]).first_or_initialize
+    @upload_name = @upload.attachment_identifier
+
     @format_id = params[:format_id].to_i
   end
 
@@ -34,7 +29,6 @@ class VariablesController < ApplicationController
     full_params[:format_id] = format_params
 
     should_skip_save = helpers.variable_is_empty(variable_params)
-    # should_skip_save = false if params[:force]
 
     unless should_skip_save then
       @variable = Variable.new(full_params)
