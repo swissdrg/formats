@@ -81,3 +81,11 @@
 2018-04-08 09:40:59.768 CEST [10287] LOG:  database system was shut down at 2018-04-07 10:33:56 CEST
 2018-04-08 09:40:59.783 CEST [10286] LOG:  database system is ready to accept connections
 >>>>>>> feature/upload
+2018-04-13 18:07:43.009 CEST [41606] FATAL:  lock file "postmaster.pid" already exists
+2018-04-13 18:07:43.009 CEST [41606] HINT:  Is another postmaster (PID 10286) running in data directory "/usr/local/var/postgres"?
+2018-04-13 18:07:51.142 CEST [41610] FATAL:  lock file "postmaster.pid" already exists
+2018-04-13 18:07:51.142 CEST [41610] HINT:  Is another postmaster (PID 10286) running in data directory "/usr/local/var/postgres"?
+2018-04-13 18:07:57.702 CEST [41616] FATAL:  lock file "postmaster.pid" already exists
+2018-04-13 18:07:57.702 CEST [41616] HINT:  Is another postmaster (PID 10286) running in data directory "/usr/local/var/postgres"?
+2018-04-13 18:09:06.656 CEST [41634] FATAL:  lock file "postmaster.pid" already exists
+2018-04-13 18:09:06.656 CEST [41634] HINT:  Is another postmaster (PID 10286) running in data directory "/usr/local/var/postgres"?
