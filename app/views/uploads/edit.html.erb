@@ -1,6 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+  <%= javascript_include_tag "/assets/ace/src-noconflict/ace.js" %>
+
+  <link href="/jsoneditor.css" rel="stylesheet" type="text/css">
+  <script src="/jsoneditor.js"></script>
+
+</head>
+
 <h1>Editing Upload</h1>
 
 <%= render 'form', upload: @upload %>
 
 <%= link_to 'Show', @upload %> |
 <%= link_to 'Back', uploads_path %>
+
+<div id="jsoneditor" style="width: 400px; height: 400px;"></div>
+
+
+
+<script>
+
+    var container = document.getElementById("jsoneditor");
+    var options = {mode: 'code'};
+    var editor = new JSONEditor(container, options);
+
+    //var json = File.read("/uploads/upload/attachment/1/multiline.json")
+    var json =attachment.file.file
+
+    editor.set(json);
+
+   // button_to 'Save', :controller => "uploads", :action => "form", method: :post
+
+</script>
+</html>
