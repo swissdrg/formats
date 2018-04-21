@@ -21,17 +21,27 @@
 
 
 <script>
-
     var container = document.getElementById("jsoneditor");
     var options = {mode: 'code'};
     var editor = new JSONEditor(container, options);
 
-    //var json = File.read("/uploads/upload/attachment/1/multiline.json")
-    var json =attachment.file.file
+    var json = <%= @json.gsub(/\x0A/, '').html_safe %>;
+
+
+
+    // json = File.read("/uploads/upload/attachment/1/multiline.json")
+    //var json =attachment.file.file
+    //var file = File.read('multiline.json')
+
+    //    /uploads/upload/attachment/1/multiline.json
+    //    /uploads/1/multiline.json
+
+    //var json = "test"
+    //var json =$.getJSON("multiline.json")
 
     editor.set(json);
 
-   // button_to 'Save', :controller => "uploads", :action => "form", method: :post
+   //button_to 'Save', :controller => "uploads", :action => "form", method: :post
 
 </script>
 </html>
