@@ -18,6 +18,7 @@
         <td><%= upload.attachment.file.filename %></td>
         <td><%= upload.format_id %></td>
         <td><%= link_to 'Show', upload %></td>
+        <td><%= link_to 'Edit', 'uploads/'+upload.format_id.to_s+'/edit' %></td>
         <td><%= link_to 'Delete', upload, method: :delete, data: { confirm: 'Are you sure?' } if signed_in? %></td>
       </tr>
     <% end %>
