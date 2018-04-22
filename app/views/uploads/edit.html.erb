@@ -18,7 +18,7 @@
 
 <div id="jsoneditor" style="width: 400px; height: 400px;"></div>
 
-
+<%= link_to 'Save', :controller => "uploads", :action => "index" %>
 
 <script>
     //set jsoneditor
@@ -29,5 +29,10 @@
     //replace the EOF char for empty char so that the jsoneditor doesn't complain
     var json = <%= @json.gsub(/\x0A/, '').html_safe %>;
     editor.set(json);
+
+    /*editor.on("change",  function() {
+      var new_code = editor.getValue();
+      <%= @changes %> = new_code;
+    });*/
 </script>
 </html>
