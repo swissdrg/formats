@@ -16,6 +16,7 @@ class PreviewController < ApplicationController
       # parse_str methode returns an array of hashes
       @output = CSVPP.parse_str(:input => dataSample, :format => formatFile, :col_sep => '|')
 
+      # use xml builder to convert the array of hashes into an html table
       require 'builder'
       @xm = Builder::XmlMarkup.new(:indent => 2)
       @xm.table {
