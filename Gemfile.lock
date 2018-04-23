@@ -225,6 +225,7 @@ DEPENDENCIES
   bcrypt!
   bootstrap (~> 4.0.0)
   breadcrumbs_on_rails
+  builder
   byebug
   capybara (~> 2.13)
   carrierwave (~> 1.0)

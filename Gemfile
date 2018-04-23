@@ -42,6 +42,8 @@ gem 'bootstrap', '~> 4.0.0'
 
 gem 'cocoon'
 
+gem 'builder'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'simple_form'

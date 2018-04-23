@@ -30,6 +30,11 @@ class UploadsController < ApplicationController
   # GET /uploads/1/edit
   def edit
     @upload = Upload.find(params[:id])
+    @changes = ""
+    # jsonFiles = Dir.glob "public/uploads/upload/attachment/#{params[:id]}/*.json"
+    # json = jsonFiles[0]
+    getJson()
+    # setJson()
   end
 
   # POST /uploads
@@ -80,6 +85,18 @@ class UploadsController < ApplicationController
     respond_to do |format|
       format.html { redirect_back(fallback_location: root_path) }
       format.json { head :no_content }
+    end
+  end
+
+  def getJson
+    jsonFiles = Dir.glob "public/uploads/upload/attachment/#{params[:id]}/*.json"
+    # @json = File.read("public/uploads/upload/attachment/#{format_id}/#{jsonFiles[0]}")
+    @json = File.read("#{jsonFiles[0]}")
+  end
+
+  def setJson
+    File.open("public/uploads/upload/attachment/#{params[:id]}/.json",'w') do |f|
+      f.write(@changes.to_json)
     end
   end
 

@@ -1,6 +1,38 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+  <%= javascript_include_tag "/assets/ace/src-noconflict/ace.js" %>
+
+  <link href="/jsoneditor.css" rel="stylesheet" type="text/css">
+  <script src="/jsoneditor.js"></script>
+
+</head>
+
 <h1>Editing Upload</h1>
 
 <%= render 'form', upload: @upload %>
 
 <%= link_to 'Show', @upload %> |
 <%= link_to 'Back', uploads_path %>
+
+<div id="jsoneditor" style="width: 400px; height: 400px;"></div>
+
+<%= link_to 'Save', :controller => "uploads", :action => "index" %>
+
+<script>
+    //set jsoneditor
+    var container = document.getElementById("jsoneditor");
+    var options = {mode: 'code'};
+    var editor = new JSONEditor(container, options);
+
+    //replace the EOF char for empty char so that the jsoneditor doesn't complain
+    var json = <%= @json.gsub(/\x0A/, '').html_safe %>;
+    editor.set(json);
+
+    /*editor.on("change",  function() {
+      var new_code = editor.getValue();
+      <%= @changes %> = new_code;
+    });*/
+</script>
+</html>

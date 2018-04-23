@@ -13,11 +13,20 @@ class PreviewController < ApplicationController
       formatFilePath = format.upload.attachment.file.path
       formatFile = File.read(formatFilePath)
 
+      # parse_str methode returns an array of hashes
       @output = CSVPP.parse_str(:input => dataSample, :format => formatFile, :col_sep => '|')
-      @output = JSON.pretty_generate(@output)
+
+      # use xml builder to convert the array of hashes into an html table
+      require 'builder'
+      @xm = Builder::XmlMarkup.new(:indent => 2)
+      @xm.table {
+        @xm.tr { @output[0].keys.each { |key| @xm.th(key)}}
+        @output.each { |row| @xm.tr { row.values.each { |value| @xm.td(value)}}}
+      }
+
       if request.xhr?
         render :json => {
-            :preview => @output
+            :preview => "#{@xm}"
         }
       end
     else
