@@ -27,10 +27,9 @@
 
         <div class="signInInfo navbar-right justify-content-end" id="navbar-header">
           <% if signed_in? %>
-            Signed in as: <%= current_user.email %>
-            <%= button_to 'Sign out', sign_out_path, method: :delete %>
+            <%= button_to 'Profil', users_show_path, :params => {:id => current_user.id}, :method => :get%>
           <% elsif !(current_page?("/sign_in") || current_page?("/sign_up") || current_page?("/session")) %>
-              <%= link_to 'Sign in', sign_in_path %>
+              <%= button_to 'Sign in', sign_in_path, :method => :get %>
           <% end %>
         </div>
       </div>
@@ -45,5 +44,5 @@
 
 <%= yield %>
 </body>
-
+<%# :controller => 'users', :action => 'show', :params => {:id => current_user.id} %>
 </html>
