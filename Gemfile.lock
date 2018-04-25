@@ -70,10 +70,6 @@ GEM
       mime-types (>= 1.16)
     childprocess (0.8.0)
       ffi (~> 1.0, >= 1.0.11)
-    clearance (1.15.1)
-      bcrypt
-      email_validator (~> 1.4)
-      rails (>= 3.1)
     cocoon (1.2.11)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
@@ -86,8 +82,12 @@ GEM
     crass (1.0.3)
     csvpp (0.3.1)
       oj (~> 3.3.9)
-    email_validator (1.6.0)
-      activemodel
+    devise (4.4.3)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 4.1.0, < 6.0)
+      responders
+      warden (~> 1.2.3)
     erubi (1.7.0)
     execjs (2.7.0)
     ffi (1.9.23)
@@ -128,6 +128,7 @@ GEM
     nokogiri (1.8.2-x86-mingw32)
       mini_portile2 (~> 2.3.0)
     oj (3.3.10)
+    orm_adapter (0.5.0)
     pg (1.0.0)
     pg (1.0.0-x86-mingw32)
     popper_js (1.12.9)
@@ -163,6 +164,9 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
+    responders (2.4.0)
+      actionpack (>= 4.2.0, < 5.3)
+      railties (>= 4.2.0, < 5.3)
     ruby_dep (1.5.0)
     rubyzip (1.2.1)
     sass (3.5.5)
@@ -206,6 +210,8 @@ GEM
       tzinfo (>= 1.0.0)
     uglifier (4.1.6)
       execjs (>= 0.3.0, < 3)
+    warden (1.2.7)
+      rack (>= 1.0)
     web-console (3.5.1)
       actionview (>= 5.0)
       activemodel (>= 5.0)
@@ -229,14 +235,15 @@ DEPENDENCIES
   byebug
   capybara (~> 2.13)
   carrierwave (~> 1.0)
-  clearance (~> 1.15.1)
   cocoon
   coffee-rails (~> 4.2)
   csvpp
+  devise
   jbuilder (~> 2.5)
   jquery-rails
   jsoneditor-rails
   listen (>= 3.0.5, < 3.2)
+  orm_adapter
   pg
   puma (~> 3.7)
   rails (~> 5.1.5)

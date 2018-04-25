@@ -1,9 +1,16 @@
 <div class="container">
   <h1>Formats</h1>
 
-  <% if @formats.empty? -%>
-    There are no formats yet. Start creating some by pressing "Create Format".
-  <% else -%>
+  <% if signed_in?-%>
+    <% if @formats.empty?-%>
+      You are logged in. There are no formats yet. Start creating some by pressing "Create Format".
+    <% elsif !@formats.empty?-%>
+      You are logged in, press "Create Format" to create a new format or visit the other parts of the website.
+    <% end %>
+  <% elsif !@formats.empty? && !signed_in?-%>
+    You are currently a guest user. Please log in to create formats and to access all other restricted sites. View the formats below.
+    <% end %>
+  <%# <% else -%>
     <table>
       <tr>
         <th>Title</th>
@@ -25,7 +32,12 @@
         </tr>
       <% end %>
     </table>
+
+
+  <% if @formats.empty? && !signed_in?-%>
+    You are currently a guest user. Please log in to create formats and to access all other restricted sites. At the moment there are no formats.
   <% end %>
+
 
   <footer>
     <%= link_to 'Create Format', "formats/new" if signed_in? %>

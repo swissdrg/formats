@@ -8,7 +8,10 @@ end
 # JSON editor
 gem 'jsoneditor-rails'
 # Authentication gem
-gem 'clearance', '~> 1.15.1'
+#gem 'clearance', '~> 1.15.1'
+#second Auth gem
+gem 'devise'
+gem 'orm_adapter'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.5'
 # Use postgresql as the database for Active Record
