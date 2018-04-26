@@ -40,6 +40,9 @@ Run `bundle install` to fetch and install all required dependencies. Ensure runn
 ### Running the application
 Run the application by entering `rails server` from the main project directory. Then navigate to `0.0.0.0:3000` in your browser.
 
+If you get an error that the server is already running, that may be from a file that is not deleted after stopping Docker-Compose. 
+Run `rm tmp/pids/server.pid` to fix this.
+
 ### Authentication
 
 Run 'rake db:seed' from the main project directory to create a user.
