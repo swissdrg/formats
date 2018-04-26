@@ -27,7 +27,7 @@
 
         <div class="signInInfo navbar-right justify-content-end" id="navbar-header">
           <% if signed_in? && !(current_page?("/users/show"))%>
-            <%= button_to 'Profil', "users/show", :params => {:id => current_user.id}, :method => :get%>
+            <%= button_to 'Profil', current_user, :params => {:id => current_user.id}, :method => :get%>
           <% elsif if signed_in? && (current_page?("/users/show"))%>
             <%= button_to 'Sign out', destroy_user_session_path, method: :delete %>
           <%end %>
