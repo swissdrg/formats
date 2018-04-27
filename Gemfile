@@ -8,7 +8,10 @@ end
 # JSON editor
 gem 'jsoneditor-rails'
 # Authentication gem
-gem 'clearance', '~> 1.15.1'
+#gem 'clearance', '~> 1.15.1'
+#second Auth gem
+gem 'devise'
+gem 'orm_adapter'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.5'
 # Use postgresql as the database for Active Record
@@ -50,6 +53,12 @@ gem 'simple_form'
 
 # Use CSV++ for processing format and data inputs
 gem 'csvpp'
+
+
+#Code check gem
+gem 'pronto'
+gem 'pronto-rubocop', require: false
+gem 'pronto-flay', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

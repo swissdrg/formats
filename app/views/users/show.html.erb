@@ -1,0 +1,6 @@
+<h1>Profil von </h1>
+
+<%= @user.email %>
+
+<p>If you want to change your PW, please press this Button</p>
+<%= button_to 'Change PW', edit_user_registration_path, :method => :get %>

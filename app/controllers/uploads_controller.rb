@@ -1,5 +1,5 @@
 class UploadsController < ApplicationController
-  before_action :require_login, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show]
 
   # GET /uploads
   # GET /uploads.json

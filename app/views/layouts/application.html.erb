@@ -26,11 +26,13 @@
           </div>
 
         <div class="signInInfo navbar-right justify-content-end" id="navbar-header">
-          <% if signed_in? %>
-            Signed in as: <%= current_user.email %>
-            <%= button_to 'Sign out', sign_out_path, method: :delete %>
+          <% if signed_in? && !(current_page?("/users/show"))%>
+            <%= button_to 'Profil', current_user, :params => {:id => current_user.id}, :method => :get%>
+          <% elsif if signed_in? && (current_page?("/users/show"))%>
+            <%= button_to 'Sign out', destroy_user_session_path, method: :delete %>
+          <%end %>
           <% elsif !(current_page?("/sign_in") || current_page?("/sign_up") || current_page?("/session")) %>
-              <%= link_to 'Sign in', sign_in_path %>
+              <%= button_to 'Sign in', new_user_session_path, :method => :get %>
           <% end %>
         </div>
       </div>
@@ -43,7 +45,15 @@
   <div class="container alert alert-dark <%= key %>"><%= value %></div>
 <% end %>
 
+
+<% if notice %>
+  <p class="alert alert-success"><%= notice %></p>
+<% end %>
+<% if alert %>
+  <p class="alert alert-danger"><%= alert %></p>
+<% end %>
+
 <%= yield %>
 </body>
-
+<%# :controller => 'users', :action => 'show', :params => {:id => current_user.id} %>
 </html>

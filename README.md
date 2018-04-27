@@ -65,3 +65,9 @@ If you're running the app using Docker, your system ruby and rails versions do n
 The project uses PostgreSQL 10.3 as a database.
 Type `postgres --version` to check which version you're running.
 If you're running the app using Docker, your system Postgres version does not matter.
+
+## Pronto
+
+The project includes the pronto gem for style check purpose. At the moment it simply checks all local commits.
+It might be possible that you will need to run `sudo apt-get install cmake
+` to install cmake and `bundle update` to update the gem versions and resolve version problems.
