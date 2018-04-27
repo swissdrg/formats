@@ -2,15 +2,13 @@ class PreviewController < ApplicationController
 
   def index
     # Select only formats that have uploads
-    @formats = Format.includes(:upload)
-                   .references(:upload)
-                   .merge(Upload.where.not(:id => nil, :attachment => nil))
+    @formats = Format.all
 
     if preview_parameters[:format_id].present? && preview_parameters[:data_sample].present?
       format = Format.find(preview_parameters[:format_id])
       dataSample = preview_parameters[:data_sample]
 
-      formatFilePath = format.upload.attachment.file.path
+      formatFilePath = format.attachment.file.path
       formatFile = File.read(formatFilePath)
 
       # parse_str methode returns an array of hashes

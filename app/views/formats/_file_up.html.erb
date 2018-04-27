@@ -1,4 +1,4 @@
-<%# if @upload_name.nil? -%>
+<% if @upload_name.nil? -%>
   <%= simple_form_for @upload, url: new_upload_url, action: :post, html: { multipart: true } do |nested_form| %>
     <% if @upload.errors.any? -%>
       <%= nested_form.error_notification %>

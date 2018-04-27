@@ -17,6 +17,15 @@
 @import "bootstrap";
 @import "jsoneditor";
 
+/* NAVBAR */
+
+.navbar-logo{
+  max-height: 60px;
+  max-width: 100px;
+  height: auto;
+  width: auto;
+}
+
 caption {
     caption-side: left;
 }
@@ -36,21 +45,6 @@ th, td {
 
 table {
     border: 1px solid black;
-}
-
-div.signInInfo {
-  color: #FFFFFF;
-}
-
-.navbar-logo{
-  max-height: 60px;
-  max-width: 100px;
-  height: auto;
-  width: auto;
-}
-
-a {
-  color: #64C5EF;
 }
 
 .wrapper {
