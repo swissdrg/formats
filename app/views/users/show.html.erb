@@ -1,6 +1,6 @@
-<h1>Profil von </h1>
+<h1>Profile</h1>
 
-<%= @user.email %>
+<strong>User:</strong> <%= @user.email %>
 
-<p>If you want to change your PW, please press this Button</p>
-<%= button_to 'Change PW', edit_user_registration_path, :method => :get %>
+<%= button_to 'Change Password', edit_user_registration_path, :method => :get %>
+<%= button_to 'Logout', destroy_user_session_path, :method => :delete %>

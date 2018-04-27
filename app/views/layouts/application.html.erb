@@ -20,8 +20,6 @@
 
           <div class="navbar-nav">
             <a class="nav-item nav-link <%= 'active' if params[:controller] == 'formats' %>" href="/formats">Formats</a>
-            <li class="nav-item nav-link disabled <%= 'active' if params[:controller] == 'variables' %>" href="#">Variables</li>
-            <a class="nav-item nav-link <%= 'active' if params[:controller] == 'uploads' %>" href="/uploads">Uploads</a>
             <a class="nav-item nav-link <%= 'active' if params[:controller] == 'preview' %>" href="/preview">Preview</a>
           </div>
 
@@ -40,12 +38,7 @@
   </div>
 </head>
 
-<body class="pl-5">
-<% flash.each do |key, value| %>
-  <div class="container alert alert-dark <%= key %>"><%= value %></div>
-<% end %>
-
-
+<body class="container pl-5">
 <% if notice %>
   <p class="alert alert-success"><%= notice %></p>
 <% end %>
