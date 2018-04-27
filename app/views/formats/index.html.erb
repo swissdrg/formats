@@ -1,40 +1,40 @@
-<div class="container">
-  <h1>Formats</h1>
+<h1>Formats</h1>
 
-  <% unless signed_in?-%>
-    You are currently a guest user. Please log in to create formats and to access all other restricted sites. View the
-    formats below.
-  <% end -%>
-  <% if @formats.empty? -%>
-    You are logged in. There are no formats yet. Start creating some by pressing "Create Format".
-    <br/>
-  <% end -%>
+<% unless signed_in?-%>
+  You are currently a guest user. Please log in to create formats and to access all other restricted sites. View the
+  formats below.
+<% end -%>
+<% if @formats.empty? -%>
+  You are logged in. There are no formats yet. Start creating some by pressing "Create Format".
+  <br/>
+<% end -%>
 
-  <% unless @formats.empty? %>
-    <table>
+<% unless @formats.empty? %>
+  <table>
+    <tr>
+      <th>Title</th>
+      <th>Multiline</th>
+      <th></th>
+      <th></th>
+    </tr>
+
+    <% @formats.each do |format| %>
       <tr>
-        <th>Title</th>
-        <th>Multiline</th>
-        <th></th>
-        <th></th>
+        <td><%= format.title %></td>
+        <td><%= format.multiline %></td>
+        <td><%= link_to 'Edit', edit_format_path(format),
+                        class: "btn btn-sm btn-outline-primary" if signed_in? %></td>
+        <td><%= link_to 'Delete', format_path(format),
+                        method: :delete,
+                        data: { confirm: 'Are you sure?' },
+                        class: "btn btn-sm btn-outline-primary" if signed_in? %></td>
       </tr>
-
-      <% @formats.each do |format| %>
-        <tr>
-          <td><%= format.title %></td>
-          <td><%= format.multiline %></td>
-          <td><%= link_to 'Edit', edit_format_path(format) if signed_in? %></td>
-          <td><%= link_to 'Delete', format_path(format),
-                          method: :delete,
-                          data: { confirm: 'Are you sure?' } if signed_in? %></td>
-        </tr>
-      <% end %>
-    </table>
-  <% end -%>
+    <% end %>
+  </table>
+<% end -%>
 
 
-  <footer>
-    <%= link_to 'Create Format', "formats/new" if signed_in? %>
-  </footer>
-
-</div>
+<footer>
+  <%= link_to 'Create Format', "formats/new",
+              class: "btn btn-primary" if signed_in? %>
+</footer>

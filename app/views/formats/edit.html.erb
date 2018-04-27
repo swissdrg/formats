@@ -1,9 +1,39 @@
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+  <%= javascript_include_tag "/assets/ace/src-noconflict/ace.js" %>
+
+  <link href="/jsoneditor.css" rel="stylesheet" type="text/css">
+  <script src="/jsoneditor.js"></script>
+
+</head>
+
 <div class="container">
   <h1>Edit Format</h1>
 
   <%= simple_form_for @format do |f| %>
     <%= f.input :title %>
     <%= f.input :multiline, as: :boolean %>
+
+
+    <div id="jsoneditor" style="width: 400px; height: 400px;"></div>
+
+    <script>
+        //set jsoneditor
+        var container = document.getElementById("jsoneditor");
+        var options = {mode: 'code'};
+        var editor = new JSONEditor(container, options);
+
+        //replace the EOF char for empty char so that the jsoneditor doesn't complain
+        var json = <%= @json.gsub(/\x0A/, '').html_safe %>;
+        editor.set(json);
+
+        /*editor.on("change",  function() {
+          var new_code = editor.getValue();
+          <%= @changes %> = new_code;
+        });*/
+    </script>
+
+
     <footer>
       <%= link_to '< Cancel', "/formats", style: "padding-right: 50px" %>
 

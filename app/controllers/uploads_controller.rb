@@ -89,9 +89,10 @@ class UploadsController < ApplicationController
   end
 
   def getJson
+    render plain: File.readable?(@format.attachment.file.path)
     jsonFiles = Dir.glob "public/uploads/upload/attachment/#{params[:id]}/*.json"
     # @json = File.read("public/uploads/upload/attachment/#{format_id}/#{jsonFiles[0]}")
-    @json = File.read("#{jsonFiles[0]}")
+    # @json = File.read("#{jsonFiles[0]}")
   end
 
   def setJson

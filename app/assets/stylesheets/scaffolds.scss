@@ -6,16 +6,7 @@ body {
   font-size: 13px;
   line-height: 18px;
 
-  a {
-    color: #0087af;
-    transition: all 150ms ease-out;
 
-    &:hover, &:focus {
-      color: #0087af;
-      //background-color: #d9edf7;
-      text-decoration: underline;
-    }
-  }
 }
 
 p, ol, ul, td {

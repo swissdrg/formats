@@ -18,6 +18,12 @@ class FormatsController < ApplicationController
 
 	def edit
 		@format = Format.find(params[:id])
+
+    @changes = ""
+
+    if File.readable?(@format.attachment.file.path)
+      @json = File.read(@format.attachment.file.path)
+    end
 	end
 
 	def create
@@ -47,7 +53,13 @@ class FormatsController < ApplicationController
 		@format.destroy
 
 		redirect_to '/formats'
-	end
+  end
+
+  def setJson
+    File.open("public/uploads/upload/attachment/#{params[:id]}/.json",'w') do |f|
+      f.write(@changes.to_json)
+    end
+  end
 
 	private
 	def format_params
