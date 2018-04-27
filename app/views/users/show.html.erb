@@ -1,39 +1,6 @@
-<p id="notice"><%= notice %></p>
+<h1>Profile</h1>
 
-<h1> Dein Profil</h1>
+<strong>User:</strong> <%= @user.email %>
 
-<div>
-  <h3>You are logged in as: <%= @user.email %>  </h3>
-</div>
-
-<div>
-  <h3> You are able to change you password below: </h3>
-
-
-  <%= button_to 'Change Password', edit_user_password_path(current_user.id), :method => :get %>
-
-
-  <%#
-  <%= form_for :password_reset,
-               url: user_password_path(@user, token: @user.confirmation_token),
-               html: { method: :put } do |form| %
-    <div class="password-field">
-      <%= form.label :password %
-      <%= form.password_field :password %
-    </div>
-
-    <div class="submit-field">
-      <%= form.submit %
-    </div>
-  <% end %>
-
-</div>
-<br>
-<br>
-<div>
-  <%= button_to 'Sign out', sign_out_path, method: :delete %>
-</div>
-
-
-
-
+<%= button_to 'Change Password', edit_user_registration_path, :method => :get %>
+<%= button_to 'Logout', destroy_user_session_path, :method => :delete %>

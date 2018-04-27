@@ -6,13 +6,19 @@ Rails.application.routes.draw do
 	get '/formats/new' => 'formats#new'
 	post 'formats' => 'formats#create'
 
-  get '/variables/new' => 'variables#new'
-  get '/variables/show' => 'variables#show'
-  get '/variables/form' => 'variables#form'
-
   get '/preview' => 'preview#index'
 
-  get '/users/show' => 'users#show'
+
+
+  devise_for :users, :skip => [:registrations]
+  as :user do
+    get 'users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'
+    put 'users' => 'devise/registrations#update', :as => 'user_registration'
+  end
+
+
+  #get '/users/show' => 'users#show'
+  #get '/formats/users/show' => 'users#show'
 
   post '/uploads' => 'uploads#save'
 
@@ -21,5 +27,7 @@ Rails.application.routes.draw do
   resources :variables
   resources :uploads
   resources :users
+
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

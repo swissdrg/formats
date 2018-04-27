@@ -89,3 +89,5 @@
 2018-04-13 18:07:57.702 CEST [41616] HINT:  Is another postmaster (PID 10286) running in data directory "/usr/local/var/postgres"?
 2018-04-13 18:09:06.656 CEST [41634] FATAL:  lock file "postmaster.pid" already exists
 2018-04-13 18:09:06.656 CEST [41634] HINT:  Is another postmaster (PID 10286) running in data directory "/usr/local/var/postgres"?
+2018-04-22 15:54:02.330 CEST [81626] FATAL:  lock file "postmaster.pid" already exists
+2018-04-22 15:54:02.330 CEST [81626] HINT:  Is another postmaster (PID 41686) running in data directory "/usr/local/var/postgres"?

@@ -1,4 +1,4 @@
-class UsersController < Clearance::UsersController
+class UsersController < ApplicationController
 
 
   # GET /users
@@ -62,7 +62,7 @@ class UsersController < Clearance::UsersController
   #  @user.destroy
   #  respond_to do |format|
   #    format.html { redirect_to root, notice: 'User was successfully destroyed.' }
-  #    format.json { head :no_content }
+  #    format.json { d :no_content }
   #  end
   #end
 
@@ -72,7 +72,6 @@ class UsersController < Clearance::UsersController
       @user = User.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.fetch(:user, {})
     end

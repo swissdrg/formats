@@ -1,14 +1,20 @@
 <div class="container">
   <h1>Formats</h1>
 
+  <% unless signed_in?-%>
+    You are currently a guest user. Please log in to create formats and to access all other restricted sites. View the
+    formats below.
+  <% end -%>
   <% if @formats.empty? -%>
-    There are no formats yet. Start creating some by pressing "Create Format".
-  <% else -%>
+    You are logged in. There are no formats yet. Start creating some by pressing "Create Format".
+    <br/>
+  <% end -%>
+
+  <% unless @formats.empty? %>
     <table>
       <tr>
         <th>Title</th>
         <th>Multiline</th>
-        <th></th>
         <th></th>
         <th></th>
       </tr>
@@ -17,7 +23,6 @@
         <tr>
           <td><%= format.title %></td>
           <td><%= format.multiline %></td>
-          <td><%= link_to 'Variables', :controller => "variables", :action => "show", :params => {:format_id => format.id} %></td>
           <td><%= link_to 'Edit', edit_format_path(format) if signed_in? %></td>
           <td><%= link_to 'Delete', format_path(format),
                           method: :delete,
@@ -25,7 +30,8 @@
         </tr>
       <% end %>
     </table>
-  <% end %>
+  <% end -%>
+
 
   <footer>
     <%= link_to 'Create Format', "formats/new" if signed_in? %>

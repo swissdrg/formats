@@ -20,16 +20,17 @@
 
           <div class="navbar-nav">
             <a class="nav-item nav-link <%= 'active' if params[:controller] == 'formats' %>" href="/formats">Formats</a>
-            <li class="nav-item nav-link disabled <%= 'active' if params[:controller] == 'variables' %>" href="#">Variables</li>
-            <a class="nav-item nav-link <%= 'active' if params[:controller] == 'uploads' %>" href="/uploads">Uploads</a>
             <a class="nav-item nav-link <%= 'active' if params[:controller] == 'preview' %>" href="/preview">Preview</a>
           </div>
 
         <div class="signInInfo navbar-right justify-content-end" id="navbar-header">
-          <% if signed_in? %>
-            <%= button_to 'Profil', users_show_path, :params => {:id => current_user.id}, :method => :get%>
+          <% if signed_in? && !(current_page?("/users/show"))%>
+            <%= button_to 'Profil', current_user, :params => {:id => current_user.id}, :method => :get%>
+          <% elsif if signed_in? && (current_page?("/users/show"))%>
+            <%= button_to 'Sign out', destroy_user_session_path, method: :delete %>
+          <%end %>
           <% elsif !(current_page?("/sign_in") || current_page?("/sign_up") || current_page?("/session")) %>
-              <%= button_to 'Sign in', sign_in_path, :method => :get %>
+              <%= button_to 'Sign in', new_user_session_path, :method => :get %>
           <% end %>
         </div>
       </div>
@@ -37,9 +38,12 @@
   </div>
 </head>
 
-<body class="pl-5">
-<% flash.each do |key, value| %>
-  <div class="container alert alert-dark <%= key %>"><%= value %></div>
+<body class="container pl-5">
+<% if notice %>
+  <p class="alert alert-success"><%= notice %></p>
+<% end %>
+<% if alert %>
+  <p class="alert alert-danger"><%= alert %></p>
 <% end %>
 
 <%= yield %>
