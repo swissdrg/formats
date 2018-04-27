@@ -22,19 +22,21 @@
       <tr>
         <td><%= format.title %></td>
         <td><%= format.multiline %></td>
-        <td><%= link_to 'Edit', edit_format_path(format),
-                        class: "btn btn-sm btn-outline-primary" if signed_in? %></td>
-        <td><%= link_to 'Delete', format_path(format),
+        <td><%= link_to ' Edit', edit_format_path(format),
+                        class: "btn btn-sm btn-outline-primary fa fa-edit" if signed_in? %></td>
+        <td>
+          <%= link_to ' Delete', format_path(format),
                         method: :delete,
                         data: { confirm: 'Are you sure?' },
-                        class: "btn btn-sm btn-outline-primary" if signed_in? %></td>
+                        class: "btn btn-sm btn-outline-primary fa fa-trash" if signed_in? %></td>
+
       </tr>
     <% end %>
   </table>
+
+  <div>
+    <br>
+    <%= link_to ' Create Format', "formats/new",
+                class: "btn btn-primary fa fa-plus" if signed_in? %>
+  </div>
 <% end -%>
-
-
-<footer>
-  <%= link_to 'Create Format', "formats/new",
-              class: "btn btn-primary" if signed_in? %>
-</footer>
