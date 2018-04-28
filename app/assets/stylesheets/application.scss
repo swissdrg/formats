@@ -34,6 +34,12 @@ $link-hover-color: $drg-active;
 $navbar-dark-active-color: $drg-cyan;
 $navbar-dark-color: #ffffff;
 
+$table-dark-bg: $drg-darkcyan;
+$table-dark-color: #ffffff;
+$table-bg: #ffffff;
+$table-accent-bg: $drg-lightcyan;
+
+$success: $drg-cyan;
 
 @import "bootstrap";
 @import "jsoneditor";
@@ -66,10 +72,6 @@ $navbar-dark-color: #ffffff;
   color: #ffffff;
 }
 
-caption {
-    caption-side: left;
-}
-
 footer {
     position: absolute;
     padding-top: 100px;
@@ -77,14 +79,6 @@ footer {
 
 body {
     padding-top: 180px;
-}
-
-th, td {
-    padding: 10px;
-}
-
-table {
-    border: 1px solid black;
 }
 
 .wrapper {

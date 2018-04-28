@@ -28,9 +28,8 @@
 
 
     <footer>
-      <%= link_to '< Cancel', "/formats", style: "padding-right: 50px" %>
-
-      <%= f.submit "Update", onclick: "$('#json').val(JSON.stringify(editor.get()));" %>
+      <%= link_to ' Cancel', "/formats", class: "btn btn-outline-primary fas fa-angle-left" %>
+      <%= f.submit "Update", class: "btn btn-primary fas", onclick: "$('#json').val(JSON.stringify(editor.get()));" %>
     </footer>
   <% end %>
 </div>

@@ -25,12 +25,9 @@
 
         <div class="signInInfo navbar-right justify-content-end" id="navbar-header">
           <% if signed_in? && !(current_page?("/users/show"))%>
-            <%= button_to 'Profil', current_user, :params => {:id => current_user.id}, :method => :get%>
-          <% elsif if signed_in? && (current_page?("/users/show"))%>
-            <%= button_to 'Sign out', destroy_user_session_path, method: :delete %>
-          <%end %>
-          <% elsif !(current_page?("/sign_in") || current_page?("/sign_up") || current_page?("/session")) %>
-              <%= button_to 'Sign in', new_user_session_path, :method => :get %>
+            <%= link_to ' Profile', current_user, class: "btn btn-light fa fa-user", :params => {:id => current_user.id}, :method => :get%>
+          <% elsif !(current_page?("/users/sign_in") || current_page?("/sign_up") || current_page?("/session")) %>
+              <%= link_to ' Sign In', new_user_session_path, class: "btn btn-light fa fa-sign-in-alt", :method => :get %>
           <% end %>
         </div>
       </div>
@@ -48,5 +45,4 @@
 
 <%= yield %>
 </body>
-<%# :controller => 'users', :action => 'show', :params => {:id => current_user.id} %>
 </html>
