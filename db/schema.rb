@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180426153529) do
+ActiveRecord::Schema.define(version: 20180428114128) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,15 +22,6 @@ ActiveRecord::Schema.define(version: 20180426153529) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "attachment"
-  end
-
-  create_table "uploads", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "name"
-    t.string "attachment"
-    t.bigint "format_id"
-    t.index ["format_id"], name: "index_uploads_on_format_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -47,17 +38,6 @@ ActiveRecord::Schema.define(version: 20180426153529) do
     t.boolean "admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  end
-
-  create_table "variables", force: :cascade do |t|
-    t.string "number"
-    t.string "description"
-    t.integer "length"
-    t.string "var_type"
-    t.bigint "format_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["format_id"], name: "index_variables_on_format_id"
   end
 
 end
