@@ -12,26 +12,35 @@
 
 <%= render 'form', upload: @upload %>
 
-<%= link_to 'Show', @upload %> |
-<%= link_to 'Back', uploads_path %>
-
 <div id="jsoneditor" style="width: 400px; height: 400px;"></div>
 
-<%= link_to 'Save', :controller => "uploads", :action => "index" %>
+<%= link_to 'Back', uploads_path %> |
+<button onclick="saveChanges()">Save</button>
 
 <script>
     //set jsoneditor
     var container = document.getElementById("jsoneditor");
-    var options = {mode: 'code'};
+    var options = {
+        mode: 'code'
+    };
     var editor = new JSONEditor(container, options);
 
     //replace the EOF char for empty char so that the jsoneditor doesn't complain
     var json = <%= @json.gsub(/\x0A/, '').html_safe %>;
     editor.set(json);
 
-    /*editor.on("change",  function() {
-      var new_code = editor.getValue();
-      <%= @changes %> = new_code;
-    });*/
+    function saveChanges(){
+        var uploadId = <%= @upload.format_id %>;
+        var changes = editor.get()
+        $.ajax('/uploads', {
+            method: 'POST',
+            beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+            dataType: "json",
+            data: {
+                upload_id: uploadId,
+                data_value: changes
+            }
+        });
+    }
 </script>
 </html>

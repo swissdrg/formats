@@ -30,11 +30,19 @@ class UploadsController < ApplicationController
   # GET /uploads/1/edit
   def edit
     @upload = Upload.find(params[:id])
-    @changes = ""
-    # jsonFiles = Dir.glob "public/uploads/upload/attachment/#{params[:id]}/*.json"
-    # json = jsonFiles[0]
     getJson()
-    # setJson()
+  end
+
+  # handles ajax request
+  def save
+    @uploadId = 0
+    if request.xhr?
+      @uploadId = params[:upload_id]
+      @changes = params[:data_value]
+      setJson()
+    end
+
+    redirect_to :controller => 'uploads', :action => 'index' and return
   end
 
   # POST /uploads
@@ -60,7 +68,6 @@ class UploadsController < ApplicationController
   # PATCH/PUT /uploads/1
   # PATCH/PUT /uploads/1.json
   def update
-
     @upload = Upload.find(params[:id])
 
     full_params ||= upload_params
@@ -88,23 +95,24 @@ class UploadsController < ApplicationController
     end
   end
 
-  def getJson
-    render plain: File.readable?(@format.attachment.file.path)
-    jsonFiles = Dir.glob "public/uploads/upload/attachment/#{params[:id]}/*.json"
-    # @json = File.read("public/uploads/upload/attachment/#{format_id}/#{jsonFiles[0]}")
-    # @json = File.read("#{jsonFiles[0]}")
-  end
-
-  def setJson
-    File.open("public/uploads/upload/attachment/#{params[:id]}/.json",'w') do |f|
-      f.write(@changes.to_json)
-    end
-  end
-
   private
-  #used to remove more than one upload per format
+  # used to remove more than one upload per format
   def remove_multiple_instances
 
+  end
+
+  # used to get json from public folder
+  def getJson
+    jsonFiles = Dir.glob "public/uploads/upload/attachment/#{params[:id]}/*.json"
+    @json = File.read("#{jsonFiles[0]}")
+  end
+
+  # used to write modified json to the file
+  def setJson
+    jsonFiles = Dir.glob "public/uploads/upload/attachment/#{@uploadId}/*.json"
+    File.open("#{jsonFiles[0]}", 'w') do |f|
+      f.write(@changes)
+    end
   end
 
   # Use callbacks to share common setup or constraints between actions.
@@ -116,6 +124,7 @@ class UploadsController < ApplicationController
   def upload_params
     params.require(:upload).permit(:attachment)
   end
+
   def format_params
     params.require(:format_id)
   end

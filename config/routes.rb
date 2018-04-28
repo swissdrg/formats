@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   #get '/users/show' => 'users#show'
   #get '/formats/users/show' => 'users#show'
 
+  post '/uploads' => 'uploads#save'
+
   # This needs to be at the end of the file in order to not override any custom routes
   resources :formats
   resources :variables
