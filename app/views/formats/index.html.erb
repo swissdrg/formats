@@ -1,10 +1,9 @@
 <h1>Formats</h1>
 
-<% unless signed_in?-%>
+<% if !signed_in?-%>
   You are currently a guest user. Please log in to create formats and to access all other restricted sites. View the
   formats below.
-<% end -%>
-<% if @formats.empty? -%>
+<% elsif @formats.empty? -%>
   You are logged in. There are no formats yet. Start creating some by pressing "Create Format".
   <br/>
 <% end -%>
@@ -33,10 +32,10 @@
       </tr>
     <% end %>
   </table>
-
-  <div>
-    <br>
-    <%= link_to ' Create Format', "formats/new",
-                class: "btn btn-primary fa fa-plus" if signed_in? %>
-  </div>
 <% end -%>
+
+<div>
+  <br>
+  <%= link_to ' Create Format', "formats/new",
+              class: "btn btn-primary fa fa-plus" if signed_in? %>
+</div>
