@@ -1,11 +1,9 @@
 class UsersController < ApplicationController
-
-
   # GET /users
   # GET /users.json
-  #def index
+  # def index
   #  @users = User.all
-  #end
+  # end
 
   # GET /users/1
   # GET /users/1.json
@@ -14,18 +12,18 @@ class UsersController < ApplicationController
   end
 
   # GET /users/new
-  #def new
+  # def new
   #  @user = User.new
-  #end
+  # end
 
   # GET /users/1/edit
-  #def edit
+  # def edit
   #  @user = User.find(params[:id])
-  #end
+  # end
 
   # POST /users
   # POST /users.json
-  #def create
+  # def create
   #  @user = User.new(user_params)
 
   #  respond_to do |format|
@@ -37,11 +35,11 @@ class UsersController < ApplicationController
   #      format.json { render json: @user.errors, status: :unprocessable_entity }
   #    end
   #  end
-  #end
+  # end
 
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
-  #def update
+  # def update
   #  respond_to do |format|
   #    if @user.update(user_params)
 
@@ -54,25 +52,26 @@ class UsersController < ApplicationController
   #      format.json { render json: @user.errors, status: :unprocessable_entity }
   #    end
   #  end
-  #end
+  # end
 
   # DELETE /users/1
   # DELETE /users/1------------.json
-  #def destroy
+  # def destroy
   #  @user.destroy
   #  respond_to do |format|
   #    format.html { redirect_to root, notice: 'User was successfully destroyed.' }
   #    format.json { d :no_content }
   #  end
-  #end
+  # end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
 
-    def user_params
-      params.fetch(:user, {})
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user
+    @user = User.find(params[:id])
+  end
+
+  def user_params
+    params.fetch(:user, {})
+  end
 end

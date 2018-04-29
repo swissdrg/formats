@@ -1,44 +1,44 @@
 class FormatsController < ApplicationController
-	# default order for actions is:
-	# index, show, new, edit, create, update, destroy
-	before_action :authenticate_user!, except: [:index, :show]
+  # default order for actions is:
+  # index, show, new, edit, create, update, destroy
+  before_action :authenticate_user!, except: %i[index show]
 
-	def index
-		@formats = Format.all
-	end
+  def index
+    @formats = Format.all
+  end
 
-	def show
-		@format = Format.find(params[:id])
-	end
+  def show
+    @format = Format.find(params[:id])
+  end
 
-	def new
-		@format = Format.new
-		@format_id = @format.id.to_i
-	end
+  def new
+    @format = Format.new
+    @format_id = @format.id.to_i
+  end
 
-	def edit
-		@format = Format.find(params[:id])
+  def edit
+    @format = Format.find(params[:id])
 
-		if @format.attachment.file.present? && File.readable?(@format.attachment.file.path)
+    if @format.attachment.file.present? && File.readable?(@format.attachment.file.path)
       @json = File.read(@format.attachment.file.path)
     else
-      @json = ""
+      @json = ''
     end
-	end
+  end
 
-	def create
-		@format = Format.new(format_params)
+  def create
+    @format = Format.new(format_params)
     @format_id = @format.id.to_i
 
     if @format.save
-			redirect_to '/formats'
-		else
-			render 'new'
+      redirect_to '/formats'
+    else
+      render 'new'
     end
-	end
+  end
 
-	def update
-		@format = Format.find(params[:id])
+  def update
+    @format = Format.find(params[:id])
     @format_id = @format.id.to_i
 
     if @format.attachment.file.present? && File.writable?(@format.attachment.file.path)
@@ -47,22 +47,23 @@ class FormatsController < ApplicationController
       end
     end
 
-		if @format.update(format_params)
-			redirect_to '/formats'
-		else
-			render 'edit'
-		end
-	end
-
-	def destroy
-		@format = Format.find(params[:id])
-		@format.destroy
-
-		redirect_to '/formats'
+    if @format.update(format_params)
+      redirect_to '/formats'
+    else
+      render 'edit'
+    end
   end
 
-	private
-	def format_params
-		params.require(:format).permit(:title, :attachment)
+  def destroy
+    @format = Format.find(params[:id])
+    @format.destroy
+
+    redirect_to '/formats'
+  end
+
+  private
+
+  def format_params
+    params.require(:format).permit(:title, :attachment)
   end
 end

@@ -7,19 +7,18 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # rake db:seed
-puts "seeding..."
-#User.create(:email => "admin@gmail.com",:password => "123")
-
+puts 'seeding...'
+# User.create(:email => "admin@gmail.com",:password => "123")
 
 user = User.create!(
-    email: 'admin@gmail.com',
-    password: '123456789',
-    password_confirmation: '123456789',
-    admin: 'true'
+  email: 'admin@gmail.com',
+  password: '123456789',
+  password_confirmation: '123456789',
+  admin: 'true'
 )
 user.save!
 
-puts "seeding is done"
-puts "email: admin@gmail.com"
-puts "password: 123456789"
-puts "Have nice day!"
+puts 'seeding is done'
+puts 'email: admin@gmail.com'
+puts 'password: 123456789'
+puts 'Have nice day!'
