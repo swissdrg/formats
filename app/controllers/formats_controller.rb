@@ -2,6 +2,8 @@
 class FormatsController < ApplicationController
   # default order for actions is:
   # index, show, new, edit, create, update, destroy
+
+  # noinspection RailsParamDefResolve
   before_action :authenticate_user!, except: %i[index show]
 
   def index
@@ -24,10 +26,7 @@ class FormatsController < ApplicationController
   end
 
   def create
-    @format = Format.new(format_params)
-    @format_id = @format.id.to_i
-
-    if @format.save
+    if Format.new(format_params).save
       redirect_to '/formats'
     else
       render 'new'
@@ -35,13 +34,12 @@ class FormatsController < ApplicationController
   end
 
   def update
-    @format = Format.find(params[:id])
-    
-    if update_attachment(@format, params[:json]) && @format.update(format_params)
+    format = Format.find(params[:id])
+
+    if update_format(format, params[:json])
       redirect_to '/formats'
     else
       redirect_back(fallback_location: '/formats', flash: { alert: 'Could not save changes' })
-
     end
   end
 
@@ -53,6 +51,8 @@ class FormatsController < ApplicationController
   end
 
   private
+
+  # Attachments
 
   def read_attachment(format)
     return if !format.attachment.file.present? || !File.readable?(format.attachment.file.path)
@@ -66,6 +66,12 @@ class FormatsController < ApplicationController
       f.write(json)
       true
     end
+  end
+
+  # Format
+
+  def update_format(format, json)
+    update_attachment(format, json) && format.update(format_params)
   end
 
   def format_params

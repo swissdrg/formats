@@ -22,8 +22,8 @@ $(document).ready(function () {
                 format_id: formatId,
                 data_sample: dataSample
             },
-            complete: function() {},
             success: function(data) {
+                // noinspection JSUnresolvedVariable
                 document.getElementById("outputdiv").innerHTML = data.preview;
             },
             error: function () {}
