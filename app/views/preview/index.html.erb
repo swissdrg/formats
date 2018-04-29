@@ -4,8 +4,7 @@
 
 <% if @formats.empty? -%>
   There are no formats yet. Go to Formats to create one.
-<% end %>
-
+<% else -%>
 <div class="container" id="inputdiv">
   <p>
     Please select a Format:
@@ -22,6 +21,7 @@
 
 <div class="container">
   <pre>
-    <div id="outputdiv">Preview currently not available. Please provide all inputs.</div>
+    <div id="outputdiv" class="table table-striped">Preview currently not available. Please provide all inputs.</div>
   </pre>
 </div>
+<% end %>

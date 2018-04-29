@@ -1,4 +1,5 @@
 class PreviewController < ApplicationController
+  before_action :authenticate_user!, except: [:index]
 
   def index
     # Select only formats that have uploads
@@ -37,12 +38,3 @@ class PreviewController < ApplicationController
     params.permit(:data_sample, :format_id)
   end
 end
-
-=begin
-Sample data:
-
-34|foobar|1.1|false
-99|hi  there|2.2|100
--999|Missing|NA|korrektos
-
-=end

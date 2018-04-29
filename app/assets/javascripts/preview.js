@@ -24,9 +24,7 @@ $(document).ready(function () {
             },
             complete: function() {},
             success: function(data) {
-                //document.getElementById("outputdiv").textContent = data.preview;
                 document.getElementById("outputdiv").innerHTML = data.preview;
-
             },
             error: function () {}
         });
