@@ -1,3 +1,4 @@
+# Handles CRUD Operations and Upload for Format specifications
 class FormatsController < ApplicationController
   # default order for actions is:
   # index, show, new, edit, create, update, destroy
@@ -18,12 +19,11 @@ class FormatsController < ApplicationController
 
   def edit
     @format = Format.find(params[:id])
-
-    if @format.attachment.file.present? && File.readable?(@format.attachment.file.path)
-      @json = File.read(@format.attachment.file.path)
-    else
-      @json = ''
-    end
+    @json = if @format.attachment.file.present? && File.readable?(@format.attachment.file.path)
+              File.read(@format.attachment.file.path)
+            else
+              ''
+            end
   end
 
   def create
@@ -39,18 +39,14 @@ class FormatsController < ApplicationController
 
   def update
     @format = Format.find(params[:id])
-    @format_id = @format.id.to_i
 
-    if @format.attachment.file.present? && File.writable?(@format.attachment.file.path)
-      File.open(@format.attachment.file.path, 'w') do |f|
-        f.write(params[:json])
-      end
-    end
+    puts update_attachment(@format, params[:json])
 
-    if @format.update(format_params)
+    if update_attachment(@format, params[:json]) && @format.update(format_params)
       redirect_to '/formats'
     else
-      render 'edit'
+      redirect_back(fallback_location: '/formats', flash: { alert: 'Could not save changes' })
+
     end
   end
 
@@ -62,6 +58,15 @@ class FormatsController < ApplicationController
   end
 
   private
+
+  def update_attachment(format, json)
+    return if !format.attachment.file.present? || !File.writable?(@format.attachment.file.path)
+
+    File.open(format.attachment.file.path, 'w') do |f|
+      f.write(json)
+      true
+    end
+  end
 
   def format_params
     params.require(:format).permit(:title, :attachment)
