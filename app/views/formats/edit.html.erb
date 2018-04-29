@@ -20,10 +20,10 @@
     var container = $('#jsoneditor');
     // Prevent jsoneditor from loading multiple times on reloading page
     if (!container.has('.jsoneditor').length) {
-        var editor = new JSONEditor(container.get(0), {mode: 'code'});
+        var editor = new JSONEditor(container.get(0), {mode: 'code'})
     }
 
     //replace the EOF char for empty char so that the jsoneditor doesn't complain
-    var json = <%= @json.gsub(/\x0A/, '').html_safe %>;
-    editor.set(json);
+<!--    var json = <%#= @json.gsub(/\x0A/, '').html_safe %>-->
+    editor.set(<%= @json.html_safe %>);
 </script>
