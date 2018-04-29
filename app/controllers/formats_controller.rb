@@ -55,12 +55,12 @@ class FormatsController < ApplicationController
   # Attachments
 
   def read_attachment(format)
-    return if !format.attachment.file.present? || !File.readable?(format.attachment.file.path)
+    return if !format.attachment.present? || !File.readable?(format.attachment.file.path)
     File.read(format.attachment.file.path)
   end
 
   def update_attachment(format, json)
-    return if !format.attachment.file.present? || !File.writable?(@format.attachment.file.path)
+    return if !format.attachment.present? || !File.writable?(format.attachment.file.path)
 
     File.open(format.attachment.file.path, 'w') do |f|
       f.write(json)
