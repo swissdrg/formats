@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!--suppress HtmlUnknownTarget -->
 <html>
 <head>
   <title>Formats</title>
@@ -6,52 +7,37 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
-  <header style="background-color:Tomato;">
-  </header>
-  <section>
-    <div id="flash">
-      <% flash.each do |key, value| %>
-        <div class="flash <%= key %>"><%= value %></div>
-      <% end %>
-    </div>
-  </section>
 
   <div class="app-header">
-    <nav class="navbar navbar-default navbar-expand-sm fixed-top navbar-dark bg-dark" style="">
-      <div class="container-fluid">
-
-        <div class="navbar-header">
+    <nav class="navbar navbar-default navbar-expand fixed-top navbar-dark">
           <div class="col-sm-2 navbar-brand">
             <%= link_to image_tag("logo_swissdrg.jpg", alt: "logo", class: 'navbar-logo'), root_path %>
           </div>
-        </div>
 
-
-<!--        <div class="navbar-collapse">-->
           <div class="navbar-nav">
-            <a class="nav-item nav-link <%= 'active' if params[:controller] == 'formats' %>" href="/formats">Formats</a>
-            <li class="nav-item nav-link disabled <%= 'active' if params[:controller] == 'variables' %>" href="#">Variables</li>
-            <a class="nav-item nav-link <%= 'active' if params[:controller] == 'uploads' %>" href="/uploads">Uploads</a>
-            <a class="nav-item nav-link <%= 'active' if params[:controller] == 'preview' %>" href="/preview">Preview</a>
+            <a class="nav-item nav-link h4 <%= 'active' if params[:controller] == 'formats' %>" href='/formats'>Formats</a>
+            <a class="nav-item nav-link h4 <%= 'active' if params[:controller] == 'preview' %>" href='/preview'>Preview</a>
           </div>
 
-<!--        </div>-->
-
-        <div class="signInInfo navbar-right justify-content-end" id="navbar-header">
-          <% if signed_in? %>
-            Signed in as: <%= current_user.email %>
-            <%= button_to 'Sign out', sign_out_path, method: :delete %>
-          <% elsif !(current_page?("/sign_in") || current_page?("/sign_up")) %>
-              <%= link_to 'Sign in', sign_in_path %>
+        <div class="container-fluid signInInfo navbar-right justify-content-end" id="navbar-header">
+          <% if signed_in? && !(current_page?("/users/show"))%>
+            <%= link_to ' Profile', current_user, class: "btn btn-light fa fa-user", :params => {:id => current_user.id}, :method => :get%>
+          <% elsif !(current_page?("/users/sign_in") || current_page?("/sign_up") || current_page?("/session")) %>
+              <%= link_to ' Sign In', new_user_session_path, class: "btn btn-light fa fa-sign-in-alt", :method => :get %>
           <% end %>
         </div>
-      </div>
     </nav>
   </div>
-</html>
+</head>
 
-<body class="pl-5">
+<body class="container pl-5">
+<% if notice %>
+  <p class="alert alert-success"><%= notice %></p>
+<% end %>
+<% if alert %>
+  <p class="alert alert-danger"><%= alert %></p>
+<% end %>
+
 <%= yield %>
 </body>
+</html>

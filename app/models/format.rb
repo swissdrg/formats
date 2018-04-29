@@ -1,6 +1,4 @@
+# Format holds a JSON data specification file
 class Format < ApplicationRecord
-	has_many :variables
-	accepts_nested_attributes_for :variables
-
-  has_one :upload
+  mount_uploader(:attachment, AttachmentUploader)
 end

@@ -1,69 +1,80 @@
+# Handles CRUD Operations and Upload for Format specifications
 class FormatsController < ApplicationController
-	# default order for actions is:
-	# index, show, new, edit, create, update, destroy
-	before_action :require_login, except: [:index, :show]
+  # default order for actions is:
+  # index, show, new, edit, create, update, destroy
 
-	def index
-		@formats = Format.all
-	end
+  # noinspection RailsParamDefResolve
+  before_action :authenticate_user!, except: %i[index show]
 
-	def show
-		@format = Format.find(params[:id])
-	end
+  def index
+    @formats = Format.all
+  end
 
-	def new
-		@format = Format.new
+  def show
+    @format = Format.find(params[:id])
+  end
 
-    @uploads = Upload.where(:format_id => params[:format_id])
-    @upload = Upload.new
-
-		@variables =  Variable.where(:format_id => params[:format_id])
-		@variable = Variable.new
-
-		@format_id = @format.id.to_i
-
-	end
-
-	def edit
-		@format = Format.find(params[:id])
-	end
-
-
-	def create
-		@format = Format.new(format_params)
+  def new
+    @format = Format.new
     @format_id = @format.id.to_i
+  end
 
+  def edit
+    @format = Format.find(params[:id])
+    @json = read_attachment(@format)
+    @json = '{}' if @json.empty?
+  end
 
-
-		if @format.save
-			redirect_to :controller => 'variables', :action => 'form', :format_id => @format.id.to_i
-		else
-			render 'new'
+  def create
+    if Format.new(format_params).save
+      redirect_to '/formats'
+    else
+      render 'new'
     end
-	end
+  end
 
-	def update
-		@format = Format.find(params[:id])
-    @format_id = @format.id.to_i
-    @uploads = Upload.where(:format_id => params[:format_id])
-    @upload = Upload.new
+  def update
+    format = Format.find(params[:id])
 
-		if @format.update(format_params)
-			redirect_to '/formats'
-		else
-			render 'edit'
-		end
-	end
+    if update_format(format, params[:json])
+      redirect_to '/formats'
+    else
+      redirect_back(fallback_location: '/formats', flash: { alert: 'Could not save changes' })
+    end
+  end
 
-	def destroy
-		@format = Format.find(params[:id])
-		@format.destroy
+  def destroy
+    @format = Format.find(params[:id])
+    @format.destroy
 
-		redirect_to '/formats'
-	end
+    redirect_to '/formats'
+  end
 
-	private
-	def format_params
-		params.require(:format).permit(:title, :multiline, variables_attributes: [:number, :description, :length, :type], uploads_attirbutes: [:attachment])
-	end
+  private
+
+  # Attachments
+
+  def read_attachment(format)
+    return if !format.attachment.file.present? || !File.readable?(format.attachment.file.path)
+    File.read(format.attachment.file.path)
+  end
+
+  def update_attachment(format, json)
+    return if !format.attachment.file.present? || !File.writable?(@format.attachment.file.path)
+
+    File.open(format.attachment.file.path, 'w') do |f|
+      f.write(json)
+      true
+    end
+  end
+
+  # Format
+
+  def update_format(format, json)
+    update_attachment(format, json) && format.update(format_params)
+  end
+
+  def format_params
+    params.require(:format).permit(:title, :attachment)
+  end
 end

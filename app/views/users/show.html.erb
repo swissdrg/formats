@@ -1,0 +1,10 @@
+<h1>Profile</h1>
+
+<div>
+<strong>User:</strong> <%= @user.email %>
+</div>
+<br>
+<div>
+<%= link_to ' Change Password', edit_user_registration_path, class: "btn btn-outline-primary fa fa-edit", :method => :get %>
+<%= link_to ' Sign Out', destroy_user_session_path, class: "btn btn-outline-primary fa fa-sign-out-alt", :method => :delete %>
+</div>

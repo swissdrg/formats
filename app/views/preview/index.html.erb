@@ -1,30 +1,28 @@
 <%= javascript_include_tag "preview" %>
 
-<div class="container">
-  <h1>Preview</h1>
+<!--suppress HtmlUnknownTag -->
+<h1>Preview</h1>
 
-  <% if @formats.empty? -%>
-    There are no formats yet. Go to Formats to create one.
-  <% end %>
-
-  <div class="container" id="inputdiv">
-    <p>
-      Please select a Format:
-      <%= select(@format, "format_id", @formats.collect {|f| [f.title, f.id] }, {prompt: "Select Format"}, {:class => "form-control"}) %>
-    </p>
+<% if @formats.empty? -%>
+  There are no formats yet. Go to Formats to create one.
+<% else -%>
+<div class="container" id="inputdiv">
+  <p>
+    Please select a Format:
+    <%= select(@format, "format_id", @formats.collect {|f| [f.title, f.id] }, {prompt: "Select Format"}, {:class => "form-control"}) %>
+  </p>
+  <br>
+  <p>
+    Provide your example input in the area below:
     <br>
-    <p>
-      Provide your example input in the area below:
-      <br>
-      <%= text_area(@input, "data_samples_input", {:class => "form-control", :style => "height:200px"}) %>
-    </p>
-  </div>
-  <hr>
-
-  <div class="container">
-  <pre>
-    <div id="outputdiv">Preview currently not available. Please provide all inputs.</div>
-  </pre>
-  </div>
-
+    <%= text_area(@input, "data_samples_input", {:class => "form-control", :style => "height:200px"}) %>
+  </p>
 </div>
+<hr>
+
+<div class="container">
+  <pre>
+    <div id="outputdiv" class="table table-striped">Preview currently not available. Please provide all inputs.</div>
+  </pre>
+</div>
+<% end %>

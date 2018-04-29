@@ -4,7 +4,7 @@ class CreateFormats < ActiveRecord::Migration[5.1]
       t.string :title
       t.boolean :multiline
       t.string :date
-	  t.timestamps
+      t.timestamps
     end
   end
 end

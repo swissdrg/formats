@@ -7,17 +7,12 @@
   </p>
 
   <p>
-    <strong>Multiline:</strong>
-    <%= @format.multiline %>
-  </p>
-
-  <p>
     <strong>Date of Creation:</strong>
     <%= @format.created_at %>
   </p>
 
 
-  <td><%= link_to "Download Spezi", @format.attachment_url %></td>
+  <%= link_to "Download Specification", @format.attachment_url %>
 
   <footer>
     <%= link_to '< Formats', controller: 'formats' %>

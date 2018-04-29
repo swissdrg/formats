@@ -1,3 +1,7 @@
+# Object for devise authentication
 class User < ApplicationRecord
-  include Clearance::User
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable, :registerable
+  devise :database_authenticatable,
+         :recoverable, :rememberable, :trackable, :validatable
 end

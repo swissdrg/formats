@@ -22,9 +22,9 @@ $(document).ready(function () {
                 format_id: formatId,
                 data_sample: dataSample
             },
-            complete: function() {},
             success: function(data) {
-                document.getElementById("outputdiv").textContent = data.preview;
+                // noinspection JSUnresolvedVariable
+                document.getElementById("outputdiv").innerHTML = data.preview;
             },
             error: function () {}
         });
