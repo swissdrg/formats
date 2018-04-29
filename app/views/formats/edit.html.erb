@@ -8,22 +8,22 @@
 
     <div class="container" id="jsoneditor" style="height: 400px;"></div>
 
-    <script>
-        var container = $('#jsoneditor');
-        // Prevent jsoneditor from loading multiple times on reloading page
-        if (!container.has('.jsoneditor').length) {
-            var editor = new JSONEditor(container.get(0), {mode: 'code'});
-        }
-
-        //replace the EOF char for empty char so that the jsoneditor doesn't complain
-        var json = <%= @json.gsub(/\x0A/, '').html_safe %>;
-        editor.set(json);
-    </script>
-
-
-    <footer>
+    <div>
+      <br>
       <%= link_to ' Cancel', "/formats", class: "btn btn-outline-primary fas fa-angle-left" %>
       <%= f.submit "Update", class: "btn btn-primary fas", onclick: "$('#json').val(JSON.stringify(editor.get()));" %>
-    </footer>
+    </div>
   <% end %>
 </div>
+
+<script>
+    var container = $('#jsoneditor');
+    // Prevent jsoneditor from loading multiple times on reloading page
+    if (!container.has('.jsoneditor').length) {
+        var editor = new JSONEditor(container.get(0), {mode: 'code'});
+    }
+
+    //replace the EOF char for empty char so that the jsoneditor doesn't complain
+    var json = <%= @json.gsub(/\x0A/, '').html_safe %>;
+    editor.set(json);
+</script>

@@ -82,3 +82,12 @@ body {
 pre {
   background-color: white;
 }
+
+/* Ace JSON Editor */
+.jsoneditor, .jsoneditor-mode-code {
+  border: 1px solid $drg-darkcyan !important;
+}
+
+.jsoneditor-outer {
+  background-color: $drg-darkcyan;
+}
