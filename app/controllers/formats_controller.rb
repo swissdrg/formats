@@ -19,9 +19,10 @@ class FormatsController < ApplicationController
 	def edit
 		@format = Format.find(params[:id])
 
-		# TODO: Check if attachment.file.exist? first!
-    if File.readable?(@format.attachment.file.path)
+		if @format.attachment.file.present? && File.readable?(@format.attachment.file.path)
       @json = File.read(@format.attachment.file.path)
+    else
+      @json = ""
     end
 	end
 
@@ -40,8 +41,7 @@ class FormatsController < ApplicationController
 		@format = Format.find(params[:id])
     @format_id = @format.id.to_i
 
-		# TODO: Check if attachment.file.exist? first!
-    if File.writable?(@format.attachment.file.path)
+    if @format.attachment.file.present? && File.writable?(@format.attachment.file.path)
       File.open(@format.attachment.file.path, 'w') do |f|
         f.write(params[:json])
       end
