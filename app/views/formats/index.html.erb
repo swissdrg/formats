@@ -12,21 +12,18 @@
   <table class="table table-striped">
     <thead class="thead-dark">
       <th>Title</th>
-      <th>Multiline</th>
       <th></th>
     </thead>
     <tbody>
     <% @formats.each do |format| %>
       <tr>
         <td><%= format.title %></td>
-        <td><%= format.multiline %></td>
         <td align="right"><%= link_to ' Edit', edit_format_path(format),
                         class: "btn btn-sm btn-outline-primary fa fa-edit" if signed_in? %>
           <%= link_to ' Delete', format_path(format),
                         method: :delete,
                         data: { confirm: 'Are you sure?' },
                         class: "btn btn-sm btn-outline-primary fa fa-trash" if signed_in? %></td>
-
       </tr>
     <% end %>
     </tbody>

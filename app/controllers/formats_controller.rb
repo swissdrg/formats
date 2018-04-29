@@ -63,6 +63,6 @@ class FormatsController < ApplicationController
 
 	private
 	def format_params
-		params.require(:format).permit(:title, :multiline, :attachment)
+		params.require(:format).permit(:title, :attachment)
   end
 end

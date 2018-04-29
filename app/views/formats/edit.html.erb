@@ -10,7 +10,6 @@
 
   <%= simple_form_for @format, id: "editFormat" do |f| %>
     <%= f.input :title %>
-    <%= f.input :multiline, as: :boolean %>
 
     <%= hidden_field_tag(:json, '') %>
 

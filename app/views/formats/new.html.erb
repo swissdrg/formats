@@ -3,8 +3,6 @@
 
   <%= simple_form_for @format do |f| %>
     <%= f.input :title %>
-    <%= f.input :multiline, as: :boolean %>
-
 
     <h3>Upload File</h3>
     <% if @format.attachment.file.nil? -%>
