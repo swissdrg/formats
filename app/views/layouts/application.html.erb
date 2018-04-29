@@ -8,29 +8,23 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
   <div class="app-header">
-    <nav class="navbar navbar-default navbar-expand-sm fixed-top navbar-dark">
-      <div class="container-fluid">
-
-        <div class="navbar-header">
+    <nav class="navbar navbar-default navbar-expand fixed-top navbar-dark">
           <div class="col-sm-2 navbar-brand">
             <%= link_to image_tag("logo_swissdrg.jpg", alt: "logo", class: 'navbar-logo'), root_path %>
           </div>
-        </div>
-
 
           <div class="navbar-nav">
-            <a class="nav-item nav-link <%= 'active' if params[:controller] == 'formats' %>" href="/formats">Formats</a>
-            <a class="nav-item nav-link <%= 'active' if params[:controller] == 'preview' %>" href="/preview">Preview</a>
+            <a class="nav-item nav-link h4 <%= 'active' if params[:controller] == 'formats' %>" href="/formats">Formats</a>
+            <a class="nav-item nav-link h4 <%= 'active' if params[:controller] == 'preview' %>" href="/preview">Preview</a>
           </div>
 
-        <div class="signInInfo navbar-right justify-content-end" id="navbar-header">
+        <div class="container-fluid signInInfo navbar-right justify-content-end" id="navbar-header">
           <% if signed_in? && !(current_page?("/users/show"))%>
             <%= link_to ' Profile', current_user, class: "btn btn-light fa fa-user", :params => {:id => current_user.id}, :method => :get%>
           <% elsif !(current_page?("/users/sign_in") || current_page?("/sign_up") || current_page?("/session")) %>
               <%= link_to ' Sign In', new_user_session_path, class: "btn btn-light fa fa-sign-in-alt", :method => :get %>
           <% end %>
         </div>
-      </div>
     </nav>
   </div>
 </head>
