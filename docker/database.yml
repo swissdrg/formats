@@ -5,13 +5,4 @@ development:
   username: postgres
   password:
   pool: 5
-  database: formats_development
-
-test:
-  adapter: postgresql
-  encoding: unicode
-  host: localhost
-  username: postgres
-  password:
-  pool: 5
-  database: formats_test
+  database: formats_docker

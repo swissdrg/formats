@@ -4,5 +4,5 @@ RUN mkdir /formats
 WORKDIR /formats
 COPY Gemfile /formats/Gemfile
 COPY Gemfile.lock /formats/Gemfile.lock
-RUN bundle install
+RUN bundle install --without test codereview
 COPY . /formats
