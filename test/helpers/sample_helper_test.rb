@@ -1,7 +1,7 @@
 require 'test_helper'
 
-class PreviewHelperTest < ActionDispatch::IntegrationTest
-  include PreviewHelper
+class SampleHelperTest < ActionDispatch::IntegrationTest
+  include SampleHelper
 
   test 'parsed types should match' do
     #given
@@ -21,7 +21,7 @@ class PreviewHelperTest < ActionDispatch::IntegrationTest
     type = 'string'
 
     #when
-    generated = generate_value_for_type(type)
+    generated = generate_value(type)
 
     #then
     assert generated.is_a?(String)
@@ -32,7 +32,7 @@ class PreviewHelperTest < ActionDispatch::IntegrationTest
     type = 'int'
 
     #when
-    generated = generate_value_for_type(type)
+    generated = generate_value(type)
 
     #then
     assert generated.is_a?(Integer)
@@ -43,7 +43,7 @@ class PreviewHelperTest < ActionDispatch::IntegrationTest
     type = 'float'
 
     #when
-    generated = generate_value_for_type(type)
+    generated = generate_value(type)
 
     #then
     assert generated.is_a?(Float)
@@ -54,7 +54,7 @@ class PreviewHelperTest < ActionDispatch::IntegrationTest
     type = 'boolean'
 
     #when
-    generated = generate_value_for_type(type)
+    generated = generate_value(type)
 
     #then
     assert !!generated == generated
@@ -65,7 +65,7 @@ class PreviewHelperTest < ActionDispatch::IntegrationTest
     types = %w[int string float boolean]
 
     #when
-    line = generate_sample_line(types)
+    line = generate_line(types)
 
     #then
     expected = /^[[:digit:]]*\|[[:alnum:]]*\|[[:digit:]]*.[[:digit:]]*\|((true)||(false))$/
@@ -77,7 +77,7 @@ class PreviewHelperTest < ActionDispatch::IntegrationTest
     types = %w[int string float boolean]
 
     #when
-    lines = generate_sample_lines(types)
+    lines = generate_lines(types)
 
     #then
     expected = /^([[:digit:]]*\|[[:alnum:]]*\|[[:digit:]]*.[[:digit:]]*\|((true)||(false))\n?)*$/
