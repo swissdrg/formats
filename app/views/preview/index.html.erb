@@ -12,12 +12,17 @@
     <%= select(@format, "format_id", @formats.collect {|f| [f.title, f.id] }, {prompt: "Select Format"}, {:class => "form-control"}) %>
   </p>
   <br>
-  <p>
-    Provide your example input in the area below:
-    <a class="btn btn-sm btn-primary" id="generate_sample_button">Generate Sample</a>
+  <div class="row">
+    <div class="col-sm-10">
+      Provide your example input in the area below:
+    </div>
+    <div class="col-md-2">
+      <a class="btn btn-sm btn-primary" id="generate_sample_button" style="float:right">Generate Sample</a>
+    </div>
+  </div>
+<!--     TODO: Disable button if no format is selected -->
     <br>
     <%= text_area(@input, "data_samples_input", {:class => "form-control",:style => "height:200px"}) %>
-  </p>
 </div>
 <hr>
 
