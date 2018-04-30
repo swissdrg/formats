@@ -35,6 +35,7 @@ var reloadOutput = function() {
             data_sample: dataSample
         },
         success: function(data) {
+            // noinspection JSUnresolvedVariable
             document.getElementById("outputdiv").innerHTML = data.preview;
         },
         error: function () {}

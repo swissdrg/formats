@@ -4,7 +4,6 @@ class PreviewController < ApplicationController
 
   def index
     # Select only formats that have uploads
-    puts request.xhr?
     @formats = Format.all
 
     unless preview_parameters[:format_id].present? && preview_parameters[:data_sample].present?
@@ -32,6 +31,5 @@ class PreviewController < ApplicationController
   def generate_sample_parameters
     params.permit(:format_id)
   end
-
 
 end
