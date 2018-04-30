@@ -19,7 +19,7 @@ module PreviewHelper
   end
 
   def generate_sample(format)
-
+    return if format.file.present?
     "sample"
   end
 end

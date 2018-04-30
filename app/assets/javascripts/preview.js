@@ -39,7 +39,7 @@ var reloadOutput = function() {
         },
         error: function () {}
     });
-}
+};
 
 var generateData = function() {
     $.ajax('/preview/sample', {
@@ -57,4 +57,4 @@ var generateData = function() {
             console.log(e.toString());
         }
     });
-}
+};
