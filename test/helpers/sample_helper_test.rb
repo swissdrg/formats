@@ -4,7 +4,7 @@ class SampleHelperTest < ActionDispatch::IntegrationTest
   include SampleHelper
 
   test 'parsed types should match' do
-    #given
+    # given
     raw = file_fixture('/sample_formats/simple.json').read
     json = JSON.parse(raw, symbolize_keys: true)
 
@@ -17,46 +17,46 @@ class SampleHelperTest < ActionDispatch::IntegrationTest
   end
 
   test 'generate string' do
-    #given
+    # given
     type = 'string'
 
-    #when
+    # when
     generated = generate_value(type)
 
-    #then
+    # then
     assert generated.is_a?(String)
   end
 
   test 'generate int' do
-    #given
+    # given
     type = 'int'
 
-    #when
+    # when
     generated = generate_value(type)
 
-    #then
+    # then
     assert generated.is_a?(Integer)
   end
 
   test 'generate float' do
-    #given
+    # given
     type = 'float'
 
-    #when
+    # when
     generated = generate_value(type)
 
-    #then
+    # then
     assert generated.is_a?(Float)
   end
 
   test 'generate boolean' do
-    #given
+    # given
     type = 'boolean'
 
-    #when
+    # when
     generated = generate_value(type)
 
-    #then
+    # then
     assert !!generated == generated
   end
 
@@ -64,22 +64,22 @@ class SampleHelperTest < ActionDispatch::IntegrationTest
     # given
     types = %w[int string float boolean]
 
-    #when
+    # when
     line = generate_line(types)
 
-    #then
+    # then
     expected = /^[[:digit:]]*\|[[:alnum:]]*\|[[:digit:]]*.[[:digit:]]*\|((true)||(false))$/
     assert expected.match?(line)
   end
 
   test 'generate multiple lines' do
-    #given
+    # given
     types = %w[int string float boolean]
 
-    #when
+    # when
     lines = generate_lines(types)
 
-    #then
+    # then
     expected = /^([[:digit:]]*\|[[:alnum:]]*\|[[:digit:]]*.[[:digit:]]*\|((true)||(false))\n?)*$/
     assert expected.match?(lines)
   end
