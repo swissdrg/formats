@@ -23,7 +23,5 @@
         var editor = new JSONEditor(container.get(0), {mode: 'code'})
     }
 
-    //replace the EOF char for empty char so that the jsoneditor doesn't complain
-<!--    var json = <%#= @json.gsub(/\x0A/, '').html_safe %>-->
     editor.set(<%= @json.html_safe %>);
 </script>

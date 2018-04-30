@@ -7,16 +7,22 @@
   There are no formats yet. Go to Formats to create one.
 <% else -%>
 <div class="container" id="inputdiv">
-  <p>
+  <div>
     Please select a Format:
     <%= select(@format, "format_id", @formats.collect {|f| [f.title, f.id] }, {prompt: "Select Format"}, {:class => "form-control"}) %>
-  </p>
+  </div>
   <br>
-  <p>
-    Provide your example input in the area below:
+  <div class="row">
+    <div class="col-sm-10">
+      Provide your example input in the area below:
+    </div>
+    <div class="col-md-2">
+      <a class="btn btn-primary fa fa-cogs" id="generate_sample_button" style="float:right" href=""> Generate Sample</a>
+    </div>
+  </div>
+<!--     TODO: Disable button if no format is selected -->
     <br>
-    <%= text_area(@input, "data_samples_input", {:class => "form-control", :style => "height:200px"}) %>
-  </p>
+    <%= text_area(@input, "data_samples_input", {:class => "form-control",:style => "height:200px"}) %>
 </div>
 <hr>
 

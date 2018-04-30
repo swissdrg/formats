@@ -21,8 +21,8 @@ class FormatsController < ApplicationController
 
   def edit
     @format = Format.find(params[:id])
-    @json = read_attachment(@format)
-    @json = '{}' if @json.empty?
+    @json = helpers.read_attachment(@format)
+    @json = '{}' unless @json.present?
   end
 
   def create
@@ -52,26 +52,8 @@ class FormatsController < ApplicationController
 
   private
 
-  # Attachments
-
-  def read_attachment(format)
-    return if !format.attachment.present? || !File.readable?(format.attachment.file.path)
-    File.read(format.attachment.file.path)
-  end
-
-  def update_attachment(format, json)
-    return if !format.attachment.present? || !File.writable?(format.attachment.file.path)
-
-    File.open(format.attachment.file.path, 'w') do |f|
-      f.write(json)
-      true
-    end
-  end
-
-  # Format
-
   def update_format(format, json)
-    update_attachment(format, json) && format.update(format_params)
+    helpers.update_attachment(format, json) && format.update(format_params)
   end
 
   def format_params

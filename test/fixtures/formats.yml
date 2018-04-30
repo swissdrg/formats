@@ -3,9 +3,7 @@
 one:
   id: 1
   title: Format One
-  multiline: true
 
 two:
   id: 2
   title: MyString
-  multiline: false
