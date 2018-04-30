@@ -22,7 +22,7 @@ class FormatsController < ApplicationController
   def edit
     @format = Format.find(params[:id])
     @json = helpers.read_attachment(@format)
-    @json = '{}' if !@json.present?
+    @json = '{}' unless @json.present?
   end
 
   def create
