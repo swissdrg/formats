@@ -29,7 +29,7 @@ class FormatsController < ApplicationController
     if Format.new(format_params).save
       redirect_to '/formats'
     else
-      render 'new'
+      redirect_to '/formats/new', flash: { alert: 'You have to fill in the titel and upload a file in order to save the format' }
     end
   end
 
