@@ -20,7 +20,6 @@ gem 'jbuilder', '~> 2.5' # Build JSON APIs with ease. Read more: https://github.
 gem 'jquery-rails'
 gem 'turbolinks', '~> 5' # Makes navigating your web application faster. https://github.com/turbolinks/turbolinks
 
-
 # Authentication
 gem 'bcrypt', git: 'https://github.com/codahale/bcrypt-ruby.git', require: 'bcrypt'
 gem 'devise'
@@ -34,6 +33,7 @@ gem 'uglifier', '>= 1.3.0' # Use Uglifier as compressor for JavaScript assets
 # Utilities
 gem 'carrierwave', '~> 1.0' # File Uploader
 gem 'csvpp' # Use CSV++ for processing format and data inputs
+gem 'faker', git: 'https://github.com/stympy/faker.git', branch: 'master'
 gem 'jsoneditor-rails'
 gem 'simple_form'
 
