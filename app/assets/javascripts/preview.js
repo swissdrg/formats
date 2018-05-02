@@ -12,9 +12,9 @@ $(document).ready(function () {
         reloadOutput();
     });
 
-    $("#data_samples_input").on("change", function() {
+    /*$("#data_samples_input").on("change", function() {
         reloadOutput();
-    });
+    });*/
 
     $('#data_samples_input').on('input', function(){
         reloadOutput();
@@ -52,7 +52,7 @@ var reloadOutput = function() {
         success: function(data) {
             // noinspection JSUnresolvedVariable
                 document.getElementById("outputdiv").innerHTML = data.preview;
-            
+
         },
         error: function (e) {
             console.log("Error");
