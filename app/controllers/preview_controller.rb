@@ -1,6 +1,6 @@
 # Generates a preview of a Format with some input data, using the CSV++ Library
 class PreviewController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:index, :sample]
 
   def index
     # Select only formats that have uploads
