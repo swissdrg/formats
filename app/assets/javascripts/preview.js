@@ -25,16 +25,17 @@ $(document).ready(function () {
 
 var reloadOutput = function() {
     var dataSample = $('#data_samples_input').val();
+    var shortenedSample = (dataSample.toString()).replace(/(^[ \t]*\n)/gm, "");
     $.ajax('/preview', {
         method: 'GET',
         dataType: "json",
         data: {
             format_id: formatId,
-            data_sample: dataSample
+            data_sample: shortenedSample
         },
         success: function(data) {
             // noinspection JSUnresolvedVariable
-            document.getElementById("outputdiv").innerHTML = data.preview;
+                document.getElementById("outputdiv").innerHTML = data.preview;
         },
         error: function (e) {
             console.log("Error");
