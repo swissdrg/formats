@@ -3,8 +3,12 @@
 var formatId = null;
 
 $(document).ready(function () {
+
+    setIfButtonIsDisabled();
     $("#format_id").bind("change", function () {
         formatId = event.srcElement.value;
+        var formatT = event.srcElement.innerText;
+        setIfButtonIsDisabled();
         reloadOutput();
     });
 
@@ -12,8 +16,7 @@ $(document).ready(function () {
         reloadOutput();
     });
 
-    var generateSampleButton = $( "#generate_sample_button" );
-
+    var generateSampleButton = $("#generate_sample_button");
     // Prevent receiving same click event twice
     generateSampleButton.unbind( "click" );
 
@@ -22,6 +25,14 @@ $(document).ready(function () {
         generateData();
     });
 });
+
+var setIfButtonIsDisabled = function(){
+    if(formatId == null || formatId.toString() ===''){
+        $("#generate_sample_button").attr('disabled', 'disabled');
+    }else{
+        $("#generate_sample_button").removeAttr('disabled');
+    }
+};
 
 var reloadOutput = function() {
     var dataSample = $('#data_samples_input').val();
