@@ -1,10 +1,12 @@
 <h1>Formats</h1>
 
-<% if !signed_in?-%>
+<% if !signed_in? && !@formats.empty? -%>
   You are currently a guest user. Please log in to create formats and to access all other restricted sites. View the
-  formats below.
+  formats below or visit the Preview page.
+<% elsif @formats.empty? && !signed_in?-%>
+  You are currently a guest user. There are also no formats yet. Please log in to create formats and to access all other restricted sites.
 <% elsif @formats.empty? -%>
-  You are logged in. There are no formats yet. Start creating some by pressing "Create Format".
+  You are logged in. There are no formats yet. Start creating some by pressing "Create Format". Afterwards there will also be the Preview available!
   <br/>
 <% end -%>
 
