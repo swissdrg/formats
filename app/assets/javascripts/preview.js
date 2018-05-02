@@ -5,6 +5,7 @@ var formatId = null;
 $(document).ready(function () {
 
     setIfButtonIsDisabled();
+    checkIfEmptyInput();
     $("#format_id").bind("change", function () {
         formatId = event.srcElement.value;
         var formatT = event.srcElement.innerText;
@@ -17,9 +18,9 @@ $(document).ready(function () {
     });*/
 
     $('#data_samples_input').on('input', function(){
+        checkIfEmptyInput();
         reloadOutput();
     });
-
 
     var generateSampleButton = $("#generate_sample_button");
     // Prevent receiving same click event twice
@@ -30,6 +31,12 @@ $(document).ready(function () {
         generateData();
     });
 });
+
+var checkIfEmptyInput= function(){
+   if($('#data_samples_input').val() === ''){
+       document.getElementById("outputdiv").innerHTML = "Input is empty, please provide some input"
+   }
+}
 
 var setIfButtonIsDisabled = function(){
     if(formatId == null || formatId.toString() ===''){
@@ -42,6 +49,23 @@ var setIfButtonIsDisabled = function(){
 var reloadOutput = function() {
     var dataSample = $('#data_samples_input').val();
     var shortenedSample = (dataSample.toString()).replace(/(^[ \t]*\n)/gm, "");
+
+    var count = (shortenedSample.match(/\|/g) || []).length;
+
+    if(shortenedSample.length > 0){
+        switch(count%3) {
+            case 0: shortenedSample = shortenedSample + "|||";
+                    break;
+            case 1:shortenedSample = shortenedSample + "||";
+                break;
+            case 2: shortenedSample = shortenedSample + "|";
+                break;
+            case 3: shortenedSample = shortenedSample + "|||";
+                break;
+        }
+       // shortenedSample = shortenedSample + "|||";
+    }
+
     $.ajax('/preview', {
         method: 'GET',
         dataType: "json",
