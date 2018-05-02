@@ -5,11 +5,12 @@ var formatId = null;
 $(document).ready(function () {
 
     setIfButtonIsDisabled();
-    checkIfEmptyInput();
+    checkIfEmptyFormat();
     $("#format_id").bind("change", function () {
         formatId = event.srcElement.value;
         var formatT = event.srcElement.innerText;
         setIfButtonIsDisabled();
+        checkIfEmptyFormat();
         reloadOutput();
     });
 
@@ -32,11 +33,19 @@ $(document).ready(function () {
     });
 });
 
+var checkIfEmptyFormat = function () {
+    if($('#format_id').val() === ''){
+        document.getElementById("outputdiv").innerHTML = "Format is not chosen yet, please select a format!"
+    }else{
+        checkIfEmptyInput();
+    }
+};
+
 var checkIfEmptyInput= function(){
    if($('#data_samples_input').val() === ''){
-       document.getElementById("outputdiv").innerHTML = "Input is empty, please provide some input"
+       document.getElementById("outputdiv").innerHTML = "Input is empty, please provide some input!"
    }
-}
+};
 
 var setIfButtonIsDisabled = function(){
     if(formatId == null || formatId.toString() ===''){
@@ -54,8 +63,8 @@ var reloadOutput = function() {
 
     if(shortenedSample.length > 0){
         switch(count%3) {
-            case 0: shortenedSample = shortenedSample + "|||";
-                    break;
+            case 0:shortenedSample = shortenedSample + "|||";
+                break;
             case 1:shortenedSample = shortenedSample + "||";
                 break;
             case 2: shortenedSample = shortenedSample + "|";
