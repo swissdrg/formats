@@ -12,9 +12,14 @@ $(document).ready(function () {
         reloadOutput();
     });
 
-    $("#data_samples_input").bind("change", function() {
+    $("#data_samples_input").on("change", function() {
         reloadOutput();
     });
+
+    $('#data_samples_input').on('input', function(){
+        reloadOutput();
+    });
+
 
     var generateSampleButton = $("#generate_sample_button");
     // Prevent receiving same click event twice
@@ -47,6 +52,7 @@ var reloadOutput = function() {
         success: function(data) {
             // noinspection JSUnresolvedVariable
                 document.getElementById("outputdiv").innerHTML = data.preview;
+            
         },
         error: function (e) {
             console.log("Error");
