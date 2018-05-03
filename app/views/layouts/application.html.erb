@@ -16,7 +16,7 @@
 
           <div class="navbar-nav">
             <a class="nav-item nav-link h4 <%= 'active' if params[:controller] == 'formats' %>" href='/formats'>Formats</a>
-            <% unless @formats.empty? %>
+            <% unless (Format.all).empty? %>
               <a class="nav-item nav-link h4 <%= 'active' if params[:controller] == 'preview' %>" href='/preview'>Preview</a>
             <% end %>
           </div>
