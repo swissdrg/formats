@@ -4,7 +4,7 @@ class PreviewController < ApplicationController
   before_action :check_for_formats
   def index
     # Select only formats that have uploads
-    @formats = Format.all
+    @format = Format.find(preview_parameters[:format_id]) if preview_parameters[:format_id].present?
 
     unless preview_parameters[:format_id].present? && preview_parameters[:data_sample].present?
       @output = 'No preview available'

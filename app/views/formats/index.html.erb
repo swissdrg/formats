@@ -27,7 +27,9 @@
           <%= link_to ' Delete', format_path(format),
                         method: :delete,
                         data: { confirm: 'Are you sure?' },
-                        class: "btn btn-sm btn-outline-primary fa fa-trash" if signed_in? %></td>
+                        class: "btn btn-sm btn-outline-primary fa fa-trash" if signed_in? %>
+        <%= link_to ' Preview', "preview?format_id=#{format.id}",
+                    class: "btn btn-sm btn-outline-primary fa fa-eye" %></td>
       </tr>
     <% end %>
     </tbody>

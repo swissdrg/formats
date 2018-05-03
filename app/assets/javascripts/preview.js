@@ -4,19 +4,15 @@ var formatId = null;
 
 $(document).ready(function () {
 
-    setIfButtonIsDisabled();
     checkIfEmptyFormat();
+    setIfButtonIsDisabled();
+
     $("#format_id").bind("change", function () {
         formatId = event.srcElement.value;
-        var formatT = event.srcElement.innerText;
-        setIfButtonIsDisabled();
         checkIfEmptyFormat();
+        setIfButtonIsDisabled();
         reloadOutput();
     });
-
-    /*$("#data_samples_input").on("change", function() {
-        reloadOutput();
-    });*/
 
     $('#data_samples_input').on('input', function(){
         checkIfEmptyInput();
@@ -34,9 +30,10 @@ $(document).ready(function () {
 });
 
 var checkIfEmptyFormat = function () {
-    if($('#format_id').val() === ''){
+    formatId = $('#format_id').val();
+    if(formatId === '') {
         document.getElementById("outputdiv").innerHTML = "Format is not chosen yet, please select a format!"
-    }else{
+    } else {
         checkIfEmptyInput();
     }
 };
@@ -48,9 +45,9 @@ var checkIfEmptyInput= function(){
 };
 
 var setIfButtonIsDisabled = function(){
-    if(formatId == null || formatId.toString() ===''){
+    if(formatId == null || formatId.toString() ==='') {
         $("#generate_sample_button").attr('disabled', 'disabled');
-    }else{
+    } else {
         $("#generate_sample_button").removeAttr('disabled');
     }
 };

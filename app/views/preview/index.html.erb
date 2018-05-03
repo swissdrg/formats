@@ -3,13 +3,13 @@
 <!--suppress HtmlUnknownTag -->
 <h1>Preview</h1>
 
-<% if @formats.empty? -%>
+<% if Format.all.empty? -%>
   There are no formats yet. Go to Formats to create one.
 <% else -%>
 <div class="container" id="inputdiv">
   <div>
     Please select a Format:
-    <%= select(@format, "format_id", @formats.collect {|f| [f.title, f.id] }, {prompt: "Select Format"}, {:class => "form-control"}) %>
+    <%= collection_select(:format, :id, Format.all, :id, :title, {prompt: true}, {:class => "form-control"}) %>
   </div>
   <br>
   <div class="row">
@@ -20,7 +20,6 @@
       <button class="btn btn-primary fa fa-cogs" id="generate_sample_button" style="float:right" href=""> Generate Sample</button>
     </div>
   </div>
-<!--     TODO: Disable button if no format is selected -->
     <br>
     <%= text_area(@input, "data_samples_input", {:class => "form-control",:style => "height:200px"}) %>
 </div>
