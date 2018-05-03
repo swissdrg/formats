@@ -1,6 +1,6 @@
 # Generates a preview of a Format with some input data, using the CSV++ Library
 class PreviewController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :sample]
+  before_action :authenticate_user!, except: %i[index sample]
   before_action :check_for_formats
   def index
     # Select only formats that have uploads
@@ -29,10 +29,9 @@ class PreviewController < ApplicationController
   end
 
   def check_for_formats
-    if Format.all.empty?
-      redirect_back fallback_location: root_path,flash: {alert: "No Preview available because there are no formats yet"}
-    end
-
+    return unless Format.all.empty?
+    redirect_back fallback_location: root_path,
+                  flash: { alert: 'No Preview available because there are no formats yet' }
   end
 
   def preview_parameters
