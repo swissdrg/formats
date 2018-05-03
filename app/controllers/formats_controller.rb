@@ -6,6 +6,7 @@ class FormatsController < ApplicationController
   # noinspection RailsParamDefResolve
   before_action :authenticate_user!, except: %i[index show]
 
+
   def index
     @formats = Format.all
   end
@@ -29,7 +30,7 @@ class FormatsController < ApplicationController
     if Format.new(format_params).save
       redirect_to '/formats'
     else
-      redirect_to '/formats/new', flash: { alert: 'You have to fill in the titel and upload a file in order to save the format' }
+      redirect_to '/formats/new'#, flash: { alert: 'You have to fill in the titel and upload a file in order to save the format' }
     end
   end
 

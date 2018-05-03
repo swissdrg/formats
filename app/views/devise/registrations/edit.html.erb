@@ -11,8 +11,8 @@
     <% end %>
 
     <%#= f.label :password, 'New Password' %>
-    <%= f.input :password, autocomplete: "off", required: false, :label =>'New Password' %>
-    <%= f.input :password_confirmation, required: false %>
+    <%= f.input :password, autocomplete: "off", :label =>'New Password', required: true %>
+    <%= f.input :password_confirmation, required: true %>
   </div>
 
   <br>
