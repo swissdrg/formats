@@ -23,8 +23,15 @@
 
         <div class="container-fluid signInInfo navbar-right justify-content-end" id="navbar-header">
           <% if signed_in? && !(current_page?("/users/show"))%>
-            <%= link_to ' Profile', current_user, class: "btn btn-light fa fa-user", :params => {:id => current_user.id}, :method => :get%>
-            <%= link_to ' Sign Out', destroy_user_session_path, class: "btn btn-outline-primary fa fa-sign-out-alt", :method => :delete,data: { confirm: 'Are you sure you want to sign out?' } %>
+            <%= link_to ' Profile', current_user,
+                        class: "btn btn-light my-2 fa fa-user",
+                        params: {:id => current_user.id},
+                        method: :get%>
+            <%= link_to ' Sign Out', destroy_user_session_path,
+                        class: "btn btn-outline-light my-2 fa fa-sign-out-alt",
+                        style: "margin-left:10px",
+                        method: :delete,
+                        data: { confirm: 'Are you sure you want to sign out?' } %>
           <% elsif !(current_page?("/users/sign_in") || current_page?("/sign_up") || current_page?("/session")) %>
               <%= link_to ' Sign In', new_user_session_path, class: "btn btn-light fa fa-sign-in-alt", :method => :get %>
           <% end %>
