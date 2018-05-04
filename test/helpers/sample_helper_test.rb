@@ -3,7 +3,7 @@ require 'test_helper'
 class SampleHelperTest < ActionDispatch::IntegrationTest
   include SampleHelper
 
-  test 'parsed types should match' do
+  test 'read types from simple format' do
     # given
     raw = file_fixture('/sample_formats/simple.json').read
     json = JSON.parse(raw, symbolize_keys: true)
@@ -65,7 +65,7 @@ class SampleHelperTest < ActionDispatch::IntegrationTest
     types = %w[int string float boolean]
 
     # when
-    line = generate_line(types)
+    line = generate_block(types)
 
     # then
     expected = /^[[:digit:]]*\|[[:alnum:]]*\|[[:digit:]]*.[[:digit:]]*\|((true)||(false))$/
@@ -83,4 +83,32 @@ class SampleHelperTest < ActionDispatch::IntegrationTest
     expected = /^([[:digit:]]*\|[[:alnum:]]*\|[[:digit:]]*.[[:digit:]]*\|((true)||(false))\n?)*$/
     assert expected.match?(lines)
   end
+
+  test 'read types from multiline format' do
+    # given
+    raw = file_fixture('/sample_formats/multiline.json').read
+    json = JSON.parse(raw, symbolize_keys: true)
+
+    # when
+    types = read_types_from(json)
+
+    # then
+    expected = {'MB' => %w[string string], 'MN' => %w[string], 'MD' => %w[string]}
+    assert_equal(expected, types, 'Should match')
+  end
+
+  test 'generate lines from multiline format' do
+    # given
+    raw = file_fixture('/sample_formats/multiline.json').read
+    types = { 'MB' => %w[string string], 'MN' => %w[string], 'MD' => %w[string] }
+
+    # when
+    lines = generate_block(types)
+
+    # then
+    expected = /MB|[[:alnum:]]|[[:alnum:]]\nMN|[[:alnum:]]\nMD[[:alnum:]]/
+
+    assert expected.match?(lines)
+  end
+
 end
