@@ -1,0 +1,27 @@
+{
+  "vars": {
+    "v1": {
+      "position": 1,
+      "type": "int",
+      "missings": -999
+    },
+    "v2": {
+      "position": 3,
+      "type": "float",
+      "missings": [
+        "NA",
+        "-",
+        "gibsnet"
+      ]
+    },
+    "v3": {
+      "position": 4,
+      "type": "boolean",
+      "true_values": [
+        "JA",
+        "korrektos",
+        100
+      ]
+    }
+  }
+}

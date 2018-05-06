@@ -3,18 +3,7 @@ require 'test_helper'
 class SampleHelperTest < ActionDispatch::IntegrationTest
   include SampleHelper
 
-  test 'read types from simple format' do
-    # given
-    raw = file_fixture('/sample_formats/simple.json').read
-    json = JSON.parse(raw, symbolize_keys: true)
-
-    # when
-    types = read_types_from(json)
-
-    # then
-    expected = %w[int string float boolean]
-    assert_equal(expected, types, 'Should match')
-  end
+  # GENERATE VALUES
 
   test 'generate string' do
     # given
@@ -60,28 +49,33 @@ class SampleHelperTest < ActionDispatch::IntegrationTest
     assert !!generated == generated
   end
 
-  test 'generate sample line' do
+  # READ TYPES
+
+  test 'read types from simple format' do
     # given
-    types = %w[int string float boolean]
+    raw = file_fixture('/sample_formats/simple.json').read
+    json = JSON.parse(raw, symbolize_keys: true)
 
     # when
-    line = generate_block(types)
+    types = read_types_from(json)
 
     # then
-    expected = /^[[:digit:]]*\|[[:alnum:]]*\|[[:digit:]]*.[[:digit:]]*\|((true)||(false))$/
-    assert expected.match?(line)
+    expected = %w[int string float boolean]
+    assert_equal(expected, types, 'Should match')
   end
 
-  test 'generate multiple lines' do
+
+  test 'read types from format with empty columns' do
     # given
-    types = %w[int string float boolean]
+    raw = file_fixture('/sample_formats/simple_with_empty.json').read
+    json = JSON.parse(raw, symbolize_keys: true)
 
     # when
-    lines = generate_lines(types)
+    types = read_types_from(json)
 
     # then
-    expected = /^([[:digit:]]*\|[[:alnum:]]*\|[[:digit:]]*.[[:digit:]]*\|((true)||(false))\n?)*$/
-    assert expected.match?(lines)
+    expected = %w[int empty float boolean]
+    assert_equal(expected, types, 'Should match')
   end
 
   test 'read types from multiline format' do
@@ -93,22 +87,58 @@ class SampleHelperTest < ActionDispatch::IntegrationTest
     types = read_types_from(json)
 
     # then
-    expected = {'MB' => %w[string string], 'MN' => %w[string], 'MD' => %w[string]}
+    expected = { 'MB' => %w[string string], 'MN' => %w[empty string], 'MD' => %w[empty empty string] }
     assert_equal(expected, types, 'Should match')
+  end
+
+  # GENERATE LINES
+
+  test 'generate simple line' do
+    # given
+    types = %w[int string float boolean]
+
+    # when
+    line = generate_block(types)
+
+    # then
+    expected = /^[[:digit:]]*\|[[:alnum:]]*\|[[:digit:]]*.[[:digit:]]*\|((true)||(false))$/
+    assert expected.match?(line)
+  end
+
+  test 'generate line with skipped columns' do
+    # given
+    types = %w[int string empty float empty boolean]
+
+    # when
+    lines = generate_block(types)
+
+    #then
+    expected = /^[[:digit:]]*\|[[:alnum:]]*(\|){2}[[:alnum:]]*.[[:alnum:]]*(\|){2}((true)||(false))$/
+  end
+
+  test 'generate multiple lines of simple format' do
+    # given
+    types = %w[int string float boolean]
+
+    # when
+    lines = generate_lines(types)
+
+    # then
+    expected = /^([[:digit:]]*\|[[:alnum:]]*\|[[:digit:]]*.[[:digit:]]*\|((true)||(false))\n?)*$/
+    assert expected.match?(lines)
   end
 
   test 'generate lines from multiline format' do
     # given
     raw = file_fixture('/sample_formats/multiline.json').read
-    types = { 'MB' => %w[string string], 'MN' => %w[string], 'MD' => %w[string] }
+    types = { 'MB' => %w[string string], 'MN' => %w[empty string], 'MD' => %w[empty empty string] }
 
     # when
     lines = generate_block(types)
 
     # then
-    expected = /MB|[[:alnum:]]|[[:alnum:]]\nMN|[[:alnum:]]\nMD[[:alnum:]]/
-
-    assert expected.match?(lines)
+    expected = /MB(\|[[:alnum:]]+){2}\nMN(\|){2}[[:alnum:]]+\nMD(\|){3}[[:alnum:]]+/
+    assert_match(expected, lines)
   end
 
 end

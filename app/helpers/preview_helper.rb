@@ -12,7 +12,6 @@ module PreviewHelper
       arr = {"Line" => arr.delete('line_number')}.merge(arr)
     }
 
-
     build_table(output_hashes).to_s
   end
 
