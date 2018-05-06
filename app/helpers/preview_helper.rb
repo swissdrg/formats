@@ -1,6 +1,7 @@
 # Creates a preview for format with sample data
 module PreviewHelper
   include AttachmentHelper
+
   def generate_preview(format, data_sample)
     format_file = read_attachment(format)
 
