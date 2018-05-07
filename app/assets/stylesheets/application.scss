@@ -67,6 +67,11 @@ $success: $drg-cyan;
   color: #ffffff;
 }
 
+div span.help-block {
+  color: $danger;
+}
+
+
 footer {
     position: absolute;
     padding-top: 100px;

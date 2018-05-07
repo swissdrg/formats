@@ -19,7 +19,7 @@ $(document).ready(function () {
     });
 });
 
-var updateButtonDisabledStatus = function(){
+var updateButtonDisabledStatus = function() {
     var formatId = $('#format_id').val();
     if (formatId == null || formatId.toString() ==='') {
         $("#generate_sample_button").attr('disabled', 'disabled');

@@ -1,3 +1,8 @@
+<script>
+    window.json = <%= @json.html_safe %>;
+    loadEditor();
+</script>
+
 <div class="container">
   <h1>Edit Format</h1>
 
@@ -11,17 +16,7 @@
     <div>
       <br>
       <%= link_to ' Cancel', "/formats", class: "btn btn-outline-primary fas fa-angle-left" %>
-      <%= f.submit "Update", class: "btn btn-primary fas", onclick: "$('#json').val(JSON.stringify(editor.get()));" %>
+      <%= f.submit "Update", class: "btn btn-primary fas", onclick: "readEditorValue();" %>
     </div>
   <% end %>
 </div>
-
-<script>
-    var container = $('#jsoneditor');
-    // Prevent jsoneditor from loading multiple times on reloading page
-    if (!container.has('.jsoneditor').length) {
-        var editor = new JSONEditor(container.get(0), {mode: 'code'})
-    }
-
-    editor.set(<%= @json.html_safe %>);
-</script>
