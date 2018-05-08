@@ -71,7 +71,7 @@ class SampleHelperTest < ActionDispatch::IntegrationTest
     lines = generate_block(types)
 
     #then
-    expected = /^[[:digit:]]*\|[[:alnum:]]*(\|){2}[[:alnum:]]*.[[:alnum:]]*(\|){2}((true)||(false))$/
+    expected = /^[[:digit:]]*\|[[:alnum:]]*(\|){2}[[:digit:]]*.[[:digit:]]*(\|){2}((true)||(false))$/
   end
 
   test 'generate multiple lines of simple format' do
