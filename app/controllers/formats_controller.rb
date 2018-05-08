@@ -6,7 +6,6 @@ class FormatsController < ApplicationController
   # noinspection RailsParamDefResolve
   before_action :authenticate_user!, except: %i[index show]
 
-
   def index
     @formats = Format.all
   end
@@ -27,19 +26,23 @@ class FormatsController < ApplicationController
   end
 
   def create
-    if Format.new(format_params).save
+    @format = Format.new(format_params)
+    if @format.save
       redirect_to '/formats'
     else
-      redirect_to '/formats/new'#, flash: { alert: 'You have to fill in the titel and upload a file in order to save the format' }
+      puts @format.errors.full_messages
+      render action: :new #,:params => {:foramt => @format} #, flash: { alert: 'You have to fill in the titel and upload a file in order to save the format' }
     end
   end
 
   def update
-    format = Format.find(params[:id])
+    @format = Format.find(params[:id])
+    #@json = helpers.read_attachment(@format)
 
-    if update_format(format, params[:json])
+    if update_format(@format, params[:json])
       redirect_to '/formats'
     else
+      #render action: :edit
       redirect_back(fallback_location: '/formats', flash: { alert: 'Could not save changes' })
     end
   end

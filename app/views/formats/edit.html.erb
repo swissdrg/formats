@@ -9,8 +9,23 @@
 <div class="container">
   <h1>Edit Format</h1>
 
+  <% if @format.errors.any?%>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@format.errors.count, "error") %>
+        prohibited this format from being saved:
+      </h2>
+
+      <ul>
+        <% @format.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <%= simple_form_for @format, id: "editFormat" do |f| %>
-    <%= f.input :title %>
+    <%= f.input :title, required: true %>
 
     <%= hidden_field_tag(:json, '') %>
 
