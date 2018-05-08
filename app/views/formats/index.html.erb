@@ -19,7 +19,7 @@
     <tbody>
     <% @formats.each do |format| %>
       <tr>
-        <td><%= format.title %></td>
+        <td><%= link_to format.title, format_path(format) %></td>
         <td align="right"><%= link_to ' Edit', edit_format_path(format),
                         class: "btn btn-sm btn-outline-primary fa fa-edit" if signed_in? %>
           <%= link_to ' Delete', format_path(format),
