@@ -13,6 +13,10 @@ class FormatsController < ApplicationController
 
   def show
     @format = Format.find(params[:id])
+    @json = []
+    JSON.parse(helpers.read_attachment(@format))['vars'].each { |k, v|
+      @json << { 'Name' => k, 'Position' => v['position'], 'Type' => v['type'], 'Missings' => v['missings'], 'Truthy Values' => v['true_values']}
+    }
   end
 
   def new

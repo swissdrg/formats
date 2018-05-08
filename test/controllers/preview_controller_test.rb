@@ -8,7 +8,6 @@ class PreviewControllerTest < ActionDispatch::IntegrationTest
 
   test 'should be able to use CSV++' do
     simple_format = file_fixture '/sample_formats/simple.json'
-    puts simple_format
     simple_input = file_fixture '/sample_inputs/simple.txt'
 
     simple_output = CSVPP.parse(input: simple_input, format: simple_format)
