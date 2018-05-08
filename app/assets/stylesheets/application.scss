@@ -90,6 +90,10 @@ pre {
   font-size: 14px;
 }
 
+.scrollbar {
+  overflow-x: auto;
+}
+
 /* Ace JSON Editor */
 .jsoneditor, .jsoneditor-mode-code {
   border: 1px solid $drg-darkcyan !important;
