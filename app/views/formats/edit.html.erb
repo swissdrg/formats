@@ -1,6 +1,9 @@
+
 <script>
-    window.json = <%= @json.html_safe %>;
-    loadEditor();
+  $(document).ready(function () {
+      window.json = <%= @json.html_safe %>;
+      loadEditor();
+  });
 </script>
 
 <div class="container">
