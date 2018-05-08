@@ -23,12 +23,9 @@ var options = {
             console.error(err);
         }
     }
-}
+};
 
 var readEditorValue = function () {
-    if (editor.errors.empty()) {
-    $('#json').val(JSON.stringify(editor.get()));
-    }else{
 
-    }
-};
+        $('#json').val(JSON.stringify(editor.get()));
+    };

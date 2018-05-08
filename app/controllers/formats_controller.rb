@@ -40,10 +40,10 @@ class FormatsController < ApplicationController
   end
 
   def update
-    @format = Format.find(params[:id])
+    format = Format.find(params[:id])
     #@json = helpers.read_attachment(@format)
 
-    if update_format(@format, params[:json])
+    if update_format(format, params[:json])
       redirect_to '/formats'
     else
       #render action: :edit
