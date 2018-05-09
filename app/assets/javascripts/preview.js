@@ -3,10 +3,11 @@
 (function( preview, $, undefined ) {
     var editor = null;
 
+    // LOAD
+
     preview.setup = function () {
-        $("#format_id").bind("change", function () {
-            updateOutput();
-        });
+        loadEditor();
+        updateButtonDisabledStatus();
 
         var generateSampleButton = $("#generate_sample_button");
         // Prevent receiving same click event twice
@@ -17,11 +18,41 @@
             generateData();
         });
 
-        loadEditor();
+        $("#format_id").bind("change", function () {
+            updateOutput();
+        });
+
         editor.getSession().on('change', function() {
             updateOutput();
         });
+    };
+
+    function loadEditor() {
+        console.log('loadEditor');
+        editor = ace.edit("data_samples_input");
+        editor.setOptions({
+            'minLines': 10,
+            'maxLines': 20,
+            'showPrintMargin': false
+        });
+        editor.$blockScrolling = Infinity; // Disables a warning message in ace
+        applyLengthLimit();
+    };
+
+    function applyLengthLimit() {
+        var doc = editor.session.doc;
+        doc.applyAnyDelta = doc.applyAnyDelta || doc.applyDelta
+        doc.applyDelta = function(delta) {
+            if (delta.action === "insert" && this.$maxLength
+                && this.getValue().length > this.$maxLength) {
+                return false;
+            }
+            return this.applyAnyDelta(delta);
+        };
+        doc.$maxLength = 10000
     }
+
+    // UPDATE
 
     function updateButtonDisabledStatus() {
         var formatId = $('#format_id').val();
@@ -30,7 +61,7 @@
         } else {
             $("#generate_sample_button").removeAttr('disabled');
         }
-    };
+    }
 
     function updateOutput() {
         var formatId = $('#format_id').val();
@@ -78,6 +109,7 @@
         });
     }
 
+    // HELPERS
 
     function generateData() {
         $.ajax('/preview/sample', {
@@ -95,31 +127,5 @@
                 console.log(e.toString());
             }
         });
-    };
-
-    function loadEditor() {
-        console.log('loadEditor');
-        editor = ace.edit("data_samples_input");
-        editor.setOptions({
-            'minLines': 10,
-            'maxLines': 20,
-            'showPrintMargin': false
-        });
-        editor.$blockScrolling = Infinity; // Disables a warning message in ace
-
-        var doc = editor.session.doc
-        doc.applyAnyDelta = doc.applyAnyDelta || doc.applyDelta
-        doc.applyDelta = function(delta) {
-            if (delta.action == "insert" && this.$maxLength
-                && this.getValue().length > this.$maxLength) {
-                return false;
-            }
-            return this.applyAnyDelta(delta);
-        }
-        doc.$maxLength = 10000
-    };
-
-    function readEditorValue() {
-        $('#data_samples_input').val(JSON.stringify(editor.get()));
-    };
+    }
 }( window.preview = window.preview || {}, jQuery ));
