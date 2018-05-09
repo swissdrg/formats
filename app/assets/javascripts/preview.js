@@ -96,7 +96,7 @@
                     editor.session.setAnnotations([{
                         row: data.faultyLineNumber,
                         column: 0,
-                        text: "Hello",
+                        text: "Not enough or incorrect variables",
                         type: "error"
                     }]);
                 } else {
