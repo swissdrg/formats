@@ -10,23 +10,37 @@ class InputValidationHelperTest < ActionDispatch::IntegrationTest
     input = file_fixture('/sample_inputs/simple.txt').read
 
     # when
-    valid = validate(input, format)
+    valid = validate(format, input)
 
     # then
     assert valid
   end
 
-  test 'input should be invalid' do
+  test 'input with empty should be valid' do
+    # given
+    raw = file_fixture('/sample_formats/simple_with_empty.json').read
+    format = JSON.parse(raw, symbolize_keys: true)
+    input = file_fixture('/sample_inputs/simple_with_empty.txt').read
+
+    # when
+    valid = validate(format, input)
+
+    # then
+    assert valid
+  end
+
+  test 'mismatched input should be invalid' do
     # given
     raw = file_fixture('/sample_formats/simple_with_empty.json').read
     format = JSON.parse(raw, symbolize_keys: true)
     input = file_fixture('/sample_inputs/simple.txt').read
 
     # when
-    valid = validate(input, format)
+    actual = validate(format, input)
 
     # then
-    assert_not valid
+    expected = {valid: false, line_number: 0}
+    assert_equal(expected, actual)
   end
 
   test 'multiline input should be valid' do
@@ -36,7 +50,7 @@ class InputValidationHelperTest < ActionDispatch::IntegrationTest
     input = file_fixture('/sample_inputs/multiline.txt').read
 
     # when
-    valid = validate(input, format)
+    valid = validate(format, input)
 
     # then
     assert valid
@@ -51,7 +65,7 @@ class InputValidationHelperTest < ActionDispatch::IntegrationTest
     regex = build_regex_for(format)
 
     # then
-    expected = /^[[:digit:]]*(\|)+[[:alnum:]]*(\|)+[[:digit:]]*.[[:digit:]]*(\|)+((true)||(false))$/
+    expected = /^.*(\|)+.*(\|)+.*(\|)+.*$/
     assert(expected.eql?(regex), 'Expected regex to be functionally equivalent')
   end
 
@@ -63,7 +77,7 @@ class InputValidationHelperTest < ActionDispatch::IntegrationTest
     regex = build_regex_with(types)
 
     #then
-    expected = /^[[:digit:]]*(\|)+[[:alnum:]]*(\|)+(\|)+[[:digit:]]*.[[:digit:]]*(\|)+(\|)+((true)||(false))$/
+    expected = /^.*(\|)+.*(\|)+(\|)+.*(\|)+(\|)+.*$/
     assert(expected.eql?(regex), 'Expected regex to be functionally equivalent')
   end
 
@@ -75,7 +89,7 @@ class InputValidationHelperTest < ActionDispatch::IntegrationTest
     regex = multiline_build_regex_with(types)
 
     # then
-    expected = /(MB(\|)+[[:alnum:]]*(\|)+[[:alnum:]]*(\|)*)||(MN(\|)+(\|)+[[:alnum:]]*(\|)*)||(MD(\|)+(\|)+(\|)+[[:alnum:]]*(\|)*)/
+    expected = /(MB(\|)+.*(\|)+.*(\|)*)||(MN(\|)+(\|)+.*(\|)*)||(MD(\|)+(\|)+(\|)+.*(\|)*)/
     assert(expected.eql?(regex), 'Expected regex to be functionally equivalent')
   end
 end

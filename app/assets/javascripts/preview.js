@@ -52,7 +52,15 @@ var updateOutput = function() {
         },
         success: function(data) {
             // noinspection JSUnresolvedVariable
-            $("#outputdiv").html(data.preview);
+            if (data.preview != null) {
+                $("#outputdiv").html(data.preview);
+            }
+            // noinspection JSUnresolvedVariable
+            if (data.faultyLineNumber != null) {
+                console.log("Faulty Line");
+                // noinspection JSUnresolvedVariable
+                selectTextareaLine($('#data_samples_input')[0], data.faultyLineNumber);
+            }
         },
         error: function (e) {
             console.log("Error");
@@ -79,3 +87,44 @@ var generateData = function() {
         }
     });
 };
+
+var selectTextareaLine = function(area,lineNum) {
+    console.log(area.value);
+    var lines = area.value.split("\n");
+
+    // calculate start/end
+    var startPos = 0, endPos = area.value.length;
+    for(var x = 0; x < lines.length; x++) {
+        if(x == lineNum) {
+            break;
+        }
+        startPos += (lines[x].length+1);
+
+    }
+
+    var endPos = lines[lineNum].length+startPos;
+
+    // do selection
+    // Chrome / Firefox
+
+    if(typeof(area.selectionStart) != "undefined") {
+        area.focus();
+        area.selectionStart = startPos;
+        area.selectionEnd = endPos;
+        return true;
+    }
+
+    // IE
+    if (document.selection && document.selection.createRange) {
+        area.focus();
+        area.select();
+        var range = document.selection.createRange();
+        range.collapse(true);
+        range.moveEnd("character", endPos);
+        range.moveStart("character", startPos);
+        range.select();
+        return true;
+    }
+
+    return false;
+}

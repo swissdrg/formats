@@ -18,7 +18,7 @@ Rails.application.configure do
     'Cache-Control' => "public, max-age=#{1.hour.seconds.to_i}"
   }
 
-  # Show full error reports and disable caching.
+  # Show full errors reports and disable caching.
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
 
@@ -37,6 +37,6 @@ Rails.application.configure do
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
 
-  # Raises error for missing translations
+  # Raises errors for missing translations
   # config.action_view.raise_on_missing_translations = true
 end
