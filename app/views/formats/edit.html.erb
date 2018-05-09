@@ -1,8 +1,9 @@
+<% javascript_include_tag "formats" %>
 
 <script>
   $(document).ready(function () {
       window.json = <%= @json.html_safe %>;
-      loadEditor();
+      formats.loadEditor();
   });
 </script>
 

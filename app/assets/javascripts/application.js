@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jsoneditor
+//= require ace-rails-ap
 //= require rails-ujs
 //= require turbolinks
 //= require jquery

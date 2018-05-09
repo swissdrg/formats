@@ -1,12 +1,18 @@
 <%= javascript_include_tag "preview" %>
 
+<script>
+    $(document).ready(function () {
+        preview.setup();
+    });
+</script>
+
 <!--suppress HtmlUnknownTag -->
 <h1>Preview</h1>
 
 <% if Format.all.empty? -%>
   There are no formats yet. Go to Formats to create one.
 <% else -%>
-<div class="container" id="inputdiv">
+  <div class="container" id="inputdiv">
   <div>
     Please select a Format:
     <%= collection_select(:format, :id, Format.all, :id, :title, {prompt: true}, {:class => "form-control"}) %>
@@ -21,7 +27,8 @@
     </div>
   </div>
     <br>
-  <%=text_area(@input, "data_samples_input", {:class => "form-control",:style => "height:200px", rodsaws:1, :maxlength =>10000})%>
+  <div class="container" id="data_samples_input" style="height: 400px;"></div>
+  <%#=text_area(@input, "data_samples_input", {:class => "form-control",:style => "height:200px", rodsaws:1, :maxlength =>10000})%>
 </div>
 <hr>
 

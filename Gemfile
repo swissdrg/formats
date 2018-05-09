@@ -31,6 +31,7 @@ gem 'sass-rails', '~> 5.0' # Use SCSS for stylesheets
 gem 'uglifier', '>= 1.3.0' # Use Uglifier as compressor for JavaScript assets
 
 # Utilities
+gem 'ace-rails-ap'
 gem 'carrierwave', '~> 1.0' # File Uploader
 gem 'csvpp' # Use CSV++ for processing format and data inputs
 gem 'faker', git: 'https://github.com/stympy/faker.git', branch: 'master'
