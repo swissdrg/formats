@@ -6,7 +6,6 @@ class FormatsController < ApplicationController
   # noinspection RailsParamDefResolve
   before_action :authenticate_user!, except: %i[index show]
 
-
   def index
     @formats = Format.all
   end

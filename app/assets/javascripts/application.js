@@ -17,4 +17,6 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require cocoon
+//= require rails.validations
+//= require rails.validations.simple_form
 //= require_tree .

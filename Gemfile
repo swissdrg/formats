@@ -37,6 +37,10 @@ gem 'csvpp' # Use CSV++ for processing format and data inputs
 gem 'faker', git: 'https://github.com/stympy/faker.git', branch: 'master'
 gem 'simple_form'
 
+#Validation
+gem 'client_side_validations', github: 'DavyJonesLocker/client_side_validations'
+gem 'client_side_validations-simple_form', github: 'DavyJonesLocker/client_side_validations-simple_form'
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
