@@ -3,7 +3,6 @@
 
     formats.setup = function () {
         loadEditor();
-        $('.help-block')[0].innerHTML = "";
 
         var submitEditButton = $("#submit_edit_button");
         submitEditButton.unbind( "click" ); // Prevent receiving same click event twice
