@@ -101,3 +101,16 @@ pre {
 .jsoneditor-outer {
   background-color: $drg-darkcyan;
 }
+
+/* Alerts */
+#error_explanation {
+  @extend .alert;
+  @extend .alert-danger;
+    h2 {
+      text-align: left;
+      font-weight: bold;
+      padding: 5px 5px 5px 5px;
+      font-size: 12px;
+      margin: -7px -7px 0;
+    }
+}
