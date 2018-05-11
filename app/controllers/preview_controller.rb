@@ -23,9 +23,19 @@ class PreviewController < ApplicationController
   private
 
   def show_preview(format_id, data_sample)
+    return unless request.xml_http_request?
+
     format = Format.find(format_id)
-    preview = helpers.generate_preview(format, data_sample)
-    render json: { preview: preview } if request.xml_http_request?
+    validation = helpers.validate(format, data_sample)
+
+    puts validation
+
+    if validation[:valid]
+      preview = helpers.generate_preview(format, data_sample)
+      render json: { preview: preview }
+    else
+      render json: { faultyLineNumber: validation[:line_number] }
+    end
   end
 
   def check_for_formats

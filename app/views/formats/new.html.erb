@@ -3,6 +3,22 @@
 
   <%= simple_form_for @format do |f| %>
 
+    <% if @format.errors.any?%>
+      <div id="error_explanation">
+        <h2>
+          <%= pluralize(@format.errors.count, "error") %>
+          prohibited this format from being saved:
+        </h2>
+
+        <ul>
+          <% @format.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+
     <%= f.input :title%>
 
 
@@ -12,7 +28,7 @@
         <%= f.error_notification message: @format.errors.messages[:attachment].first
       <% end %>
 
-      <%= f.file_field :attachment%>
+      <%= f.input :attachment, label: false%>
     <% else %>
       File already uploaded: <%= @upload_name %>
       <%= link_to 'Delete', @upload, method: :delete, data: {confirm: 'Are you sure?'} %>
