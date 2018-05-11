@@ -3,24 +3,29 @@
 <script>
   $(document).ready(function () {
       window.json = <%= @json.html_safe %>;
-      formats.loadEditor();
+      formats.setup();
   });
 </script>
 
 <div class="container">
   <h1>Edit Format</h1>
 
+  <div id="error_explanation" hidden>
+    <h2 class="error-header"></h2>
+    <ul id="error-list"></ul>
+  </div>
+
   <%= simple_form_for @format, id: "editFormat" do |f| %>
     <%= f.input :title %>
 
     <%= hidden_field_tag(:json, '') %>
 
-    <div class="container" id="jsoneditor" style="height: 400px;"></div>
+    <div class="container" id="json_editor" style="height: 400px;"></div>
 
     <div>
       <br>
       <%= link_to ' Cancel', "/formats", class: "btn btn-outline-primary fas fa-angle-left" %>
-      <%= f.submit "Update", class: "btn btn-primary fas", onclick: "readEditorValue();" %>
+      <%= f.submit "Update", class: "btn btn-primary fas", id: "submit_edit_button" %>
     </div>
   <% end %>
 </div>

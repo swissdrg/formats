@@ -31,20 +31,22 @@ class FormatsController < ApplicationController
   end
 
   def create
-    if Format.new(format_params).save
+    @format = Format.new(format_params)
+    if @format.save
       redirect_to '/formats'
     else
-      redirect_to '/formats/new'#, flash: { alert: 'You have to fill in the titel and upload a file in order to save the format' }
+      render action: :new#, flash: { alert: 'You have to fill in the titel and upload a file in order to save the format' }
     end
   end
 
   def update
     format = Format.find(params[:id])
-
+    @format = format
+    @json = helpers.read_attachment(@format)
     if update_format(format, params[:json])
       redirect_to '/formats'
     else
-      redirect_back(fallback_location: '/formats', flash: { alert: 'Could not save changes' })
+      render action: :edit
     end
   end
 
