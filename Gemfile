@@ -35,7 +35,6 @@ gem 'ace-rails-ap'
 gem 'carrierwave', '~> 1.0' # File Uploader
 gem 'csvpp' # Use CSV++ for processing format and data inputs
 gem 'faker', git: 'https://github.com/stympy/faker.git', branch: 'master'
-gem 'jsoneditor-rails'
 gem 'simple_form'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

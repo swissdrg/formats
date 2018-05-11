@@ -28,7 +28,6 @@
     };
 
     function loadEditor() {
-        console.log('loadEditor');
         editor = ace.edit("data_samples_input");
         editor.setValue('');
         editor.setOptions({

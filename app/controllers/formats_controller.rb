@@ -14,6 +14,7 @@ class FormatsController < ApplicationController
   def show
     @format = Format.find(params[:id])
     @json = []
+    # TODO: Handle error if ['vars'] not found
     JSON.parse(helpers.read_attachment(@format))['vars'].each { |k, v|
       @json << { 'Name' => k, 'Position' => v['position'], 'Type' => v['type'], 'Missings' => v['missings'], 'Truthy Values' => v['true_values']}
     }
@@ -35,7 +36,7 @@ class FormatsController < ApplicationController
     if @format.save
       redirect_to '/formats'
     else
-      render action: :new#, flash: { alert: 'You have to fill in the titel and upload a file in order to save the format' }
+      render action: :new
     end
   end
 
