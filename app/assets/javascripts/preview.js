@@ -56,10 +56,13 @@
 
     function updateButtonDisabledStatus() {
         var formatId = $('#format_id').val();
+
         if (formatId == null || formatId.toString() ==='') {
             $("#generate_sample_button").attr('disabled', 'disabled');
+            $("#number_of_lines").attr('disabled', 'disabled');
         } else {
             $("#generate_sample_button").removeAttr('disabled');
+            $("#number_of_lines").removeAttr('disabled');
         }
     }
 
@@ -116,7 +119,8 @@
             method: 'GET',
             dataType: "json",
             data: {
-                format_id: $('#format_id').val()
+                format_id: $('#format_id').val(),
+                number_of_lines: $('#number_of_lines').val()
             },
             success: function(data) {
                 editor.setValue(data.sample);

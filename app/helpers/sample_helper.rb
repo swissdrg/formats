@@ -7,17 +7,17 @@ module SampleHelper
   MAX_LINES = 10
 
   # Generates multiple sample lines for a Format specification
-  def generate_sample_for(format)
+  def generate_sample_for(format, lines)
     format = JSON.parse(read_attachment(format), symbolize_keys: true)
-    generate_lines(read_types_from(format))
+    generate_lines(read_types_from(format), lines)
   end
 
   private
 
   # Generates multiple lines of values joined by newlines
-  def generate_lines(types)
+  def generate_lines(types, lines)
     output = ''
-    (0...rand(MIN_LINES...MAX_LINES)).each do
+    for i in 1..lines.to_i
       output << generate_block(types) << "\n"
     end
     output.chop

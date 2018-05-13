@@ -13,27 +13,32 @@
   There are no formats yet. Go to Formats to create one.
 <% else -%>
   <div class="container" id="inputdiv">
-  <div>
-    Please select a Format:
-    <%= collection_select(:format, :id, Format.all, :id, :title, {prompt: true}, {:class => "form-control"}) %>
-  </div>
-  <br>
-  <div class="row">
-    <div class="col-sm-10">
-      Provide your input in the area below or use the button to generate a random input:
+    <div>
+      Please select a Format:
+      <%= collection_select(:format, :id, Format.all, :id, :title, {prompt: true}, {:class => "form-control"}) %>
     </div>
-    <div class="col-md-2">
-      <button class="btn btn-outline-primary fa fa-random" id="generate_sample_button" style="float:right" href=""> Generate Random Input</button>
-    </div>
-  </div>
     <br>
-  <div class="container" id="data_samples_input" style="height: 400px;"></div>
-</div>
-<hr>
-
-<div class="container">
-  <div class="scrollbar">
-    <div id="outputdiv" class="table table-striped mono">Preview currently not available. Please provide all inputs.</div>
+    <div class="row">
+      <div class="col-sm-8">
+        Provide your input in the area below or use the button to generate a random input:
+      </div>
+      <div class="col-md-4">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <button class="btn btn-outline-primary fa fa-random" id="generate_sample_button" style="float:right" href=""> Generate Random Input</button>
+          </div>
+          <input type="number" class="form-control" id="number_of_lines"  min="1" placeholder="# lines">
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="container" id="data_samples_input" style="height: 400px;"></div>
   </div>
-</div>
+  <hr>
+
+  <div class="container">
+    <div class="scrollbar">
+      <div id="outputdiv" class="table table-striped mono">Preview currently not available. Please provide all inputs.</div>
+    </div>
+  </div>
 <% end %>
