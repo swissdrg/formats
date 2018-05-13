@@ -4,7 +4,7 @@ module SampleHelper
   include FormatTypeHelper
 
   MIN_LINES = 3
-  MAX_LINES = 10
+  MAX_LINES = 10000
 
   # Generates multiple sample lines for a Format specification
   def generate_sample_for(format, lines)
@@ -17,6 +17,12 @@ module SampleHelper
   # Generates multiple lines of values joined by newlines
   def generate_lines(types, lines)
     output = ''
+
+    # handle that user did not specify the number of lines
+    if(lines == nil || lines == '')
+      lines = rand(MIN_LINES...MAX_LINES)
+    end
+
     for i in 1..lines.to_i
       output << generate_block(types) << "\n"
     end

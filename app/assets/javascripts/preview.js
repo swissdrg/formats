@@ -120,7 +120,7 @@
             dataType: "json",
             data: {
                 format_id: $('#format_id').val(),
-                number_of_lines: $('#number_of_lines').val()
+                number_of_lines: $('#number_of_lines').val(),
             },
             success: function(data) {
                 editor.setValue(data.sample);
