@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'formats#index'
 
   get '/preview' => 'preview#index'
+  post '/preview/download' => 'preview#download'
   get '/preview/sample' => 'preview#sample'
 
   devise_for :users, skip: [:registrations]

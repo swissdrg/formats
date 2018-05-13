@@ -86,9 +86,11 @@
                 data_sample: shortenedSample
             },
             success: function(data) {
+                console.log(data)
                 // noinspection JSUnresolvedVariable
                 if (data.preview != null) {
                     $("#outputdiv").html(data.preview);
+                    $("#data").val(data.data);
                 }
                 // noinspection JSUnresolvedVariable
                 if (data.faultyLineNumber != null) {

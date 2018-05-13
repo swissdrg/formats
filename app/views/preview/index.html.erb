@@ -28,6 +28,12 @@
   </div>
     <br>
   <div class="container" id="data_samples_input" style="height: 400px;"></div>
+    <form action="/preview/download" method="post">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"/>
+      <input type="hidden" name="data" id="data" />
+      <input type="submit" value="Download as CSV" />
+    </form>
+
 </div>
 <hr>
 

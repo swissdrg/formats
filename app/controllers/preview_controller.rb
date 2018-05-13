@@ -1,6 +1,7 @@
 # Generates a preview of a Format with some input data, using the CSV++ Library
+require 'tempfile'
 class PreviewController < ApplicationController
-  before_action :authenticate_user!, except: %i[index sample]
+  before_action :authenticate_user!, except: %i[index sample download]
   before_action :check_for_formats
   def index
     # Select only formats that have uploads
@@ -20,6 +21,14 @@ class PreviewController < ApplicationController
     render json: { sample: sample } if request.xml_http_request?
   end
 
+  def download
+    csv = ::Tempfile.new("/data.csv", "#{Rails.root.to_s}/tmp/")
+    csv.write params[:data].gsub(/\|/, ',')
+    csv.flush
+    send_file csv, :type=>"text/csv", :filename => "data.csv"
+
+  end
+
   private
 
   def show_preview(format_id, data_sample)
@@ -32,7 +41,10 @@ class PreviewController < ApplicationController
 
     if validation[:valid]
       preview = helpers.generate_preview(format, data_sample)
-      render json: { preview: preview }
+      render json: {
+          preview: preview,
+          data: data_sample
+      }
     else
       render json: { faultyLineNumber: validation[:line_number] }
     end
