@@ -17,7 +17,7 @@ module SampleHelper
   # Generates multiple lines of values joined by newlines
   def generate_lines(types, lines)
     output = ''
-    (0...rand(MIN_LINES...MAX_LINES)).each do
+    for i in 1..lines.to_i
       output << generate_block(types) << "\n"
     end
     output.chop
