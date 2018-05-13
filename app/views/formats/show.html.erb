@@ -1,5 +1,51 @@
+<script>
+
+    $(document).ready(function () {
+        createErrorMessages();
+    });
+
+    function  createErrorMessages() {
+        var listContents = [];
+
+      listContents.push("The JSON-File is empty!");
+
+        $('.error-header')[0].textContent = "JSON could not be shown:";
+        makeList(listContents);
+
+        $('#error_explanation').removeAttr('hidden');
+    }
+
+    function makeList(array) {
+        // Create the list element:
+        var list = document.getElementById('error-list');
+        $('#error-list').empty();
+
+        for(var i = 0; i < array.length; i++) {
+            // Create the list item:
+            var item = document.createElement('li');
+
+            // Set its contents:
+            item.appendChild(document.createTextNode(array[i]));
+
+            // Add it to the list:
+            list.appendChild(item);
+        }
+
+        // Finally, return the constructed list:
+        return list;
+    }
+</script>
+
 <h1>Format</h1>
 
+<% if @json.to_s == '[]' -%>
+
+<div id="error_explanation" class="alert alert-danger">
+  <div class="error-header"></div>
+  <ul id="error-list">
+  </ul>
+</div>
+<% end %>
 <p>
   <strong>Title:</strong>
   <%= @format.title %>
@@ -10,12 +56,14 @@
   <%= @format.created_at %>
 </p>
 
+<% if @json.to_s != '[]' -%>
 <%= link_to " Download Specification", @format.attachment_url, download: true, class: "btn btn-outline-primary fas fa-download" %>
 
 <p class="table">
 <h3>Contents</h3>
 <div id="outputdiv" class="table table-striped mono"><%= build_table(@json).html_safe %></div>
 </p>
+<% end %>
 
 <p>
   <%= link_to ' Back', "/formats", class: "btn btn-outline-primary fas fa-angle-left"%>

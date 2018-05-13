@@ -14,9 +14,12 @@ class FormatsController < ApplicationController
     @format = Format.find(params[:id])
     @json = []
     # TODO: Handle error if ['vars'] not found
-    JSON.parse(helpers.read_attachment(@format))['vars'].each { |k, v|
-      @json << { 'Name' => k, 'Position' => v['position'], 'Type' => v['type'], 'Missings' => v['missings'], 'Truthy Values' => v['true_values']}
-    }
+    begin
+      JSON.parse(helpers.read_attachment(@format))['vars'].each { |k, v|
+        @json << { 'Name' => k, 'Position' => v['position'], 'Type' => v['type'], 'Missings' => v['missings'], 'Truthy Values' => v['true_values']}
+      }
+    rescue
+    end
   end
 
   def new
