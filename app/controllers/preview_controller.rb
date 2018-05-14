@@ -25,7 +25,7 @@ class PreviewController < ApplicationController
     csv = ::Tempfile.new("/data.csv", "#{Rails.root.to_s}/tmp/")
     csv.write params[:data].gsub(/\|/, ',')
     csv.flush
-    send_file csv, :type=>"text/csv", :filename => "data.csv"
+    send_file csv, :type=>"text/csv", :filename => Time.now
 
   end
 
