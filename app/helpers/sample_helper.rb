@@ -18,21 +18,6 @@ module SampleHelper
   def generate_lines(types, lines)
     output = ''
 
-    # handle that user did not specify the number of lines
-    if(lines == nil || lines == '')
-      lines = rand(MIN_LINES...MAX_LINES)
-
-    # handle that input is not an integer
-    elsif(!/\A[-+]?\d+\z/.match(lines))
-      # TODO: print error message
-      return;
-
-    # handle that number of lines is less than MIN_LINES or greater than MAX_LINES
-    elsif(lines.to_i < MIN_LINES || lines.to_i > MAX_LINES)
-      # TODO: print error message
-      return;
-    end
-
     for i in 0..(lines.to_i-1)
       output << generate_block(types) << "\n"
     end
