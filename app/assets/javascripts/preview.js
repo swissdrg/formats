@@ -4,7 +4,7 @@
     var editor = null;
 
     const MIN_LINES = 1;
-    const MAX_LINES = 10000;
+    const MAX_LINES = 1000;
 
     // LOAD
 
