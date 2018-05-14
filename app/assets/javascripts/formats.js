@@ -19,7 +19,7 @@
 
     function loadEditor() {
         editor = ace.edit("json_editor");
-        var contents = JSON.stringify((window.json), null, '\t')
+        var contents = JSON.stringify((window.json), null, '\t');
         editor.session.setValue(contents);
 
         editor.setOptions({
