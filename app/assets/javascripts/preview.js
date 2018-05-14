@@ -124,7 +124,7 @@
 
         // error handling before sending data to controller
         if (number_of_lines == null || number_of_lines === '') {
-            number_of_lines = (Math.round(Math.random() * MAX_LINES + MIN_LINES)).toString();
+            number_of_lines = (Math.round((Math.random() * (MAX_LINES - MIN_LINES) + MIN_LINES)).toString();
         } else if (!isInteger(number_of_lines)) {
             $("#outputdiv").html("Number of lines must be an integer!");
             return;
