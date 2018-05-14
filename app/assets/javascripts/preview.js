@@ -129,7 +129,7 @@
             $("#outputdiv").html("Number of lines must be an integer!");
             return;
         } else if (parseInt(number_of_lines) < MIN_LINES || parseInt(number_of_lines) > MAX_LINES) {
-            $("#outputdiv").html("Number of lines is out of range (1-10000)!");
+            $("#outputdiv").html("Number of lines is out of range (1-1000)!");
             return;
         }
 
