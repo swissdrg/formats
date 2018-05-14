@@ -17,7 +17,7 @@ class PreviewController < ApplicationController
 
   def sample
     format = Format.find(generate_sample_parameters[:format_id])
-    sample = helpers.generate_sample_for(format)
+    sample = helpers.generate_sample_for(format, generate_sample_parameters[:number_of_lines])
     render json: { sample: sample } if request.xml_http_request?
   end
 
@@ -61,6 +61,6 @@ class PreviewController < ApplicationController
   end
 
   def generate_sample_parameters
-    params.permit(:format_id)
+    params.permit(:format_id, :number_of_lines)
   end
 end
