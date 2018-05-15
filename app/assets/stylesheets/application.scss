@@ -93,6 +93,40 @@ pre {
   overflow-x: auto;
 }
 
+input::-webkit-input-placeholder {
+  color: $drg-link !important;
+}
+
+input:-moz-placeholder {
+  color: $drg-link !important;
+}
+
+input::-moz-placeholder {
+  color: $drg-link !important;
+}
+
+input:-ms-input-placeholder {
+  color: $drg-link !important;
+}
+
+#number_of_lines {
+  border: 1px solid $drg-link;
+  color: $drg-link;
+}
+
+/*.btn-primary:active{
+  border: 1px solid $drg-link;
+  background-color: white;
+}
+
+btn-success:hover{
+
+}
+
+btn-success:focus{
+
+}*/
+
 /* Ace JSON Editor */
 .jsoneditor, .jsoneditor-mode-code {
   border: 1px solid $drg-darkcyan !important;
