@@ -4,7 +4,7 @@
     var editor = null;
 
     const MIN_LINES = 1;
-    const MAX_LINES = 1000;
+    const MAX_LINES = 100;
 
     // LOAD
 
@@ -52,7 +52,7 @@
             }
             return this.applyAnyDelta(delta);
         };
-        doc.$maxLength = 10000
+        doc.$maxLength = 10000;
     }
 
     // UPDATE
@@ -129,7 +129,7 @@
             $("#outputdiv").html("Number of lines must be an integer!");
             return;
         } else if (parseInt(number_of_lines) < MIN_LINES || parseInt(number_of_lines) > MAX_LINES) {
-            $("#outputdiv").html("Number of lines is out of range (1-1000)!");
+            $("#outputdiv").html("Number of lines is out of range (1-100)!");
             return;
         }
 
