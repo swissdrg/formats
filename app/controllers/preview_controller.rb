@@ -22,11 +22,8 @@ class PreviewController < ApplicationController
   end
 
   def download
-    csv = ::Tempfile.new("/data.csv", "#{Rails.root.to_s}/tmp/")
-    csv.write params[:data].gsub(/\|/, ',')
-    csv.flush
-    send_file csv, :type=>"text/csv", :filename => Time.now
-
+    data = download_data_parameters[:download_data_sample].gsub(/\|/, ',')
+    send_data data, :type=>"text/csv", :filename => Time.now
   end
 
   private
@@ -62,5 +59,9 @@ class PreviewController < ApplicationController
 
   def generate_sample_parameters
     params.permit(:format_id, :number_of_lines)
+  end
+
+  def download_data_parameters
+    params.permit(:download_data_sample)
   end
 end

@@ -25,20 +25,25 @@
       <div class="col-md-4">
         <div class="input-group">
           <div class="input-group-prepend">
-            <button class="btn btn-outline-primary fa fa-random" id="generate_sample_button" style="float:right" href=""> Generate Random Input</button>
+            <button class="btn btn-sm btn-outline-primary fa fa-random" id="generate_sample_button" style="float:right" href=""> Generate Random Input</button>
           </div>
           <input type="number" class="form-control" id="number_of_lines" min="1" step="1" placeholder="# lines">
         </div>
       </div>
     </div>
-    <br>
-    <div class="container" id="data_samples_input" style="height: 400px;"></div>
-    <form action="/preview/download" method="post">
-    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"/>
-    <input type="hidden" name="data" id="data" />
-    <input type="submit" value="Download as CSV" />
-    </form>
 
+    <p>
+    <div class="container" id="data_samples_input" style="height: 400px;"></div>
+    </p>
+
+    <p>
+      <%= form_tag('/preview/download', method: :post, id: 'download_csv_form') do %>
+        <%= hidden_field_tag(:download_data_sample) %>
+        <button type="submit" class="btn btn-sm btn-outline-primary">
+          <i class="fa fa-download"> Download CSV</i>
+        </button>
+      <% end %>
+    </p>
   </div>
   <hr>
 

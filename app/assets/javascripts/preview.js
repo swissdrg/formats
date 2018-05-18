@@ -25,6 +25,10 @@
             updateOutput();
         });
 
+        $("#download_csv_form").submit(function() {
+            $('#download_data_sample').val(editor.getValue());
+        });
+
         editor.getSession().on('change', function() {
             updateOutput();
         });
@@ -96,19 +100,18 @@
                 // noinspection JSUnresolvedVariable
                 if (data.preview != null) {
                     $("#outputdiv").html(data.preview);
-                    $("#data").val(data.data);
                 }
                 // noinspection JSUnresolvedVariable
+                var annotations = [];
                 if (data.faultyLineNumber != null) {
-                    editor.session.setAnnotations([{
+                    annotations = [{
                         row: data.faultyLineNumber,
                         column: 0,
                         text: "Not enough or incorrect variables",
                         type: "error"
-                    }]);
-                } else {
-                    editor.session.setAnnotations();
+                    }];
                 }
+                editor.session.setAnnotations(annotations);
             },
             error: function (e) {
                 console.log("Error");
