@@ -1,27 +1,25 @@
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
 <%= simple_form_for(resource, as: resource_name, url: user_registration_path, html: { method: :put }) do |f| %>
-  <%= f.error_notification %>
+  <%= devise_error_messages! %>
 
   <div class="form-inputs form-group">
-    <%= f.input :email, required: true, autofocus: true %>
+    <%= f.input :email, required: true,disabled: true, autofocus: true %>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
 
-    <%= f.input :password, autocomplete: "off", required: false %>
-    <%= f.input :password_confirmation, required: false %>
+    <%= f.input :password, autocomplete: "off", :label =>'New Password', required: true %>
+    <%= f.input :password_confirmation, required: true %>
   </div>
-
-  <br>
+  
   <div class="form-group">
-    <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
+    <%= f.input :current_password, required: true %>
   </div>
 
   <div class="form-actions">
-    <%= link_to " Cancel", :back, :class => "btn btn-outline-primary fa fa-angle-left" %>
+    <%= link_to " Cancel", current_user, :class => "btn btn-outline-primary fa fa-angle-left" %>
     <%= f.button :submit, "Update", :class => "btn btn-primary fa"%>
   </div>
 <% end %>
-

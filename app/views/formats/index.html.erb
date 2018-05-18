@@ -1,10 +1,7 @@
 <h1>Formats</h1>
 
-<% if !signed_in?-%>
-  You are currently a guest user. Please log in to create formats and to access all other restricted sites. View the
-  formats below.
-<% elsif @formats.empty? -%>
-  You are logged in. There are no formats yet. Start creating some by pressing "Create Format".
+<% if signed_in? && @formats.empty? -%>
+  You are logged in. There are no formats yet. Start creating some by pressing "Create Format". Afterwards there will also be the Preview available!
   <br/>
 <% end -%>
 
@@ -19,13 +16,15 @@
     <tbody>
     <% @formats.each do |format| %>
       <tr>
-        <td><%= format.title %></td>
+        <td><%= link_to format.title, format_path(format) %></td>
         <td align="right"><%= link_to ' Edit', edit_format_path(format),
                         class: "btn btn-sm btn-outline-primary fa fa-edit" if signed_in? %>
           <%= link_to ' Delete', format_path(format),
                         method: :delete,
                         data: { confirm: 'Are you sure?' },
-                        class: "btn btn-sm btn-outline-primary fa fa-trash" if signed_in? %></td>
+                        class: "btn btn-sm btn-outline-primary fa fa-trash" if signed_in? %>
+        <%= link_to ' Preview', "preview?format_id=#{format.id}",
+                    class: "btn btn-sm btn-outline-primary fa fa-eye" %></td>
       </tr>
     <% end %>
     </tbody>

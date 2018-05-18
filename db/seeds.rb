@@ -18,6 +18,15 @@ user = User.create!(
 )
 user.save!
 
+
+userx = User.create!(
+    email: 'aless1997@windowslive.com',
+    password: '123456',
+    password_confirmation: '123456',
+    admin: 'true'
+)
+userx.save!
+
 puts 'seeding is done'
 puts 'email: admin@gmail.com'
 puts 'password: 123456789'

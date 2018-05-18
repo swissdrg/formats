@@ -10,11 +10,13 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jsoneditor
+//= require ace-rails-ap
 //= require rails-ujs
 //= require turbolinks
 //= require jquery
 //= require popper
 //= require bootstrap-sprockets
 //= require cocoon
+//= require rails.validations
+//= require rails.validations.simple_form
 //= require_tree .

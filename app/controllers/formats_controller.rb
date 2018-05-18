@@ -1,8 +1,6 @@
 # Handles CRUD Operations and Upload for Format specifications
+# noinspection ALL
 class FormatsController < ApplicationController
-  # default order for actions is:
-  # index, show, new, edit, create, update, destroy
-
   # noinspection RailsParamDefResolve
   before_action :authenticate_user!, except: %i[index show]
 
@@ -12,6 +10,14 @@ class FormatsController < ApplicationController
 
   def show
     @format = Format.find(params[:id])
+    @json = []
+    begin
+      JSON.parse(helpers.read_attachment(@format))['vars'].each { |k, v|
+        @json << { 'Name' => k, 'Position' => v['position'], 'Type' => v['type'], 'Missings' => v['missings'], 'Truthy Values' => v['true_values']}
+      }
+    rescue
+      # resolved because empty @json will be handled in view
+    end
   end
 
   def new
@@ -21,57 +27,43 @@ class FormatsController < ApplicationController
 
   def edit
     @format = Format.find(params[:id])
-    @json = read_attachment(@format)
-    @json = '{}' if @json.empty?
+    @json = helpers.read_attachment(@format)
+    @json = '{}' unless @json.present?
   end
 
   def create
-    if Format.new(format_params).save
+    @format = Format.new(format_params)
+    if @format.save
+      flash[:notice] = "Created successfully"
       redirect_to '/formats'
     else
-      render 'new'
+      render action: :new
     end
   end
 
   def update
     format = Format.find(params[:id])
-
+    @format = format
+    @json = helpers.read_attachment(@format)
     if update_format(format, params[:json])
+      flash[:notice] = 'Edited successfully'
       redirect_to '/formats'
     else
-      redirect_back(fallback_location: '/formats', flash: { alert: 'Could not save changes' })
+      render action: :edit
     end
   end
 
   def destroy
     @format = Format.find(params[:id])
     @format.destroy
-
+    flash[:notice] = 'Deleted successfully'
     redirect_to '/formats'
   end
 
   private
 
-  # Attachments
-
-  def read_attachment(format)
-    return if !format.attachment.present? || !File.readable?(format.attachment.file.path)
-    File.read(format.attachment.file.path)
-  end
-
-  def update_attachment(format, json)
-    return if !format.attachment.present? || !File.writable?(format.attachment.file.path)
-
-    File.open(format.attachment.file.path, 'w') do |f|
-      f.write(json)
-      true
-    end
-  end
-
-  # Format
-
   def update_format(format, json)
-    update_attachment(format, json) && format.update(format_params)
+    helpers.update_attachment(format, json) && format.update(format_params)
   end
 
   def format_params

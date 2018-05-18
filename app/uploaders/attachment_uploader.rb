@@ -21,7 +21,7 @@ class AttachmentUploader < CarrierWave::Uploader::Base
   # end
 
   def content_type_whitelist
-    ['application/text', 'application/json']
+    %w(application/text application/json)
   end
 
   def size_range

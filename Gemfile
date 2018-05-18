@@ -20,7 +20,6 @@ gem 'jbuilder', '~> 2.5' # Build JSON APIs with ease. Read more: https://github.
 gem 'jquery-rails'
 gem 'turbolinks', '~> 5' # Makes navigating your web application faster. https://github.com/turbolinks/turbolinks
 
-
 # Authentication
 gem 'bcrypt', git: 'https://github.com/codahale/bcrypt-ruby.git', require: 'bcrypt'
 gem 'devise'
@@ -32,10 +31,15 @@ gem 'sass-rails', '~> 5.0' # Use SCSS for stylesheets
 gem 'uglifier', '>= 1.3.0' # Use Uglifier as compressor for JavaScript assets
 
 # Utilities
+gem 'ace-rails-ap'
 gem 'carrierwave', '~> 1.0' # File Uploader
 gem 'csvpp' # Use CSV++ for processing format and data inputs
-gem 'jsoneditor-rails'
+gem 'faker', git: 'https://github.com/stympy/faker.git', branch: 'master'
 gem 'simple_form'
+
+#Validation
+gem 'client_side_validations', github: 'DavyJonesLocker/client_side_validations'
+gem 'client_side_validations-simple_form', github: 'DavyJonesLocker/client_side_validations-simple_form'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

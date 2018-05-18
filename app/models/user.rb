@@ -4,4 +4,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable, :registerable
   devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable
+  # noinspection RailsParamDefResolve,RailsParamDefResolve
+  validates_presence_of :email,:password, :password_confirmation
+
 end

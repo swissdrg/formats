@@ -22,9 +22,6 @@ $drg-link: #0087af;
 $drg-active: #006187;
 $drg-body: #404c4f;
 
-// drg link border bottom
-// 1px solid #b6e8fb
-
 /* Bootstrap Overrides */
 $primary: $drg-link;
 
@@ -42,17 +39,8 @@ $table-accent-bg: $drg-lightcyan;
 $success: $drg-cyan;
 
 @import "bootstrap";
-@import "jsoneditor";
 @import "font-awesome-sprockets";
 @import "font-awesome";
-
-//$secondary:     $gray-600 !default;
-//$success:       $green !default;
-//$info:          $cyan !default;
-//$warning:       $yellow !default;
-//$danger:        $red !default;
-//$light:         $gray-100 !default;
-//$dark:          $gray-800 !default;
 
 /* NAVBAR */
 
@@ -70,6 +58,11 @@ $success: $drg-cyan;
   color: #ffffff;
 }
 
+div span.help-block {
+  color: $danger;
+}
+
+
 footer {
     position: absolute;
     padding-top: 100px;
@@ -83,6 +76,54 @@ pre {
   background-color: white;
 }
 
+.mono {
+  font-family: monospace;
+  font-size: 14px;
+}
+
+.scrollbar {
+  overflow-x: auto;
+}
+
+input::-webkit-input-placeholder {
+  color: $drg-link !important;
+}
+
+input:-moz-placeholder {
+  color: $drg-link !important;
+}
+
+input:-ms-input-placeholder {
+  color: $drg-link !important;
+}
+
+input:disabled::-webkit-input-placeholder {
+  color: #66B3CE !important;
+}
+
+input:disabled::-moz-placeholder {
+  color: #66B3CE !important;
+}
+
+input:disabled::-ms-input-placeholder {
+  color: #66B3CE !important;
+}
+
+#number_of_lines {
+  border: 1px solid $drg-link;
+  color: $drg-link;
+}
+
+#number_of_lines:disabled {
+  border: 1px solid #66B3CE;
+  background-color: #ffffff;
+}
+
+.btn.btn-outline-primary:disabled {
+  border: 1px solid $drg-link;
+  color: $drg-link;
+}
+
 /* Ace JSON Editor */
 .jsoneditor, .jsoneditor-mode-code {
   border: 1px solid $drg-darkcyan !important;
@@ -90,4 +131,17 @@ pre {
 
 .jsoneditor-outer {
   background-color: $drg-darkcyan;
+}
+
+/* Alerts */
+#error_explanation {
+  @extend .alert;
+  @extend .alert-danger;
+    h2 {
+      text-align: left;
+      font-weight: bold;
+      padding: 5px 5px 5px 5px;
+      font-size: 12px;
+      margin: -7px -7px 0;
+    }
 }

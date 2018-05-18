@@ -48,13 +48,13 @@ SimpleForm.setup do |config|
     ## Inputs
     b.use :label_input
     b.use :hint,  wrap_with: { tag: :span, class: :hint }
-    b.use :error, wrap_with: { tag: :span, class: :error }
+    b.use :errors, wrap_with: {tag: :span, class: :errors }
 
     ## full_messages_for
-    # If you want to display the full error message for the attribute, you can
+    # If you want to display the full errors message for the attribute, you can
     # use the component :full_error, like:
     #
-    # b.use :full_error, wrap_with: { tag: :span, class: :error }
+    # b.use :full_error, wrap_with: { tag: :span, class: :errors }
   end
 
   # The default wrapper to be used by the FormBuilder.
@@ -74,13 +74,13 @@ SimpleForm.setup do |config|
   # Use :to_sentence to list all errors for each field.
   # config.error_method = :first
 
-  # Default tag used for error notification helper.
+  # Default tag used for errors notification helper.
   config.error_notification_tag = :div
 
-  # CSS class to add for error notification helper.
+  # CSS class to add for errors notification helper.
   config.error_notification_class = 'error_notification'
 
-  # ID to add for error notification helper.
+  # ID to add for errors notification helper.
   # config.error_notification_id = nil
 
   # Series of attempts to detect a default label method for collection.
