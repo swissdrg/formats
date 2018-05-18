@@ -42,14 +42,6 @@ $success: $drg-cyan;
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
-//$secondary:     $gray-600 !default;
-//$success:       $green !default;
-//$info:          $cyan !default;
-//$warning:       $yellow !default;
-//$danger:        $red !default;
-//$light:         $gray-100 !default;
-//$dark:          $gray-800 !default;
-
 /* NAVBAR */
 
 .navbar-logo{
@@ -95,57 +87,31 @@ pre {
 
 input::-webkit-input-placeholder {
   color: $drg-link !important;
-  font-weight: bold;
-  font-family: "Fira Sans";
 }
 
 input:-moz-placeholder {
   color: $drg-link !important;
-  font-weight: bold;
-  font-family: "Fira Sans";
-}
-
-input::-moz-placeholder {
-  color: $drg-link !important;
-  font-weight: bold;
-  font-family: "Fira Sans";
 }
 
 input:-ms-input-placeholder {
   color: $drg-link !important;
-  font-weight: bold;
-  font-family: "Fira Sans";
 }
 
 input:disabled::-webkit-input-placeholder {
   color: #66B3CE !important;
-  font-weight: bold;
-  font-family: "Fira Sans";
 }
 
 input:disabled::-moz-placeholder {
   color: #66B3CE !important;
-  font-weight: bold;
-  font-family: "Fira Sans";
-}
-
-input:disabled::-moz-placeholder {
-  color: #66B3CE !important;
-  font-weight: bold;
-  font-family: "Fira Sans";
 }
 
 input:disabled::-ms-input-placeholder {
   color: #66B3CE !important;
-  font-weight: bold;
-  font-family: "Fira Sans";
 }
 
 #number_of_lines {
   border: 1px solid $drg-link;
   color: $drg-link;
-  font-weight: bold;
-  font-family: "Fira Sans";
 }
 
 #number_of_lines:disabled {
