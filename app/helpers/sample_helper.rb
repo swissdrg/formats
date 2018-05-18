@@ -18,7 +18,7 @@ module SampleHelper
   def generate_lines(types, lines)
     output = ''
 
-    (0..(lines.to_i - 1)).each {
+    (0..(lines.to_i - 1)).each {|i|
       output << generate_block(types) << "\n"
     }
     output.chop

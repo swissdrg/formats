@@ -80,11 +80,11 @@ class SampleHelperTest < ActionDispatch::IntegrationTest
     types = %w[int string float boolean]
 
     # when
-    lines = generate_lines(types)
+    lines = generate_lines(types, 10)
 
     # then
-    expected = /^([[:digit:]]*\|[[:alnum:]]*\|[[:digit:]]*.[[:digit:]]*\|((true)||(false))\n?)*$/
-    assert expected.match?(lines)
+    expected = /^([[:digit:]]*\|[[:alnum:]]*\|[[:alnum:]]*.[[:alnum:]]*\|((true)||(false))\n?)*$/
+    assert_match(expected, lines)
   end
 
   test 'generate lines from multiline format' do
