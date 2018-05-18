@@ -1,5 +1,4 @@
 <script>
-
     $(document).ready(function () {
         createErrorMessages();
     });
@@ -7,7 +6,7 @@
     function  createErrorMessages() {
         var listContents = [];
 
-      listContents.push("The JSON-File is empty!");
+        listContents.push("The File is missing or could not be read.");
 
         $('.error-header')[0].textContent = "JSON could not be shown:";
         makeList(listContents);
@@ -39,12 +38,11 @@
 <h1>Format</h1>
 
 <% if @json.to_s == '[]' -%>
-
-<div id="error_explanation" class="alert alert-danger">
-  <div class="error-header"></div>
-  <ul id="error-list">
-  </ul>
-</div>
+  <div id="error_explanation" class="alert alert-danger">
+    <div class="error-header"></div>
+    <ul id="error-list">
+    </ul>
+  </div>
 <% end %>
 <p>
   <strong>Title:</strong>
@@ -57,12 +55,12 @@
 </p>
 
 <% if @json.to_s != '[]' -%>
-<%= link_to " Download Specification", @format.attachment_url, download: true, class: "btn btn-outline-primary fas fa-download" %>
+  <%= link_to " Download Specification", @format.attachment_url, download: true, class: "btn btn-outline-primary fas fa-download" %>
 
-<p class="table">
-<h3>Contents</h3>
-<div id="outputdiv" class="table table-striped mono"><%= build_table(@json).html_safe %></div>
-</p>
+  <p class="table">
+  <h3>Contents</h3>
+  <div id="outputdiv" class="table table-striped mono"><%= build_table(@json).html_safe %></div>
+  </p>
 <% end %>
 
 <p>

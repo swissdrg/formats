@@ -10,7 +10,6 @@
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
 
-    <%#= f.label :password, 'New Password' %>
     <%= f.input :password, autocomplete: "off", :label =>'New Password', required: true %>
     <%= f.input :password_confirmation, required: true %>
   </div>
@@ -20,7 +19,7 @@
   </div>
 
   <div class="form-actions">
-    <%= link_to " Cancel", :back, :class => "btn btn-outline-primary fa fa-angle-left" %>
+    <%= link_to " Cancel", current_user, :class => "btn btn-outline-primary fa fa-angle-left" %>
     <%= f.button :submit, "Update", :class => "btn btn-primary fa"%>
   </div>
 <% end %>

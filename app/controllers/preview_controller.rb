@@ -1,6 +1,6 @@
 # Generates a preview of a Format with some input data, using the CSV++ Library
-require 'tempfile'
 class PreviewController < ApplicationController
+  # noinspection RailsParamDefResolve
   before_action :authenticate_user!, except: %i[index sample download]
   before_action :check_for_formats
   def index
@@ -33,8 +33,6 @@ class PreviewController < ApplicationController
 
     format = Format.find(format_id)
     validation = helpers.validate(format, data_sample)
-
-    puts validation
 
     if validation[:valid]
       preview = helpers.generate_preview(format, data_sample)

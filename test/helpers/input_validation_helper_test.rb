@@ -89,7 +89,7 @@ class InputValidationHelperTest < ActionDispatch::IntegrationTest
     regex = multiline_build_regex_with(types)
 
     # then
-    expected = /(MB(\|)+.*(\|)+.*(\|)*)||(MN(\|)+(\|)+.*(\|)*)||(MD(\|)+(\|)+(\|)+.*(\|)*)/
+    expected = /(MB(\|)+.*(\|)+.*(\|)*)\|\|(MN(\|)+(\|)+.*(\|)*)\|\|(MD(\|)+(\|)+(\|)+.*(\|)*)/
     assert(expected.eql?(regex), 'Expected regex to be functionally equivalent')
   end
 end

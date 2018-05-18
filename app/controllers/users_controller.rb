@@ -1,5 +1,6 @@
 # User Account Overview Page
 class UsersController < ApplicationController
+  # noinspection RailsParamDefResolve
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def configure_permitted_parameters
@@ -18,11 +19,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    # NOTE: Using `strong_parameters` gem
     params.require(:user).permit(:email, :password, :password_confirmation)
   end
 
-  #def user_params
-  #  params.fetch(:user, {})
-  #end
 end

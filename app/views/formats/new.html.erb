@@ -24,9 +24,6 @@
 
     <h3>Upload File</h3>
     <% if @format.attachment.file.nil? -%>
-      <%# if @format.errors.messages[:attachment].any? -%
-        <%= f.error_notification message: @format.errors.messages[:attachment].first
-      <% end %>
 
       <%= f.input :attachment, label: false%>
     <% else %>

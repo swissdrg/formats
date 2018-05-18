@@ -18,16 +18,8 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Change my password", html: {onsubmit: "console.log('Hello');" } %>
+    <%= f.button :submit, "Change my password" %>
   </div>
 <% end %>
 
 <%= render "devise/shared/links" %>
-
-
-
-<script>
-    var validate = function () {
-      console.log("validate");
-    };
-</script>

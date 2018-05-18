@@ -26,7 +26,6 @@ module InputValidationHelper
             else
               build_regex_with(types)
             end
-    regex
   end
 
   # Builds a regular expression for a format that is not multiline

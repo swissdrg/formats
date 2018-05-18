@@ -18,8 +18,10 @@
     };
 
     function loadEditor() {
+        // noinspection JSUnresolvedVariable
         editor = ace.edit("json_editor");
         var contents = JSON.stringify((window.json), null, '\t');
+        // noinspection JSUnresolvedVariable
         editor.session.setValue(contents);
 
         editor.setOptions({
@@ -28,6 +30,7 @@
                 'showPrintMargin': false
             });
 
+        // noinspection JSUnresolvedVariable
         editor.session.setMode("ace/mode/json");
         editor.$blockScrolling = Infinity; // Disables a warning message in ace
 
@@ -35,9 +38,10 @@
 
     function validateInput(event){
         var title = $('#format_title').val();
+        // noinspection JSUnresolvedVariable
         var error = JSON.stringify(editor.session.getAnnotations());
 
-        if (error == '[]' && (title != '' && title != null)) {
+        if (error === '[]' && (title !== '' && title != null)) {
             readEditorValue();
             $(event.currentTarget).unbind('click').click();
         } else {
@@ -66,8 +70,8 @@
 
     function makeList(array) {
         // Create the list element:
-        var list = document.getElementById('error-list');
-        $('#error-list').empty();
+        var list = $('#error-list')
+        list.empty();
 
         for(var i = 0; i < array.length; i++) {
             // Create the list item:

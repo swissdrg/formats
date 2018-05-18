@@ -6,10 +6,9 @@ module FormatTypeHelper
     types = if format['multiline'].present? && format['multiline']
               multiline_read_types_from(format)
             else
-              vars = format['vars'].map {|k, v| v}
+              vars = format['vars'].map {|_, v| v}
               read_types_for_line(vars)
             end
-    types
   end
 
   private

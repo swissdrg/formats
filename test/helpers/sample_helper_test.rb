@@ -72,6 +72,7 @@ class SampleHelperTest < ActionDispatch::IntegrationTest
 
     #then
     expected = /^[[:digit:]]*\|[[:alnum:]]*(\|){2}[[:digit:]]*.[[:digit:]]*(\|){2}((true)||(false))$/
+    assert_match(expected, lines)
   end
 
   test 'generate multiple lines of simple format' do
@@ -88,7 +89,6 @@ class SampleHelperTest < ActionDispatch::IntegrationTest
 
   test 'generate lines from multiline format' do
     # given
-    raw = file_fixture('/sample_formats/multiline.json').read
     types = { 'MB' => %w[string string], 'MN' => %w[empty string], 'MD' => %w[empty empty string] }
 
     # when

@@ -3,8 +3,8 @@
 (function( preview, $, undefined ) {
     var editor = null;
 
-    const MIN_LINES = 1;
-    const MAX_LINES = 100;
+    var MIN_LINES = 1;
+    var MAX_LINES = 100;
 
     // LOAD
 
@@ -44,11 +44,11 @@
         });
         editor.$blockScrolling = Infinity; // Disables a warning message in ace
         applyLengthLimit();
-    };
+    }
 
     function applyLengthLimit() {
         var doc = editor.session.doc;
-        doc.applyAnyDelta = doc.applyAnyDelta || doc.applyDelta
+        doc.applyAnyDelta = doc.applyAnyDelta || doc.applyDelta;
         doc.applyDelta = function(delta) {
             if (delta.action === "insert" && this.$maxLength
                 && this.getValue().length > this.$maxLength) {
@@ -96,7 +96,6 @@
                 data_sample: shortenedSample
             },
             success: function(data) {
-                console.log(data)
                 // noinspection JSUnresolvedVariable
                 if (data.preview != null) {
                     $("#outputdiv").html(data.preview);
