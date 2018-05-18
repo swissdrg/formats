@@ -95,37 +95,68 @@ pre {
 
 input::-webkit-input-placeholder {
   color: $drg-link !important;
+  font-weight: bold;
+  font-family: "Fira Sans";
 }
 
 input:-moz-placeholder {
   color: $drg-link !important;
+  font-weight: bold;
+  font-family: "Fira Sans";
 }
 
 input::-moz-placeholder {
   color: $drg-link !important;
+  font-weight: bold;
+  font-family: "Fira Sans";
 }
 
 input:-ms-input-placeholder {
   color: $drg-link !important;
+  font-weight: bold;
+  font-family: "Fira Sans";
+}
+
+input:disabled::-webkit-input-placeholder {
+  color: #66B3CE !important;
+  font-weight: bold;
+  font-family: "Fira Sans";
+}
+
+input:disabled::-moz-placeholder {
+  color: #66B3CE !important;
+  font-weight: bold;
+  font-family: "Fira Sans";
+}
+
+input:disabled::-moz-placeholder {
+  color: #66B3CE !important;
+  font-weight: bold;
+  font-family: "Fira Sans";
+}
+
+input:disabled::-ms-input-placeholder {
+  color: #66B3CE !important;
+  font-weight: bold;
+  font-family: "Fira Sans";
 }
 
 #number_of_lines {
   border: 1px solid $drg-link;
   color: $drg-link;
+  font-weight: bold;
+  font-family: "Fira Sans";
 }
 
-/*.btn-primary:active{
+#number_of_lines:disabled {
+  border: 1px solid #66B3CE;
+  background-color: #ffffff;
+}
+
+.btn.btn-outline-primary:disabled {
   border: 1px solid $drg-link;
-  background-color: white;
+  color: $drg-link;
 }
-
-btn-success:hover{
-
-}
-
-btn-success:focus{
-
-}*/
 
 /* Ace JSON Editor */
 .jsoneditor, .jsoneditor-mode-code {
