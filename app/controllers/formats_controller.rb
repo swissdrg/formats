@@ -36,6 +36,7 @@ class FormatsController < ApplicationController
   def create
     @format = Format.new(format_params)
     if @format.save
+      flash[:notice] = "Created successfully"
       redirect_to '/formats'
     else
       render action: :new
@@ -47,6 +48,7 @@ class FormatsController < ApplicationController
     @format = format
     @json = helpers.read_attachment(@format)
     if update_format(format, params[:json])
+      flash[:notice] = 'Edited successfully'
       redirect_to '/formats'
     else
       render action: :edit
@@ -56,7 +58,7 @@ class FormatsController < ApplicationController
   def destroy
     @format = Format.find(params[:id])
     @format.destroy
-
+    flash[:notice] = "Deleted successfully"
     redirect_to '/formats'
   end
 
