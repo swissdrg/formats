@@ -1,10 +1,10 @@
 # SwissDRG Formats
 
-Work more easily with medical data. Formats allows you to preview and generate data for usage with SwissDRG's [CSV++](https://github.com/swissdrg/csvpp) which processes raw medical data into structured data for further processing.
+Work more easily with medical data. Formats allows you to preview and generate data for usage with [SwissDRG's CSV++](https://github.com/swissdrg/csvpp) which processes raw medical data into structured data for further processing.
 
 ## Getting Started
 
-View INSTALL.md for detailed instructions on how to get the project set up and running.
+View [INSTALL.md](./INSTALL.md) for detailed instructions on how to get the project set up and running.
 
 ## Built With
 
@@ -28,7 +28,7 @@ If you're running the app using Docker, your system Postgres version does not ma
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE.md file for details
+This project is licensed under the MIT License - see the [LICENSE.md](./LICENSE.md) file for details
 
 ## Acknowledgements
 
