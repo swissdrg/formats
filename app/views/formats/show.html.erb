@@ -55,7 +55,7 @@
 </p>
 
 <% if @json.to_s != '[]' -%>
-  <%= link_to " Download Specification", @format.attachment_url, download: true, class: "btn btn-outline-primary fas fa-download" %>
+  <%= link_to " Download Specification", @format.attachment_url, download: @format.title, class: "btn btn-outline-primary fas fa-download" %>
 
   <p class="table">
   <h3>Contents</h3>

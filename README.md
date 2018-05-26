@@ -1,73 +1,35 @@
-# README
+# SwissDRG Formats
 
-## Usage
+Work more easily with medical data. Formats allows you to preview and generate data for usage with [SwissDRG's CSV++](https://github.com/swissdrg/csvpp) which processes raw medical data into structured data for further processing.
 
-### Setting Up Docker
-First, install Docker and Docker-Compose on your system.
+## Getting Started
 
-Make sure to run the following commands from the project root directory *after every time you make changes to the project setup*, such as changing the Gemfile or the Docker configuration.
-```
-docker-compose build
-docker-compose run web rake db:create db:seed
-```
+View [INSTALL.md](./INSTALL.md) for detailed instructions on how to get the project set up and running.
 
-Then run the application as follows:
+## Built With
 
-### Running the application
+- Ruby 2.5.0
+- Rails 5.1.5
+- PostgreSQL 10.3
+- Bootstrap 4
 
-Starting the app should be as simple as executing `docker-compose up` from the project directory.
-You can then access it by navigating to `0.0.0.0:3000` in your browser.
-
-### Resetting the Database
-Run the following commands to drop the database and seed it with new data. This will remove all entries and re-generate the database.
-
-```
-docker-compose down # Stops all instances
-docker-compose run web rake db:reset # Drops all databases and creates new, seeded databases
-```
-In some cases you may have to run the second command a few times until it completes with no errors.
-
-### Seeding the Database
-If you want to manually seed the database with data, such as a test user, just run
-`docker-compose run web rake db:seed`
-
-
-## Using the project without Docker
-
-### Setup
-Run `bundle install` to fetch and install all required dependencies. Ensure running `ruby -v` shows a version >= 2.5.0 and `rails -v` shows a version >= 5.1.5
-
-### Running the application
-Run the application by entering `rails server` from the main project directory. Then navigate to `0.0.0.0:3000` in your browser.
-
-If you get an error that the server is already running, that may be from a file that is not deleted after stopping Docker-Compose. 
-Run `rm tmp/pids/server.pid` to fix this.
-
-### Authentication
-
-Run 'rake db:seed' from the main project directory to create a user.
-
-### Resetting the database
-
-To reset the database, run `rails db:reset`. This will remove all entries and re-generate the database.
-
-
-### Project Setup
-
-### Ruby Version
-
-For development, Ruby 2.5.0 and Rails 5.1.5 are used.
 Type `ruby -v` and `rails -v` to check which version you're running.
 If you're running the app using Docker, your system ruby and rails versions do not matter.
 
-### Database configuration
-
-The project uses PostgreSQL 10.3 as a database.
 Type `postgres --version` to check which version you're running.
 If you're running the app using Docker, your system Postgres version does not matter.
 
-## Pronto
+## Authors
 
-The project includes the pronto gem for style check purpose. At the moment it simply checks all local commits.
-It might be possible that you will need to run `sudo apt-get install cmake
-` to install cmake and `bundle update` to update the gem versions and resolve version problems.
+- Alessandro Esposito
+- Jonas Furrer
+- Travis Rivera Petit
+- Alain Stulz
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](./LICENSE.md) file for details
+
+## Acknowledgements
+
+Thanks to Simon Furrer of the University of Bern for guiding us through the project, along with Dr. Thomas Staub and the rest of the PSE Team. 
