@@ -82,6 +82,10 @@ Got permission denied while trying to connect to the Docker daemon socket at uni
 ```
 => Use sudo before every Docker command. This happens because Docker was installed with sudo permission and therefore has to be started like that.
 
+### Docker compose version unsupported
+
+Go to the ./docker-compose.yml file and change version to 2.
+
 ### Ports already occupied
 
 There are **two** solutions:<br/>
