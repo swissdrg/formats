@@ -44,7 +44,7 @@ class FormatsController < ApplicationController
   def update
     @format = Format.find(params[:id])
     @json = helpers.read_attachment(@format)
-    if update_format(format, params[:json])
+    if update_format(@format, params[:json])
       flash[:notice] = 'Edited successfully'
       redirect_to '/formats'
     else
